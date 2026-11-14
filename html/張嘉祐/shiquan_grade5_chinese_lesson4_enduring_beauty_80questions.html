@@ -1,0 +1,427 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>十全國小五年級｜國語康軒五上 第4課 恆久的美｜互動複習</title>
+<style>
+:root{
+  --bg:#f6f8ff; --card:#ffffff; --ink:#24304a; --muted:#667085;
+  --primary:#5b6cff; --primary2:#7c4dff; --ok:#198754; --bad:#d92d20;
+  --warn:#f59e0b; --line:#e5e7eb; --shadow:0 10px 28px rgba(56,68,120,.10);
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:"Noto Sans TC","Microsoft JhengHei",system-ui,sans-serif;background:
+radial-gradient(circle at 10% 10%,#e9ecff 0,transparent 28%),
+radial-gradient(circle at 90% 0%,#f3e8ff 0,transparent 24%),var(--bg);color:var(--ink)}
+button,input{font:inherit}
+.wrap{max-width:1100px;margin:auto;padding:18px}
+.hero{background:linear-gradient(135deg,#5867ff,#8a56ff);color:#fff;border-radius:24px;padding:26px;box-shadow:var(--shadow);position:relative;overflow:hidden}
+.hero:after{content:"✦";position:absolute;right:26px;top:8px;font-size:96px;opacity:.14}
+.hero h1{margin:0 0 8px;font-size:clamp(25px,4vw,38px)}
+.hero p{margin:5px 0;opacity:.96}
+.badge{display:inline-block;background:rgba(255,255,255,.18);padding:7px 11px;border-radius:999px;margin-right:8px;margin-top:8px;font-size:14px}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:14px 0}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:13px;text-align:center;box-shadow:var(--shadow)}
+.stat b{display:block;font-size:24px}
+.nav{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0}
+.nav button{border:0;background:#fff;border-radius:999px;padding:10px 14px;box-shadow:var(--shadow);cursor:pointer;color:var(--ink)}
+.nav button.active{background:var(--primary);color:#fff}
+.page{display:none}
+.page.active{display:block}
+.card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:18px;margin:12px 0;box-shadow:var(--shadow)}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+h2{margin:0 0 12px}
+h3{margin:8px 0}
+.note{background:#fff8e6;border-left:5px solid var(--warn);padding:12px 14px;border-radius:12px}
+.goodnote{background:#eefaf4;border-left:5px solid var(--ok);padding:12px 14px;border-radius:12px}
+.vocab{display:grid;grid-template-columns:repeat(auto-fit,minmax(155px,1fr));gap:10px}
+.vocab .item{border:1px solid var(--line);border-radius:16px;padding:13px;background:#fbfcff}
+.vocab .char{font-size:32px;font-weight:800;color:var(--primary2)}
+.vocab small{color:var(--muted)}
+.speak{border:0;border-radius:10px;padding:6px 9px;background:#eef0ff;cursor:pointer}
+.q{border:1px solid var(--line);border-radius:18px;padding:16px;margin:12px 0;background:#fff}
+.q-title{font-weight:800;margin-bottom:10px;line-height:1.6}
+.opt{display:block;width:100%;text-align:left;border:1px solid #d9ddeb;background:#fff;border-radius:12px;padding:10px 12px;margin:8px 0;cursor:pointer}
+.opt:hover{border-color:var(--primary);background:#f7f7ff}
+.opt.correct{background:#e9f8ef;border-color:var(--ok)}
+.opt.wrong{background:#fff0ef;border-color:var(--bad)}
+.feedback{margin-top:8px;padding:10px 12px;border-radius:12px;display:none}
+.feedback.ok{display:block;background:#e9f8ef;color:#11643b}
+.feedback.bad{display:block;background:#fff0ef;color:#8b1e16}
+.primary,.secondary{border:0;border-radius:12px;padding:10px 14px;cursor:pointer}
+.primary{background:var(--primary);color:white}
+.secondary{background:#eef0f5;color:#24304a}
+.actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:12px}
+.progress{height:12px;background:#e9ecf5;border-radius:999px;overflow:hidden}
+.progress i{display:block;height:100%;background:linear-gradient(90deg,#5b6cff,#9a5cff);width:0}
+.match-board{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.match-col{display:flex;flex-direction:column;gap:8px}
+.match-btn{padding:10px;border:1px solid var(--line);border-radius:12px;background:#fff;cursor:pointer}
+.match-btn.sel{outline:3px solid #cfd3ff}
+.match-btn.done{opacity:.45;text-decoration:line-through}
+.result-big{text-align:center;padding:20px}
+.result-big .score{font-size:54px;font-weight:900;color:var(--primary2)}
+.pill{display:inline-block;border-radius:999px;padding:6px 10px;background:#f0f1f6;margin:4px}
+footer{color:var(--muted);font-size:13px;text-align:center;padding:24px 8px}
+@media(max-width:720px){.stats{grid-template-columns:1fr 1fr}.grid2{grid-template-columns:1fr}.hero{padding:20px}.match-board{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <section class="hero">
+    <div class="badge">十全國小五年級｜第一次段考複習</div>
+    <div class="badge">康軒國語五上</div>
+    <h1>第4課｜恆久的美 🌾🎨</h1>
+    <p>自編互動練習：生字語詞、課文理解、摹寫技巧、畫作觀察、人物精神、閱讀理解、模擬測驗與錯題重做。</p>
+    <p style="font-size:14px">※ 本站為段考複習用自編教材，非康軒出版社官方題庫或原題。</p>
+  </section>
+
+  <section class="stats">
+    <div class="stat"><span>⭐ 總得分</span><b id="totalScore">0</b></div>
+    <div class="stat"><span>✅ 答對</span><b id="correctCount">0</b></div>
+    <div class="stat"><span>📚 已作答</span><b id="answeredCount">0</b></div>
+    <div class="stat"><span>🎯 正確率</span><b id="accuracy">0%</b></div>
+  </section>
+
+  <div class="card">
+    <div style="display:flex;justify-content:space-between;gap:12px;align-items:center">
+      <b>本課學習進度</b><span id="progressText">0%</span>
+    </div>
+    <div class="progress"><i id="progressBar"></i></div>
+  </div>
+
+  <nav class="nav" id="nav">
+    <button class="active" data-page="learn">① 課程重點</button>
+    <button data-page="vocab">② 字詞闖關</button>
+    <button data-page="reading">③ 閱讀理解</button>
+    <button data-page="match">④ 配對遊戲</button>
+    <button data-page="exam">⑤ 模擬測驗</button>
+    <button data-page="wrong">⑥ 錯題本</button>
+  </nav>
+
+  <main>
+    <section id="learn" class="page active">
+      <div class="card">
+        <h2>🎯 本課學習重點</h2>
+        <div class="grid2">
+          <div>
+            <h3>閱讀重點</h3>
+            <p>從稻田景象連結到「拾穗」故事與米勒畫作，理解作者如何從<b>畫面、人物動作與內心感受</b>看見農民的尊嚴，以及分享所帶來的恆久價值。</p>
+            <div class="goodnote">閱讀時可以抓住：<b>看見稻田 → 聯想到故事 → 認識米勒 → 觀察〈拾穗〉 → 感受勞動與分享之美</b>。</div>
+          </div>
+          <div>
+            <h3>語文重點</h3>
+            <p>本課的讀寫重點是<b>摹寫</b>：透過視覺、動作、色彩與細節，把眼前景象寫得像在讀者面前出現一樣。</p>
+            <div class="note">段考容易考：形音義、語詞運用、摹寫、由遠到近／由整體到局部的描寫順序、人物動作、作者觀點與主旨。</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>🧠 文章概念圖（自編整理）</h2>
+        <p>作者由金黃稻田想到拾穗故事，再介紹法國畫家米勒與畫作〈拾穗〉。畫面中的人物雖然生活辛苦，卻展現勤勞、尊嚴與彼此分享的精神。真正長久的美，不只在畫面的色彩，也在人的品格與情操。</p>
+        <p><span class="pill">自然景象</span> → <span class="pill">故事聯想</span> → <span class="pill">藝術作品</span> → <span class="pill">細節摹寫</span> → <span class="pill">分享與尊嚴</span></p>
+      </div>
+
+      <div class="card">
+        <h2>🔑 本課重點字詞</h2>
+        <div class="vocab" id="learnVocab"></div>
+      </div>
+    </section>
+
+    <section id="vocab" class="page">
+      <div class="card">
+        <h2>🔤 字詞闖關</h2>
+        <p>選出最合適的答案。答錯的題目會自動加入錯題本。</p><div class="goodnote">本區共有 <b>25 題</b>，建議分兩次完成。</div>
+        <div id="vocabQuiz"></div>
+      </div>
+    </section>
+
+    <section id="reading" class="page">
+      <div class="card">
+        <h2>📖 閱讀理解</h2>
+        <div class="note">以下短文為本站自編，不是課本原文。</div>
+        <div class="goodnote" style="margin-top:10px">本區共有 <b>15 題</b> 閱讀理解。</div>
+        <p style="line-height:1.9">
+          夕陽把田野染成溫暖的金色。遠方幾名農人把收割後的作物整理成一堆一堆，
+          前方三位婦人則彎著腰，仔細尋找散落在地上的穗子。第一位婦人一手扶著腰，
+          像是長時間勞動後有些痠痛；第二位把撿到的穗子放進圍裙；第三位稍微抬起頭，
+          望向還沒走過的田地。她們的衣服並不華麗，動作卻專注而沉穩。
+          小安看著這幅畫，起初只注意到顏色和構圖，後來卻慢慢想到：
+          如果有人願意把收割後遺落的穗子留給更需要的人，這幅畫所留下的，
+          就不只是農村景象，還有一種分享、體諒與尊重人的心意。
+        </p>
+        <div id="readingQuiz"></div>
+      </div>
+    </section>
+
+    <section id="match" class="page">
+      <div class="card">
+        <h2>🧩 語詞配對</h2>
+        <p>先點左邊語詞，再點右邊最接近的意思。</p>
+        <div class="match-board">
+          <div class="match-col" id="matchLeft"></div>
+          <div class="match-col" id="matchRight"></div>
+        </div>
+        <div id="matchMsg" class="feedback"></div>
+        <div class="actions"><button class="secondary" onclick="resetMatch()">重新配對</button></div>
+      </div>
+    </section>
+
+    <section id="exam" class="page">
+      <div class="card">
+        <h2>🏆 第1課模擬測驗</h2>
+        <p>共 30 題，每題 10 分。可以重做，系統會保留錯題。</p>
+        <div id="examQuiz"></div>
+        <div id="examResult"></div>
+      </div>
+    </section>
+
+    <section id="wrong" class="page">
+      <div class="card">
+        <h2>❤️ 錯題本</h2>
+        <p>所有答錯題目會自動收進這裡。重新答對後可從錯題本移除。</p>
+        <div id="wrongList"></div>
+        <div class="actions">
+          <button class="secondary" onclick="clearWrong()">清空錯題本</button>
+          <button class="secondary" onclick="resetAll()">重設本課全部進度</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    題目與摘要皆為段考複習用途的自編內容。生字／語詞範圍參考教育部教育百科公開的康軒五上第1課詞彙資料。
+  </footer>
+</div>
+
+<script>
+const vocab = [
+  ["恆","恆久、持之以恆"],["澄","黃澄澄、澄清"],["穗","稻穗、麥穗"],["養","養活、培養"],
+  ["源","來源、源頭"],["藝","藝術、技藝"],["樸","樸實、樸素"],["堆","堆疊、堆放"],
+  ["撿","撿拾、撿起"],["巾","頭巾、毛巾"],["痠","痠痛、腰痠"],["素","樸素、素雅"],
+  ["尊","尊嚴、尊重"],["嚴","嚴肅、尊嚴"],["勞","勞動、任勞任怨"],["怨","抱怨、任勞任怨"],
+  ["慷","慷慨"],["慨","慷慨、感慨"],["滋","滋潤、滋養"]
+];
+
+const questions = {
+vocab: [
+ {id:"v1",q:"「恆久」最接近哪個意思？",o:["長久不變","一下子就消失","非常短暫","突然中斷"],a:0,e:"「恆久」表示長久、持續。"},
+ {id:"v2",q:"「黃澄澄」主要用來形容什麼？",o:["金黃明亮的顏色","漆黑的夜色","冰冷的觸感","很大的聲音"],a:0,e:"「黃澄澄」常用來形容明亮飽滿的黃色。"},
+ {id:"v3",q:"「稻穗」中的「穗」是指什麼？",o:["穀類植物結實的部分","樹根","花盆","石頭"],a:0,e:"稻穗、麥穗都是穀類植物結實的部分。"},
+ {id:"v4",q:"「養活」最接近哪個意思？",o:["供給生活所需","把東西收藏起來","把畫掛高","把路封起來"],a:0,e:"「養活」指供給生活所需，使人維持生活。"},
+ {id:"v5",q:"「來源」的意思是什麼？",o:["事物從哪裡來","事情最後結束的地方","走路的速度","物品的大小"],a:0,e:"來源就是事物的由來、出處。"},
+ {id:"v6",q:"「藝術家」最可能從事哪一類工作？",o:["創作繪畫、音樂或其他藝術作品","只負責修馬路","只種稻米","只做數學題"],a:0,e:"藝術家從事藝術創作。"},
+ {id:"v7",q:"「樸實」最接近哪個意思？",o:["不華麗、真實自然","非常奢華","故意誇張","十分混亂"],a:0,e:"樸實常指不浮華、自然真誠。"},
+ {id:"v8",q:"下列哪句最適合使用「堆放」？",o:["農人把稻草堆放在田邊。","天空堆放得很藍。","聲音堆放得很甜。","河水堆放得很快。"],a:0,e:"「堆放」適合形容把物品一層層放在一起。"},
+ {id:"v9",q:"「撿拾」最接近哪個動作？",o:["把地上的東西撿起來","把東西丟掉","把門關上","把水喝完"],a:0,e:"撿拾就是撿起散落的物品。"},
+ {id:"v10",q:"「頭巾」中的「巾」和哪個語詞同字？",o:["毛巾","公斤","市場","經過"],a:0,e:"頭巾、毛巾都使用「巾」。"},
+ {id:"v11",q:"「腰痠背痛」最可能表示什麼？",o:["長時間勞動造成身體不舒服","心情非常開心","食物很好吃","天氣突然變冷"],a:0,e:"腰痠背痛常和勞動、疲累有關。"},
+ {id:"v12",q:"「樸素」最接近哪個意思？",o:["簡單、不華麗","非常昂貴華麗","聲音很大","速度很快"],a:0,e:"樸素表示簡單、不奢華。"},
+ {id:"v13",q:"「尊嚴」最接近哪個意思？",o:["值得被尊重的人格與價值","很高的山","很多金錢","很快的速度"],a:0,e:"尊嚴是每個人值得被尊重的價值。"},
+ {id:"v14",q:"「任勞任怨」最接近哪個意思？",o:["願意辛苦工作，不怕勞苦與抱怨","遇到事情立刻放棄","只做最輕鬆的事","什麼都不想做"],a:0,e:"任勞任怨表示承擔辛勞，不計較。"},
+ {id:"v15",q:"「慷慨」最接近哪個意思？",o:["大方地給予或分享","非常小氣","故意躲起來","不肯幫忙"],a:0,e:"慷慨可指大方分享、給予。"},
+ {id:"v16",q:"「滋潤」最常用來形容什麼？",o:["水分讓土地或植物得到滋養","聲音變得更尖","道路變得更長","顏色變得更黑"],a:0,e:"滋潤常和水分、滋養有關。"},
+ {id:"v17",q:"「恆」和哪個語詞搭配最自然？",o:["持之以恆","恆跑步","恆鉛筆","恆雨傘"],a:0,e:"「持之以恆」表示長久堅持。"},
+ {id:"v18",q:"哪一句最適合使用「慷慨」？",o:["他慷慨捐出物資幫助需要的人。","這顆石頭很慷慨。","天空慷慨地很方。","課桌慷慨得很安靜。"],a:0,e:"慷慨常用來形容人的給予或氣度。"},
+ {id:"v19",q:"「樸實」和「樸素」有什麼共同點？",o:["都可表示不華麗、自然簡單","都表示非常昂貴","都表示很生氣","都表示速度很快"],a:0,e:"兩者都可以形容簡單、不浮華。"},
+ {id:"v20",q:"「尊重」和「尊嚴」共同含有哪個字？",o:["尊","嚴","重","人"],a:0,e:"兩個語詞都有「尊」。"},
+ {id:"v21",q:"「任勞任怨」中的「勞」最接近哪個意思？",o:["辛苦工作","休息","遊玩","唱歌"],a:0,e:"「勞」和辛苦、工作有關。"},
+ {id:"v22",q:"「慨」最常出現在哪個詞？",o:["慷慨","大慨","慨桌","慨水"],a:0,e:"「慷慨」是常見語詞。"},
+ {id:"v23",q:"哪個詞最適合填入：「雨水＿＿了乾燥的土地。」",o:["滋潤","撿拾","堆放","尊嚴"],a:0,e:"雨水能滋潤土地。"},
+ {id:"v24",q:"「來源」的反面概念較接近哪一項？",o:["去向","起點","由來","源頭"],a:0,e:"來源是從哪裡來；去向則是往哪裡去。"},
+ {id:"v25",q:"哪一句的語詞使用最恰當？",o:["三位婦人彎腰撿拾散落的麥穗。","三位婦人滋潤畫作。","三位婦人尊嚴天空。","三位婦人慷慨山脈。"],a:0,e:"撿拾麥穗語意自然正確。"}
+],
+reading: [
+ {id:"r1",q:"短文中，遠方的農人在做什麼？",o:["整理收割後的作物","坐著休息","在畫畫","在搭帳篷"],a:0,e:"短文寫遠方農人把收割後的作物整理成一堆一堆。"},
+ {id:"r2",q:"前方三位婦人在做什麼？",o:["撿拾散落的穗子","收割整片田地","搭建房屋","觀賞夕陽"],a:0,e:"她們在撿拾收割後散落的穗子。"},
+ {id:"r3",q:"第一位婦人一手扶著腰，可能表示什麼？",o:["長時間勞動後感到痠痛","她正在跳舞","她非常生氣","她忘了帶東西"],a:0,e:"由動作可以推測她長時間彎腰勞動而感到不適。"},
+ {id:"r4",q:"第二位婦人的動作最可能是什麼？",o:["把撿到的穗子放進圍裙","把圍裙丟掉","把畫框搬走","把土地澆水"],a:0,e:"短文寫她把撿到的穗子放進圍裙。"},
+ {id:"r5",q:"第三位婦人稍微抬頭望向田地，可能在做什麼？",o:["尋找還沒撿拾的地方","等待下課","找飛機","看時鐘"],a:0,e:"她可能是在尋找下一個可撿拾的地方。"},
+ {id:"r6",q:"短文中『衣服並不華麗，動作卻專注而沉穩』主要表現什麼？",o:["人物樸實卻有尊嚴","她們很有錢","她們準備參加宴會","她們想離開田地"],a:0,e:"外表樸素，但勞動態度沉穩，呈現人物尊嚴。"},
+ {id:"r7",q:"小安一開始最注意畫作的什麼？",o:["顏色和構圖","人物姓名","畫作價格","畫框材質"],a:0,e:"短文寫他起初只注意顏色和構圖。"},
+ {id:"r8",q:"後來小安想到哪一層意義？",o:["分享、體諒與尊重人的心意","如何把畫賣掉","怎麼把畫框擦亮","怎麼種不同作物"],a:0,e:"他從畫面進一步想到分享與尊嚴。"},
+ {id:"r9",q:"這篇短文主要使用哪一種描寫方法？",o:["由遠到近觀察畫面","只介紹數字","只列出生字","只寫對話"],a:0,e:"先寫遠方農人，再寫前方三位婦人，屬於由遠到近。"},
+ {id:"r10",q:"「一手扶著腰，像是長時間勞動後有些痠痛」中，哪些是『看見』、哪些是『推測』？",o:["扶腰是看見；痠痛是推測","兩者都是看見","兩者都是推測","扶腰是推測；痠痛是看見"],a:0,e:"動作可以直接觀察，痠痛則是根據動作推測。"},
+ {id:"r11",q:"哪一句最能表現摹寫？",o:["夕陽把田野染成溫暖的金色。","這幅畫很好看。","我喜歡這張畫。","藝術很重要。"],a:0,e:"具體寫出色彩與景象，能讓讀者形成畫面。"},
+ {id:"r12",q:"畫中的人物為什麼會讓人想到『尊嚴』？",o:["她們雖辛苦仍專注勞動","她們穿著華麗","她們站得最高","她們擁有最多土地"],a:0,e:"尊嚴來自人物在困難生活中的態度與價值。"},
+ {id:"r13",q:"如果有人把收割後遺落的穗子留給需要的人，這最能表現什麼？",o:["分享與體諒","競爭","浪費","炫耀"],a:0,e:"這是一種願意保留資源給需要者的分享。"},
+ {id:"r14",q:"這篇短文最適合的主旨是什麼？",o:["真正長久的美也存在於勞動、分享與尊重之中","只有名畫才值得欣賞","農村生活一定很辛苦","只有顏色鮮豔的畫才漂亮"],a:0,e:"文章從畫面進一步看見人的精神價值。"},
+ {id:"r15",q:"閱讀描寫畫作的文章時，哪種方法最好？",o:["分辨『看見的事實』和『由細節推測的感受』","只記住畫名","只數人物數量","只看第一句"],a:0,e:"畫作描述常結合客觀觀察和主觀推測，分辨兩者很重要。"}
+],
+exam: [
+ {id:"e1",q:"〈恆久的美〉的作者由什麼景象開始聯想？",o:["金黃的稻田","城市夜景","高山積雪","海邊夕陽"],a:0,e:"文章由看到金黃稻田開始。"},
+ {id:"e2",q:"文章後來介紹哪位法國畫家？",o:["米勒","畢卡索","莫內","達文西"],a:0,e:"本課介紹法國畫家米勒。"},
+ {id:"e3",q:"米勒的代表作之一是哪一幅？",o:["拾穗","蒙娜麗莎","星夜","睡蓮"],a:0,e:"本課重點畫作為〈拾穗〉。"},
+ {id:"e4",q:"〈拾穗〉畫面前方主要有幾位婦人？",o:["三位","一位","五位","十位"],a:0,e:"畫面前方可見三位撿拾麥穗的婦人。"},
+ {id:"e5",q:"本課的主要讀寫技巧是什麼？",o:["摹寫","說明公式","列統計表","寫新聞標題"],a:0,e:"康軒本課讀寫重點是摹寫。"},
+ {id:"e6",q:"『摹寫』最接近哪個意思？",o:["用文字細緻描寫感官與畫面","只抄寫課文","只列生字","只寫結論"],a:0,e:"摹寫能用感官與細節讓讀者彷彿親眼看見。"},
+ {id:"e7",q:"描寫一幅畫時，『先遠方、再前方』屬於什麼？",o:["空間順序","時間倒敘","因果關係","問答結構"],a:0,e:"這是依畫面空間位置安排描寫。"},
+ {id:"e8",q:"哪一句屬於視覺摹寫？",o:["金黃稻田一路延伸到遠方。","這幅畫讓我很感動。","我覺得分享很重要。","我想起一個故事。"],a:0,e:"金黃、延伸等細節能形成具體視覺畫面。"},
+ {id:"e9",q:"若寫『藍色頭巾、彎腰、扶著腰』，主要是在描寫什麼？",o:["人物外觀與動作","人物姓名","畫作價格","作者出生地"],a:0,e:"顏色、姿勢、動作都屬於可觀察細節。"},
+ {id:"e10",q:"若寫『她似乎腰痠背痛』，這句比較接近什麼？",o:["根據動作做出的推測","直接看到的顏色","畫作尺寸","客觀時間"],a:0,e:"痠痛無法從畫面直接看見，是根據動作推測。"},
+ {id:"e11",q:"下列哪一個詞最能形容畫中農民的生活態度？",o:["任勞任怨","好逸惡勞","敷衍了事","坐享其成"],a:0,e:"本課強調農民勤勞、不怕辛苦。"},
+ {id:"e12",q:"『樸實』在本課中最可能形容什麼？",o:["農民生活與畫風","昂貴珠寶","豪華宮殿","華麗服裝"],a:0,e:"米勒常以樸實筆法描繪農民生活。"},
+ {id:"e13",q:"『尊嚴』在本課中主要表現在哪裡？",o:["人物雖生活艱辛仍認真勞動","人物穿得很昂貴","人物站在高處","人物有很多財產"],a:0,e:"人的價值不由財富決定，勤勞生活也能展現尊嚴。"},
+ {id:"e14",q:"文章中的『分享』主要和什麼有關？",o:["把遺落的穗子留給更需要的人","把所有東西自己帶走","禁止別人進入田地","把畫藏起來"],a:0,e:"文章藉拾穗故事帶出慷慨分享。"},
+ {id:"e15",q:"哪一項最能代表『恆久的美』？",o:["能長久感動人的品格與情操","只是一時漂亮的顏色","昂貴的畫框","作品的市場價格"],a:0,e:"本課的美不只在外表，更在分享、尊嚴與人性價值。"},
+ {id:"e16",q:"作者從稻田想到古老故事，再想到畫作，使用了哪種思考方式？",o:["聯想","計算","分類","排序數字"],a:0,e:"由眼前景象想到相關故事與作品，是聯想。"},
+ {id:"e17",q:"如果題目問『畫中可直接看見什麼』，哪項最適合？",o:["婦人彎腰撿穗","婦人覺得很累","婦人心裡很悲傷","婦人想早點回家"],a:0,e:"彎腰撿穗是畫面可直接觀察的事實。"},
+ {id:"e18",q:"如果題目問『根據畫面推測什麼』，哪項最適合？",o:["婦人長時間勞動可能感到痠痛","頭巾是藍色","前方有三人","地面有穗子"],a:0,e:"痠痛是根據姿勢和動作推測。"},
+ {id:"e19",q:"摹寫時，為什麼要加入顏色、姿勢和動作？",o:["讓畫面更具體、更有臨場感","讓文章變成數學題","讓字數一定變多","讓文章沒有主旨"],a:0,e:"細節能增加畫面感。"},
+ {id:"e20",q:"下列哪句最有『摹寫』效果？",o:["金黃稻田在午後陽光下閃著柔亮的光。","田很漂亮。","我看到田。","那是田。"],a:0,e:"具體的顏色、光線和景象較有摹寫效果。"},
+ {id:"e21",q:"『由遠到近』描寫畫作有什麼好處？",o:["讓讀者有清楚的觀察順序","讓文章變得更亂","可以省略所有細節","不需要主旨"],a:0,e:"有順序的描述能讓讀者容易建立整體畫面。"},
+ {id:"e22",q:"哪一個最符合『慷慨』的行動？",o:["把自己有餘的物資分享給需要的人","把所有東西藏起來","拒絕任何幫助","看到別人需要仍不理會"],a:0,e:"慷慨和大方給予、分享有關。"},
+ {id:"e23",q:"『任勞任怨』和哪種人物最相符？",o:["願意辛苦工作又少抱怨的人","一遇困難就逃避的人","只想享受的人","完全不願意做事的人"],a:0,e:"任勞任怨就是願意承擔辛勞。"},
+ {id:"e24",q:"本課把藝術欣賞和哪個主題連在一起？",o:["人的品格、勞動與分享","交通規則","氣象預報","數學公式"],a:0,e:"本課藉藝術作品看見人的尊嚴與分享精神。"},
+ {id:"e25",q:"若仿寫摹寫句，哪一句最好？",o:["老奶奶低著頭，雙手緩慢地把菜一把一把放進籃子。","老奶奶在工作。","老奶奶很好。","那裡有人。"],a:0,e:"具體動作與細節能產生畫面。"},
+ {id:"e26",q:"欣賞畫作時，從『看到什麼』進一步想到『代表什麼』，這是在做什麼？",o:["由觀察進入理解與詮釋","只背生字","只看顏色","只算人物數量"],a:0,e:"藝術欣賞會從觀察細節進一步理解意義。"},
+ {id:"e27",q:"哪一句比較像作者的觀點？",o:["真正的美也存在於分享與尊重之中。","畫面上有三位婦人。","一位婦人綁著頭巾。","遠方有人工作。"],a:0,e:"觀點是對事物意義的看法與判斷。"},
+ {id:"e28",q:"如果文章只介紹米勒生平，卻不描寫〈拾穗〉，會少掉哪一個學習重點？",o:["透過細節摹寫畫面","認識作者姓名","知道法國在哪裡","知道畫家是藝術家"],a:0,e:"本課重要特色就是細緻描寫畫作。"},
+ {id:"e29",q:"哪個順序最能整理本課內容？",o:["稻田→故事→米勒→拾穗→恆久的美","畫框→鉛筆→數學→操場","米勒→天氣→交通→運動","生字→答案→頁碼→下課"],a:0,e:"這是課文主要的內容發展。"},
+ {id:"e30",q:"完成本課複習後，最應具備哪項能力？",o:["能從畫面細節進行摹寫，並理解勞動、分享與尊嚴的意義","只記住畫名","只背生字筆畫","只會數人物"],a:0,e:"本課核心是摹寫技巧與對作品精神意義的理解。"}
+]
+};
+
+const matchPairs = [
+ ["恆久","長久、持續"],["撿拾","把散落的東西撿起來"],["樸實","不華麗、自然真誠"],
+ ["尊嚴","值得被尊重的人格價值"],["任勞任怨","承擔辛勞、不計較"],["慷慨","大方給予、分享"],
+ ["滋潤","使得到水分或滋養"],["稻穗","稻子結實的部分"],["來源","事物的由來、出處"],["摹寫","用細節把景象描寫得具體"]
+];
+
+const KEY="shiquan_g5_chinese_l4_v1_80";
+let state = JSON.parse(localStorage.getItem(KEY)||'{"answered":{},"wrong":{},"matchDone":[],"score":0}');
+function save(){ localStorage.setItem(KEY,JSON.stringify(state)); updateStats(); }
+
+document.querySelectorAll("#nav button").forEach(b=>{
+  b.onclick=()=>{
+    document.querySelectorAll("#nav button").forEach(x=>x.classList.remove("active"));
+    document.querySelectorAll(".page").forEach(x=>x.classList.remove("active"));
+    b.classList.add("active"); document.getElementById(b.dataset.page).classList.add("active");
+    if(b.dataset.page==="wrong") renderWrong();
+    window.scrollTo({top:document.querySelector("#nav").offsetTop-10,behavior:"smooth"});
+  };
+});
+
+function speak(text){
+  if(!("speechSynthesis" in window)){alert("此瀏覽器不支援語音功能");return}
+  speechSynthesis.cancel();
+  const u=new SpeechSynthesisUtterance(text);u.lang="zh-TW";u.rate=.85;speechSynthesis.speak(u);
+}
+
+function renderVocab(){
+ const el=document.getElementById("learnVocab");
+ el.innerHTML=vocab.map(([a,b])=>`<div class="item"><div class="char">${a}</div><b>${b}</b><br><button class="speak" onclick="speak('${a}，${b}')">🔊 聽讀音</button></div>`).join("");
+}
+
+function renderQuiz(kind, target){
+ const arr=questions[kind], el=document.getElementById(target);
+ el.innerHTML=arr.map((x,i)=>`
+ <div class="q" id="q_${x.id}">
+   <div class="q-title">${i+1}. ${x.q}</div>
+   ${x.o.map((o,j)=>`<button class="opt" onclick="answer('${kind}','${x.id}',${j},this)">${String.fromCharCode(65+j)}. ${o}</button>`).join("")}
+   <div class="feedback" id="f_${x.id}"></div>
+ </div>`).join("");
+}
+
+function getQ(kind,id){return questions[kind].find(x=>x.id===id)}
+function answer(kind,id,choice,btn){
+ const q=getQ(kind,id), box=document.getElementById("q_"+id), fb=document.getElementById("f_"+id);
+ box.querySelectorAll(".opt").forEach(x=>x.disabled=true);
+ const ok=choice===q.a;
+ box.querySelectorAll(".opt")[q.a].classList.add("correct");
+ if(!ok) btn.classList.add("wrong");
+ fb.className="feedback "+(ok?"ok":"bad");
+ fb.innerHTML=(ok?"✅ 答對了！ ":"❌ 再複習一下。 ")+q.e;
+ const first=!state.answered[id];
+ state.answered[id]={kind,choice,ok};
+ if(ok){
+   delete state.wrong[id];
+   if(first) state.score+=10;
+ }else{
+   state.wrong[id]={kind,id};
+ }
+ save();
+ if(kind==="exam") updateExamResult();
+}
+
+function allQuestionCount(){return [...questions.vocab,...questions.reading,...questions.exam].length + matchPairs.length}
+function updateStats(){
+ const vals=Object.values(state.answered);
+ const correct=vals.filter(x=>x.ok).length + state.matchDone.length;
+ const answered=vals.length + state.matchDone.length;
+ document.getElementById("totalScore").textContent=state.score + state.matchDone.length*5;
+ document.getElementById("correctCount").textContent=correct;
+ document.getElementById("answeredCount").textContent=answered;
+ document.getElementById("accuracy").textContent=answered?Math.round(correct/answered*100)+"%":"0%";
+ const pct=Math.round(answered/allQuestionCount()*100);
+ document.getElementById("progressText").textContent=pct+"%";
+ document.getElementById("progressBar").style.width=pct+"%";
+}
+
+function updateExamResult(){
+ const ids=questions.exam.map(x=>x.id), ans=ids.filter(id=>state.answered[id]);
+ if(!ans.length){document.getElementById("examResult").innerHTML="";return}
+ const ok=ans.filter(id=>state.answered[id].ok).length;
+ document.getElementById("examResult").innerHTML=`<div class="result-big"><div>目前模擬測驗</div><div class="score">${ok*10}</div><div>已作答 ${ans.length}/30 題｜答對 ${ok} 題</div></div>`;
+}
+
+function renderWrong(){
+ const keys=Object.keys(state.wrong), el=document.getElementById("wrongList");
+ if(!keys.length){el.innerHTML='<div class="goodnote">🎉 目前沒有錯題！繼續保持。</div>';return}
+ el.innerHTML=keys.map(id=>{
+   const it=state.wrong[id], q=getQ(it.kind,id);
+   return `<div class="q"><div class="q-title">${q.q}</div>
+   ${q.o.map((o,j)=>`<button class="opt" onclick="redoWrong('${it.kind}','${id}',${j},this)">${String.fromCharCode(65+j)}. ${o}</button>`).join("")}
+   <div class="feedback" id="wf_${id}"></div></div>`;
+ }).join("");
+}
+function redoWrong(kind,id,choice,btn){
+ const q=getQ(kind,id), fb=document.getElementById("wf_"+id), box=btn.parentElement;
+ box.querySelectorAll(".opt").forEach(x=>x.disabled=true);
+ if(choice===q.a){
+   btn.classList.add("correct"); delete state.wrong[id]; state.answered[id]={kind,choice,ok:true};
+   fb.className="feedback ok";fb.textContent="✅ 這次答對了！已從錯題本移除。";
+ }else{
+   btn.classList.add("wrong");box.querySelectorAll(".opt")[q.a].classList.add("correct");
+   fb.className="feedback bad";fb.textContent="❌ 還差一點："+q.e;
+ }
+ save(); setTimeout(renderWrong,1100);
+}
+function clearWrong(){state.wrong={};save();renderWrong()}
+function resetAll(){if(confirm("確定要清除第4課全部學習紀錄嗎？")){localStorage.removeItem(KEY);location.reload()}}
+
+let selectedLeft=null;
+function shuffle(a){return [...a].sort(()=>Math.random()-.5)}
+function renderMatch(){
+ selectedLeft=null;
+ const done=new Set(state.matchDone||[]);
+ document.getElementById("matchLeft").innerHTML=matchPairs.map(([l])=>`<button class="match-btn ${done.has(l)?"done":""}" ${done.has(l)?"disabled":""} onclick="pickLeft(this,'${l}')">${l}</button>`).join("");
+ document.getElementById("matchRight").innerHTML=shuffle(matchPairs).map(([l,r])=>`<button class="match-btn ${done.has(l)?"done":""}" ${done.has(l)?"disabled":""} data-left="${l}" onclick="pickRight(this,'${l}')">${r}</button>`).join("");
+}
+function pickLeft(btn,l){
+ document.querySelectorAll("#matchLeft .match-btn").forEach(x=>x.classList.remove("sel"));
+ btn.classList.add("sel"); selectedLeft=l;
+}
+function pickRight(btn,l){
+ const msg=document.getElementById("matchMsg");
+ if(!selectedLeft){msg.className="feedback bad";msg.textContent="請先選左邊的語詞。";return}
+ if(selectedLeft===l){
+   state.matchDone=Array.from(new Set([...(state.matchDone||[]),l]));
+   msg.className="feedback ok";msg.textContent="✅ 配對成功！";
+   save();renderMatch();
+ }else{
+   msg.className="feedback bad";msg.textContent="❌ 不是這一組，再試一次。";
+ }
+}
+function resetMatch(){state.matchDone=[];save();renderMatch();document.getElementById("matchMsg").className="feedback";}
+
+renderVocab();
+renderQuiz("vocab","vocabQuiz");
+renderQuiz("reading","readingQuiz");
+renderQuiz("exam","examQuiz");
+renderMatch();updateStats();updateExamResult();
+</script>
+</body>
+</html>

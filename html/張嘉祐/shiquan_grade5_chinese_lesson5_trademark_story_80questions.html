@@ -1,0 +1,339 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>十全國小五年級｜國語康軒五上 第5課 它抓得住你—商標的故事｜互動複習</title>
+<style>
+:root{
+  --bg:#f6f8ff; --card:#ffffff; --ink:#24304a; --muted:#667085;
+  --primary:#5b6cff; --primary2:#7c4dff; --ok:#198754; --bad:#d92d20;
+  --warn:#f59e0b; --line:#e5e7eb; --shadow:0 10px 28px rgba(56,68,120,.10);
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:"Noto Sans TC","Microsoft JhengHei",system-ui,sans-serif;background:
+radial-gradient(circle at 10% 10%,#e9ecff 0,transparent 28%),
+radial-gradient(circle at 90% 0%,#f3e8ff 0,transparent 24%),var(--bg);color:var(--ink)}
+button,input{font:inherit}
+.wrap{max-width:1100px;margin:auto;padding:18px}
+.hero{background:linear-gradient(135deg,#5867ff,#8a56ff);color:#fff;border-radius:24px;padding:26px;box-shadow:var(--shadow);position:relative;overflow:hidden}
+.hero:after{content:"✦";position:absolute;right:26px;top:8px;font-size:96px;opacity:.14}
+.hero h1{margin:0 0 8px;font-size:clamp(25px,4vw,38px)}
+.hero p{margin:5px 0;opacity:.96}
+.badge{display:inline-block;background:rgba(255,255,255,.18);padding:7px 11px;border-radius:999px;margin-right:8px;margin-top:8px;font-size:14px}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:14px 0}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:13px;text-align:center;box-shadow:var(--shadow)}
+.stat b{display:block;font-size:24px}
+.nav{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0}
+.nav button{border:0;background:#fff;border-radius:999px;padding:10px 14px;box-shadow:var(--shadow);cursor:pointer;color:var(--ink)}
+.nav button.active{background:var(--primary);color:#fff}
+.page{display:none}
+.page.active{display:block}
+.card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:18px;margin:12px 0;box-shadow:var(--shadow)}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+h2{margin:0 0 12px}
+h3{margin:8px 0}
+.note{background:#fff8e6;border-left:5px solid var(--warn);padding:12px 14px;border-radius:12px}
+.goodnote{background:#eefaf4;border-left:5px solid var(--ok);padding:12px 14px;border-radius:12px}
+.vocab{display:grid;grid-template-columns:repeat(auto-fit,minmax(155px,1fr));gap:10px}
+.vocab .item{border:1px solid var(--line);border-radius:16px;padding:13px;background:#fbfcff}
+.vocab .char{font-size:32px;font-weight:800;color:var(--primary2)}
+.vocab small{color:var(--muted)}
+.speak{border:0;border-radius:10px;padding:6px 9px;background:#eef0ff;cursor:pointer}
+.q{border:1px solid var(--line);border-radius:18px;padding:16px;margin:12px 0;background:#fff}
+.q-title{font-weight:800;margin-bottom:10px;line-height:1.6}
+.opt{display:block;width:100%;text-align:left;border:1px solid #d9ddeb;background:#fff;border-radius:12px;padding:10px 12px;margin:8px 0;cursor:pointer}
+.opt:hover{border-color:var(--primary);background:#f7f7ff}
+.opt.correct{background:#e9f8ef;border-color:var(--ok)}
+.opt.wrong{background:#fff0ef;border-color:var(--bad)}
+.feedback{margin-top:8px;padding:10px 12px;border-radius:12px;display:none}
+.feedback.ok{display:block;background:#e9f8ef;color:#11643b}
+.feedback.bad{display:block;background:#fff0ef;color:#8b1e16}
+.primary,.secondary{border:0;border-radius:12px;padding:10px 14px;cursor:pointer}
+.primary{background:var(--primary);color:white}
+.secondary{background:#eef0f5;color:#24304a}
+.actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:12px}
+.progress{height:12px;background:#e9ecf5;border-radius:999px;overflow:hidden}
+.progress i{display:block;height:100%;background:linear-gradient(90deg,#5b6cff,#9a5cff);width:0}
+.match-board{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.match-col{display:flex;flex-direction:column;gap:8px}
+.match-btn{padding:10px;border:1px solid var(--line);border-radius:12px;background:#fff;cursor:pointer}
+.match-btn.sel{outline:3px solid #cfd3ff}
+.match-btn.done{opacity:.45;text-decoration:line-through}
+.result-big{text-align:center;padding:20px}
+.result-big .score{font-size:54px;font-weight:900;color:var(--primary2)}
+.pill{display:inline-block;border-radius:999px;padding:6px 10px;background:#f0f1f6;margin:4px}
+footer{color:var(--muted);font-size:13px;text-align:center;padding:24px 8px}
+@media(max-width:720px){.stats{grid-template-columns:1fr 1fr}.grid2{grid-template-columns:1fr}.hero{padding:20px}.match-board{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <section class="hero">
+    <div class="badge">十全國小五年級｜第一次段考複習</div>
+    <div class="badge">康軒國語五上</div>
+    <h1>第5課｜它抓得住你—商標的故事 🏷️</h1>
+    <p>自編互動練習：生字語詞、說明文結構、商標功能、舉例說明、閱讀理解、模擬測驗與錯題重做。</p>
+    <p style="font-size:14px">※ 本站為段考複習用自編教材，非康軒出版社官方題庫或原題。</p>
+  </section>
+
+  <section class="stats">
+    <div class="stat"><span>⭐ 總得分</span><b id="totalScore">0</b></div>
+    <div class="stat"><span>✅ 答對</span><b id="correctCount">0</b></div>
+    <div class="stat"><span>📚 已作答</span><b id="answeredCount">0</b></div>
+    <div class="stat"><span>🎯 正確率</span><b id="accuracy">0%</b></div>
+  </section>
+
+  <div class="card">
+    <div style="display:flex;justify-content:space-between;gap:12px;align-items:center">
+      <b>本課學習進度</b><span id="progressText">0%</span>
+    </div>
+    <div class="progress"><i id="progressBar"></i></div>
+  </div>
+
+  <nav class="nav" id="nav">
+    <button class="active" data-page="learn">① 課程重點</button>
+    <button data-page="vocab">② 字詞闖關</button>
+    <button data-page="reading">③ 閱讀理解</button>
+    <button data-page="match">④ 配對遊戲</button>
+    <button data-page="exam">⑤ 模擬測驗</button>
+    <button data-page="wrong">⑥ 錯題本</button>
+  </nav>
+
+  <main>
+    <section id="learn" class="page active">
+      <div class="card">
+        <h2>🎯 本課學習重點</h2>
+        <div class="grid2">
+          <div>
+            <h3>閱讀重點</h3>
+            <p>本課是<b>事物說明文</b>，從不同角度介紹商標的用途與故事。閱讀時要能找出「商標是什麼、為什麼重要、不同例子說明了什麼」。</p>
+            <div class="goodnote">閱讀時可以抓住：<b>商標的功能 → 商標故事與例子 → 商家想傳達的印象 → 商標與商品、商譽、服務的關聯</b>。</div>
+          </div>
+          <div>
+            <h3>語文重點</h3>
+            <p>練習辨認<b>說明、舉例、觀察順序、因果與重點句</b>，並學會從資料中整理商標的樣式、歷史與意義。</p>
+            <div class="note">段考容易考：形音義、語詞運用、事物說明文、舉例說明、商標功能、商譽、註冊與企業形象。</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>🧠 文章概念圖（自編整理）</h2>
+        <p>商標不只是圖案或文字，它能幫助消費者辨認商品來源，也可能傳達公司的歷史、理念、服務與產品特色。醒目的商標容易被記住，長久累積後還能和商譽產生關聯。</p>
+        <p><span class="pill">辨認商品</span> → <span class="pill">建立印象</span> → <span class="pill">傳達故事</span> → <span class="pill">累積商譽</span> → <span class="pill">影響選擇</span></p>
+      </div>
+
+      <div class="card">
+        <h2>🔑 本課重點字詞</h2>
+        <div class="vocab" id="learnVocab"></div>
+      </div>
+    </section>
+
+    <section id="vocab" class="page">
+      <div class="card">
+        <h2>🔤 字詞闖關</h2>
+        <p>選出最合適的答案。答錯的題目會自動加入錯題本。</p><div class="goodnote">本區共有 <b>25 題</b>，建議分兩次完成。</div>
+        <div id="vocabQuiz"></div>
+      </div>
+    </section>
+
+    <section id="reading" class="page">
+      <div class="card">
+        <h2>📖 閱讀理解</h2>
+        <div class="note">以下短文為本站自編，不是課本原文。</div>
+        <div class="goodnote" style="margin-top:10px">本區共有 <b>15 題</b> 閱讀理解。</div>
+        <p style="line-height:1.9">
+          「亮亮文具」原本只是一間小店。老闆希望顧客一看到商標，就想到可靠又好用的文具，
+          因此把商標設計成一支鉛筆穿過發光的星星。鉛筆代表商品，星星則象徵「讓好點子發亮」。
+          隨著店面增加，公司把相同商標印在包裝、招牌和網站上，讓顧客更容易辨認。
+          幾年後，公司發現另一家店使用非常相似的圖案，便查詢商標註冊資料並尋求協助。
+          老闆也重新提醒員工：真正能讓商標被信任的，不只是一個好看的圖案，
+          還包括穩定的品質、誠實的服務，以及長期累積的商譽。
+        </p>
+        <div id="readingQuiz"></div>
+      </div>
+    </section>
+
+    <section id="match" class="page">
+      <div class="card">
+        <h2>🧩 語詞配對</h2>
+        <p>先點左邊語詞，再點右邊最接近的意思。</p>
+        <div class="match-board">
+          <div class="match-col" id="matchLeft"></div>
+          <div class="match-col" id="matchRight"></div>
+        </div>
+        <div id="matchMsg" class="feedback"></div>
+        <div class="actions"><button class="secondary" onclick="resetMatch()">重新配對</button></div>
+      </div>
+    </section>
+
+    <section id="exam" class="page">
+      <div class="card">
+        <h2>🏆 第1課模擬測驗</h2>
+        <p>共 30 題，每題 10 分。可以重做，系統會保留錯題。</p>
+        <div id="examQuiz"></div>
+        <div id="examResult"></div>
+      </div>
+    </section>
+
+    <section id="wrong" class="page">
+      <div class="card">
+        <h2>❤️ 錯題本</h2>
+        <p>所有答錯題目會自動收進這裡。重新答對後可從錯題本移除。</p>
+        <div id="wrongList"></div>
+        <div class="actions">
+          <button class="secondary" onclick="clearWrong()">清空錯題本</button>
+          <button class="secondary" onclick="resetAll()">重設本課全部進度</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    題目與摘要皆為段考複習用途的自編內容。生字／語詞範圍參考教育部教育百科公開的康軒五上第1課詞彙資料。
+  </footer>
+</div>
+
+<script>
+const vocab = [["譽", "商譽、名譽"], ["務", "服務、任務"], ["聯", "關聯、聯絡"], ["核", "核准、核心"], ["申", "申請、申明"], ["局", "局面、郵局"], ["松", "黑松、松樹"], ["註", "註冊、註明"], ["冊", "手冊、名冊"], ["企", "企業、企盼"], ["毅", "堅毅、毅力"], ["歷", "歷經、歷史"], ["英", "英文、英文字母"], ["銷", "銷售、行銷"], ["售", "出售、零售"], ["勝", "勝利、出奇制勝"], ["霸", "霸主、稱霸"], ["項", "項目、事項"]];
+
+const questions = {"vocab":[{"id":"v1","q":"「商譽」最接近哪個意思？","o":["商店或企業累積的信譽","商品的重量","商店的位置","商品的顏色"],"a":0,"e":"商譽是商人、商店或企業累積的信用與名聲。"},{"id":"v2","q":"「服務」中的「務」和哪個意思最接近？","o":["事情、工作","水果","聲音","方向"],"a":0,"e":"「務」可指事情或工作，如公務、任務、服務。"},{"id":"v3","q":"「關聯」最接近哪個意思？","o":["彼此有關係","完全分開","快速移動","反覆計算"],"a":0,"e":"關聯就是事物之間有關係。"},{"id":"v4","q":"「核准」的意思最接近哪一項？","o":["審查後同意","立刻拒絕","暫時忘記","公開展示"],"a":0,"e":"核准就是經審查後批准、同意。"},{"id":"v5","q":"「申請」最適合用在哪一句？","o":["我向學校申請參加活動。","天空申請得很藍。","鉛筆申請在桌上。","風把樹申請倒了。"],"a":0,"e":"申請是向相關單位提出請求。"},{"id":"v6","q":"「註冊」和哪一個概念最接近？","o":["向有關單位登記","把東西丟掉","把文字擦掉","隨意改名"],"a":0,"e":"註冊是向有關機關或團體登記備案。"},{"id":"v7","q":"「企業」通常是什麼？","o":["提供產品或服務的經營組織","一種植物","一種樂器","一種天氣"],"a":0,"e":"企業是從事生產、服務、交易等經濟活動的組織。"},{"id":"v8","q":"「堅毅不拔」最接近哪種精神？","o":["意志堅定、不輕易動搖","一下就放棄","只做簡單的事","完全沒有目標"],"a":0,"e":"堅毅不拔形容意志堅定，遇到困難仍不動搖。"},{"id":"v9","q":"「歷經」最接近哪個意思？","o":["經歷過","立刻跳過","完全忘記","還沒開始"],"a":0,"e":"歷經就是經歷、經過。"},{"id":"v10","q":"「銷售」的意思是什麼？","o":["出售商品","收藏商品","製造天氣","計算時間"],"a":0,"e":"銷售就是出售、販賣商品。"},{"id":"v11","q":"「霸主」最接近哪個意思？","o":["在某領域居領先地位者","剛入門的人","完全沒有影響的人","專門記錄的人"],"a":0,"e":"霸主可指在某領域占優勢、居領導地位者。"},{"id":"v12","q":"「項目」最接近哪個意思？","o":["分類列出的條目","一種顏色","一種食物","一種聲音"],"a":0,"e":"項目是依分類列出的條目或事項。"},{"id":"v13","q":"哪一句的「商譽」使用最恰當？","o":["誠實經營有助於累積商譽。","今天的天空很商譽。","我把商譽放進書包。","商譽是一種水果。"],"a":0,"e":"商譽與企業信用、名聲有關。"},{"id":"v14","q":"「註明」最接近哪個意思？","o":["特別記載說明","完全刪除","大聲朗讀","快速移動"],"a":0,"e":"註明就是記載清楚、特別說明。"},{"id":"v15","q":"「冊」最適合出現在哪個語詞？","o":["手冊","冊風","冊水","冊山"],"a":0,"e":"常見語詞有手冊、名冊、畫冊等。"},{"id":"v16","q":"「企盼」最接近哪個意思？","o":["盼望、期待","責備","拒絕","忘記"],"a":0,"e":"企盼就是盼望、期待。"},{"id":"v17","q":"「毅力」最接近哪種能力？","o":["持續努力、不輕易放棄","記住顏色","快速說話","馬上完成一切"],"a":0,"e":"毅力是持續堅持的力量。"},{"id":"v18","q":"「行銷」和哪一項最有關？","o":["推廣商品或服務","測量身高","觀察天氣","整理書包"],"a":0,"e":"行銷和商品、品牌、宣傳與銷售有關。"},{"id":"v19","q":"「出售」的反義概念最接近哪一個？","o":["購入","推銷","販賣","零售"],"a":0,"e":"出售是賣出，購入是買進。"},{"id":"v20","q":"「出奇制勝」最接近哪個意思？","o":["用出人意料的方法取得優勢","按照原樣不變","遇事立刻放棄","只靠運氣"],"a":0,"e":"出奇制勝指用出人意料的策略取得勝利。"},{"id":"v21","q":"下列哪組語詞關係最密切？","o":["註冊／申請","山巒／雨傘","飢餓／商譽","藤蔓／核准"],"a":0,"e":"商標註冊通常會涉及提出申請。"},{"id":"v22","q":"哪一句最適合使用「關聯」？","o":["商標和商品形象有密切關聯。","關聯是一杯飲料。","我把關聯穿在腳上。","天空關聯得很快。"],"a":0,"e":"關聯用來說明事物彼此之間的關係。"},{"id":"v23","q":"「英文」中的「英」和哪個語詞同字？","o":["英文字母","英雄的英","兩者都是同一個字","以上皆是"],"a":3,"e":"「英文」與「英雄」的第一個字都是「英」，雖然詞義不同。"},{"id":"v24","q":"哪個語詞最適合填入：「公司把新商品列成三個主要＿＿介紹。」","o":["項目","霸主","黑松","商譽"],"a":0,"e":"項目可指分類列出的事項。"},{"id":"v25","q":"下列哪一句最能表現「堅毅不拔」？","o":["經過多次失敗仍繼續改進。","第一次失敗就放棄。","只挑最容易的工作。","遇到問題就全部交給別人。"],"a":0,"e":"遇到挫折仍持續努力最能表現堅毅不拔。"}],"reading":[{"id":"r1","q":"「亮亮文具」的商標主要由什麼組成？","o":["鉛筆和星星","山和河","水果和樹葉","飛機和雲"],"a":0,"e":"短文說商標是一支鉛筆穿過發光的星星。"},{"id":"r2","q":"鉛筆圖案主要代表什麼？","o":["公司的商品","公司的地址","老闆的年齡","員工人數"],"a":0,"e":"鉛筆直接呼應文具商品。"},{"id":"r3","q":"星星象徵什麼？","o":["讓好點子發亮","價格一定最便宜","店面一定最大","商品一定最多"],"a":0,"e":"短文明確說星星象徵「讓好點子發亮」。"},{"id":"r4","q":"公司為什麼把相同商標放在包裝、招牌和網站？","o":["讓顧客更容易辨認","讓字變更多","讓包裝更重","讓網站變慢"],"a":0,"e":"一致使用商標有助於辨識。"},{"id":"r5","q":"發現相似圖案後，公司先做了什麼？","o":["查詢商標註冊資料並尋求協助","立刻關店","把原商標丟掉","停止銷售所有商品"],"a":0,"e":"短文說公司查詢註冊資料並尋求協助。"},{"id":"r6","q":"老闆認為真正讓商標被信任的因素不包括哪一項？","o":["圖案越複雜越好","穩定品質","誠實服務","長期商譽"],"a":0,"e":"短文強調品質、服務與商譽，而不是圖案越複雜越好。"},{"id":"r7","q":"這篇短文主要使用哪種文體？","o":["事物說明文","童詩","劇本","日記"],"a":0,"e":"文章主要介紹商標的設計、用途與信任來源。"},{"id":"r8","q":"「鉛筆代表商品，星星象徵理念」屬於哪種說明？","o":["解釋商標元素的意義","描述天氣","敘述旅行過程","描寫人物外貌"],"a":0,"e":"這是在說明圖案元素代表的意思。"},{"id":"r9","q":"從短文可以推論，商標最大的作用之一是什麼？","o":["幫助辨認商品或企業","讓所有商品免費","讓品質自動提高","讓公司不用服務顧客"],"a":0,"e":"商標有助於辨認來源與建立印象。"},{"id":"r10","q":"短文最後一段的重點是什麼？","o":["商標信任要靠品質、服務和商譽累積","商標只要漂亮就夠了","公司不用在意顧客","所有商標都要有星星"],"a":0,"e":"結尾把重點從圖案拉回企業實際表現。"},{"id":"r11","q":"「幾年後」這個詞在文章中有什麼作用？","o":["表示時間推移","表示地點改變","表示人物增加","表示價格下降"],"a":0,"e":"「幾年後」是時間線索。"},{"id":"r12","q":"若把『相同商標印在包裝、招牌和網站』刪掉，文章會少了哪項訊息？","o":["商標如何一致呈現以增加辨識","公司怎麼製造鉛筆","員工如何上班","店面在哪一條路"],"a":0,"e":"這段說明商標在不同媒介一致出現的辨識功能。"},{"id":"r13","q":"短文中的因果關係何者正確？","o":["商標一致出現→顧客更容易辨認","顧客辨認→商標自動註冊","圖案相似→品質一定下降","商譽提高→不必服務"],"a":0,"e":"一致呈現有助於辨識，是合理因果。"},{"id":"r14","q":"哪一句最接近全文主旨？","o":["商標能傳達形象，但信任還要靠長期經營","商標只是一張漂亮圖片","所有公司都該用鉛筆當商標","只要註冊就一定成功"],"a":0,"e":"全文說明商標的辨識與形象功能，也強調品質、服務和商譽。"},{"id":"r15","q":"這篇短文最適合的閱讀策略是什麼？","o":["找功能、例子、原因與結論","只數每句字數","只背第一句","只看標點符號"],"a":0,"e":"事物說明文適合整理功能、例子、因果與結論。"}],"exam":[{"id":"e1","q":"本課〈它抓得住你—商標的故事〉主要屬於哪種文體？","o":["事物說明文","童詩","小說","書信"],"a":0,"e":"本課從多個角度介紹商標，屬於事物說明文。"},{"id":"e2","q":"商標最基本的功能之一是什麼？","o":["辨認商品或服務的來源","直接保證最低價格","讓商品不會損壞","讓公司不用宣傳"],"a":0,"e":"商標能協助消費者辨認商品或服務來源。"},{"id":"e3","q":"「商標和商譽有關」最合理的解釋是什麼？","o":["長期品質與信用會讓人看到商標就產生印象","商標圖案就是商譽本身","商譽只看圖案顏色","商譽和經營完全無關"],"a":0,"e":"商標承載的信任來自企業長期品質、服務與信用。"},{"id":"e4","q":"醒目的商標為什麼可能影響銷售？","o":["更容易被看見和記住","一定能讓商品變便宜","一定能讓商品變大","能改變天氣"],"a":0,"e":"辨識度與記憶度可能影響消費者選擇。"},{"id":"e5","q":"說明商標故事時，哪一組資料最有幫助？","o":["設計背景、圖案樣式、企業歷史、產品特色","天氣、午餐、身高、座號","課桌顏色、操場大小、鉛筆長度、鞋號","只寫商標名稱"],"a":0,"e":"這些資料能完整說明商標的來源與意義。"},{"id":"e6","q":"介紹商標外觀時，最適合採用哪種方式？","o":["依一定觀察順序逐項描述","想到哪寫到哪","只寫自己的心情","完全不描述圖案"],"a":0,"e":"有順序的觀察描述能讓說明更清楚。"},{"id":"e7","q":"「外圍是圓形，中央有文字，下面有圖案」主要運用什麼？","o":["空間或位置順序","時間倒敘","因果推論","人物對話"],"a":0,"e":"這是依商標各部分的位置順序描述。"},{"id":"e8","q":"說明文使用具體例子的主要好處是什麼？","o":["讓抽象概念更容易理解","讓文章一定變短","讓所有觀點都正確","讓生字消失"],"a":0,"e":"例子能讓說明更具體、更容易理解。"},{"id":"e9","q":"本課從古代、臺灣或國外不同商標故事舉例，主要目的可能是什麼？","o":["從多角度說明商標的功能與故事","證明只有一種商標最好","比較哪個國家最厲害","讓文章變成遊記"],"a":0,"e":"多個例子能呈現商標在不同時空的功能與意義。"},{"id":"e10","q":"商家使用商標，通常想給消費者什麼？","o":["特定印象與承諾","完全沒有印象","只有價格資訊","只有店員姓名"],"a":0,"e":"商標常承載企業想傳達的印象、特色與承諾。"},{"id":"e11","q":"哪一項最可能屬於商標傳達的內容？","o":["企業歷史與產品特色","明天的天氣","學生座號","課表節數"],"a":0,"e":"商標故事常和企業歷史、願景、服務及產品特色相關。"},{"id":"e12","q":"「註冊商標」中的「註冊」主要表示什麼？","o":["向相關單位登記備案","自己在紙上畫圖就完成","一定要改成英文","只要張貼在店門口"],"a":0,"e":"註冊是向相關單位辦理登記。"},{"id":"e13","q":"若兩個商標非常相似，為什麼可能產生問題？","o":["可能讓消費者混淆來源","一定讓商品更好","一定讓兩家公司合作","完全不會有影響"],"a":0,"e":"過度相似可能造成來源辨識上的混淆。"},{"id":"e14","q":"商標設計要能『抓得住你』，最接近什麼意思？","o":["容易吸引注意並留下記憶","真的伸手抓住人","讓人不能離開商店","讓商品變重"],"a":0,"e":"標題是形象說法，指商標能吸引注意、留下印象。"},{"id":"e15","q":"哪一項最能提升商譽？","o":["長期提供穩定品質與誠實服務","只換一個漂亮圖案","把價格寫得最大","每天更改公司名稱"],"a":0,"e":"商譽靠長期信用、品質與服務累積。"},{"id":"e16","q":"「企業願景」最接近什麼？","o":["企業希望未來達成的方向","今天的午餐","商品包裝重量","員工座位"],"a":0,"e":"願景是對未來發展方向的想像與目標。"},{"id":"e17","q":"如果商標中的圖案和產品特色有關，這樣的設計有什麼好處？","o":["能更快讓人聯想到商品","一定讓成本歸零","一定不用文字","一定不會被模仿"],"a":0,"e":"圖案和產品有關，有助於快速建立聯想。"},{"id":"e18","q":"商標故事中提到公司成立年份，屬於哪類資料？","o":["企業歷史","產品重量","廣告口號","顧客姓名"],"a":0,"e":"成立年份屬於企業歷史資料。"},{"id":"e19","q":"商標故事中提到『希望提供安心可靠的服務』，較接近哪類內容？","o":["企業理念或願景","商品尺寸","店面地址","銷售數量"],"a":0,"e":"這是企業想傳達的理念或未來方向。"},{"id":"e20","q":"哪一句是客觀說明？","o":["這個商標由紅色圓形和白色文字組成。","我覺得它是全世界最好看的商標。","我超級喜歡這家公司。","這商標一定最厲害。"],"a":0,"e":"客觀說明重在可觀察、可描述的資訊。"},{"id":"e21","q":"哪一句比較像主觀感受？","o":["我覺得這個商標十分醒目。","商標中央有三個字。","公司成立於某年。","圖案外圍是圓形。"],"a":0,"e":"「我覺得」表達個人感受。"},{"id":"e22","q":"要寫一篇『我觀察的商標』，第一步最適合做什麼？","o":["蒐集資料並仔細觀察商標","直接亂猜企業歷史","只寫自己的名字","完全不看圖案"],"a":0,"e":"先觀察並蒐集可靠資料，才能有根據地說明。"},{"id":"e23","q":"整理商標資料時，哪種方法最清楚？","o":["分成樣式、歷史、意義、產品特色等項目","所有資訊混在一起","只寫一句話","只貼圖片不說明"],"a":0,"e":"分類整理能讓說明更有條理。"},{"id":"e24","q":"說明文最重視哪一項？","o":["內容清楚、有根據、有條理","一定要押韻","一定要有虛構人物","一定要用第一人稱"],"a":0,"e":"說明文重視客觀、清楚、具邏輯的說明。"},{"id":"e25","q":"『因為商標醒目，所以顧客很快注意到它。』屬於哪種關係？","o":["因果","並列","對話","轉折"],"a":0,"e":"「因為……所以……」是典型因果關係。"},{"id":"e26","q":"哪個標題最適合一段介紹商標用途的內容？","o":["商標能做什麼","今天的天氣","我的早餐","操場的一角"],"a":0,"e":"標題要直接對應段落重點。"},{"id":"e27","q":"如果文章先提出『商標有什麼用？』再接著說明，這種寫法有什麼效果？","o":["引起讀者思考並帶出說明重點","讓文章失去主題","讓資料變得不可信","讓內容變成詩"],"a":0,"e":"先提問再解說，可以引起注意並自然帶出主題。"},{"id":"e28","q":"下列哪個做法最符合誠實信用？","o":["商品品質和廣告承諾一致","故意誇大不存在的功能","隱瞞重大缺點","用相似商標讓人誤認"],"a":0,"e":"誠實信用重視真實、不欺騙與守信。"},{"id":"e29","q":"本課最主要想讓讀者了解什麼？","o":["商標不只是一個圖案，背後還有功能、歷史與企業故事","所有商標都一樣","只要商標漂亮公司就成功","商標只和法律有關"],"a":0,"e":"本課從不同故事說明商標和商品、商譽、服務、企業歷史與特色的關聯。"},{"id":"e30","q":"完成本課複習後，最應具備哪項能力？","o":["能讀懂事物說明文並整理商標的功能、例子與意義","只會背課名","只會數段落","只會畫圖不說明"],"a":0,"e":"本課核心是理解說明文，整理商標的功能、故事與意義。"}]};
+
+const matchPairs = [["商譽", "商店或企業累積的信用與名聲"], ["關聯", "彼此有關係"], ["核准", "審查後批准"], ["申請", "向相關單位提出請求"], ["註冊", "向有關單位登記備案"], ["企業", "提供產品或服務的經營組織"], ["堅毅不拔", "意志堅定、不輕易動搖"], ["歷經", "經歷、經過"], ["銷售", "出售、販賣商品"], ["項目", "分類列出的事項"]];
+
+const KEY="shiquan_g5_chinese_l5_v1_80";
+let state = JSON.parse(localStorage.getItem(KEY)||'{"answered":{},"wrong":{},"matchDone":[],"score":0}');
+function save(){ localStorage.setItem(KEY,JSON.stringify(state)); updateStats(); }
+
+document.querySelectorAll("#nav button").forEach(b=>{
+  b.onclick=()=>{
+    document.querySelectorAll("#nav button").forEach(x=>x.classList.remove("active"));
+    document.querySelectorAll(".page").forEach(x=>x.classList.remove("active"));
+    b.classList.add("active"); document.getElementById(b.dataset.page).classList.add("active");
+    if(b.dataset.page==="wrong") renderWrong();
+    window.scrollTo({top:document.querySelector("#nav").offsetTop-10,behavior:"smooth"});
+  };
+});
+
+function speak(text){
+  if(!("speechSynthesis" in window)){alert("此瀏覽器不支援語音功能");return}
+  speechSynthesis.cancel();
+  const u=new SpeechSynthesisUtterance(text);u.lang="zh-TW";u.rate=.85;speechSynthesis.speak(u);
+}
+
+function renderVocab(){
+ const el=document.getElementById("learnVocab");
+ el.innerHTML=vocab.map(([a,b])=>`<div class="item"><div class="char">${a}</div><b>${b}</b><br><button class="speak" onclick="speak('${a}，${b}')">🔊 聽讀音</button></div>`).join("");
+}
+
+function renderQuiz(kind, target){
+ const arr=questions[kind], el=document.getElementById(target);
+ el.innerHTML=arr.map((x,i)=>`
+ <div class="q" id="q_${x.id}">
+   <div class="q-title">${i+1}. ${x.q}</div>
+   ${x.o.map((o,j)=>`<button class="opt" onclick="answer('${kind}','${x.id}',${j},this)">${String.fromCharCode(65+j)}. ${o}</button>`).join("")}
+   <div class="feedback" id="f_${x.id}"></div>
+ </div>`).join("");
+}
+
+function getQ(kind,id){return questions[kind].find(x=>x.id===id)}
+function answer(kind,id,choice,btn){
+ const q=getQ(kind,id), box=document.getElementById("q_"+id), fb=document.getElementById("f_"+id);
+ box.querySelectorAll(".opt").forEach(x=>x.disabled=true);
+ const ok=choice===q.a;
+ box.querySelectorAll(".opt")[q.a].classList.add("correct");
+ if(!ok) btn.classList.add("wrong");
+ fb.className="feedback "+(ok?"ok":"bad");
+ fb.innerHTML=(ok?"✅ 答對了！ ":"❌ 再複習一下。 ")+q.e;
+ const first=!state.answered[id];
+ state.answered[id]={kind,choice,ok};
+ if(ok){
+   delete state.wrong[id];
+   if(first) state.score+=10;
+ }else{
+   state.wrong[id]={kind,id};
+ }
+ save();
+ if(kind==="exam") updateExamResult();
+}
+
+function allQuestionCount(){return [...questions.vocab,...questions.reading,...questions.exam].length + matchPairs.length}
+function updateStats(){
+ const vals=Object.values(state.answered);
+ const correct=vals.filter(x=>x.ok).length + state.matchDone.length;
+ const answered=vals.length + state.matchDone.length;
+ document.getElementById("totalScore").textContent=state.score + state.matchDone.length*5;
+ document.getElementById("correctCount").textContent=correct;
+ document.getElementById("answeredCount").textContent=answered;
+ document.getElementById("accuracy").textContent=answered?Math.round(correct/answered*100)+"%":"0%";
+ const pct=Math.round(answered/allQuestionCount()*100);
+ document.getElementById("progressText").textContent=pct+"%";
+ document.getElementById("progressBar").style.width=pct+"%";
+}
+
+function updateExamResult(){
+ const ids=questions.exam.map(x=>x.id), ans=ids.filter(id=>state.answered[id]);
+ if(!ans.length){document.getElementById("examResult").innerHTML="";return}
+ const ok=ans.filter(id=>state.answered[id].ok).length;
+ document.getElementById("examResult").innerHTML=`<div class="result-big"><div>目前模擬測驗</div><div class="score">${ok*10}</div><div>已作答 ${ans.length}/30 題｜答對 ${ok} 題</div></div>`;
+}
+
+function renderWrong(){
+ const keys=Object.keys(state.wrong), el=document.getElementById("wrongList");
+ if(!keys.length){el.innerHTML='<div class="goodnote">🎉 目前沒有錯題！繼續保持。</div>';return}
+ el.innerHTML=keys.map(id=>{
+   const it=state.wrong[id], q=getQ(it.kind,id);
+   return `<div class="q"><div class="q-title">${q.q}</div>
+   ${q.o.map((o,j)=>`<button class="opt" onclick="redoWrong('${it.kind}','${id}',${j},this)">${String.fromCharCode(65+j)}. ${o}</button>`).join("")}
+   <div class="feedback" id="wf_${id}"></div></div>`;
+ }).join("");
+}
+function redoWrong(kind,id,choice,btn){
+ const q=getQ(kind,id), fb=document.getElementById("wf_"+id), box=btn.parentElement;
+ box.querySelectorAll(".opt").forEach(x=>x.disabled=true);
+ if(choice===q.a){
+   btn.classList.add("correct"); delete state.wrong[id]; state.answered[id]={kind,choice,ok:true};
+   fb.className="feedback ok";fb.textContent="✅ 這次答對了！已從錯題本移除。";
+ }else{
+   btn.classList.add("wrong");box.querySelectorAll(".opt")[q.a].classList.add("correct");
+   fb.className="feedback bad";fb.textContent="❌ 還差一點："+q.e;
+ }
+ save(); setTimeout(renderWrong,1100);
+}
+function clearWrong(){state.wrong={};save();renderWrong()}
+function resetAll(){if(confirm("確定要清除第5課全部學習紀錄嗎？")){localStorage.removeItem(KEY);location.reload()}}
+
+let selectedLeft=null;
+function shuffle(a){return [...a].sort(()=>Math.random()-.5)}
+function renderMatch(){
+ selectedLeft=null;
+ const done=new Set(state.matchDone||[]);
+ document.getElementById("matchLeft").innerHTML=matchPairs.map(([l])=>`<button class="match-btn ${done.has(l)?"done":""}" ${done.has(l)?"disabled":""} onclick="pickLeft(this,'${l}')">${l}</button>`).join("");
+ document.getElementById("matchRight").innerHTML=shuffle(matchPairs).map(([l,r])=>`<button class="match-btn ${done.has(l)?"done":""}" ${done.has(l)?"disabled":""} data-left="${l}" onclick="pickRight(this,'${l}')">${r}</button>`).join("");
+}
+function pickLeft(btn,l){
+ document.querySelectorAll("#matchLeft .match-btn").forEach(x=>x.classList.remove("sel"));
+ btn.classList.add("sel"); selectedLeft=l;
+}
+function pickRight(btn,l){
+ const msg=document.getElementById("matchMsg");
+ if(!selectedLeft){msg.className="feedback bad";msg.textContent="請先選左邊的語詞。";return}
+ if(selectedLeft===l){
+   state.matchDone=Array.from(new Set([...(state.matchDone||[]),l]));
+   msg.className="feedback ok";msg.textContent="✅ 配對成功！";
+   save();renderMatch();
+ }else{
+   msg.className="feedback bad";msg.textContent="❌ 不是這一組，再試一次。";
+ }
+}
+function resetMatch(){state.matchDone=[];save();renderMatch();document.getElementById("matchMsg").className="feedback";}
+
+renderVocab();
+renderQuiz("vocab","vocabQuiz");
+renderQuiz("reading","readingQuiz");
+renderQuiz("exam","examQuiz");
+renderMatch();updateStats();updateExamResult();
+</script>
+</body>
+</html>

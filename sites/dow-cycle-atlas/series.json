@@ -1,0 +1,1019 @@
+[
+  {
+    "id": "GDPC1",
+    "name": "實質 GDP",
+    "unit": "十億鏈結 2017 美元",
+    "freq": "Q",
+    "source": "FRED",
+    "note": "",
+    "url": "https://fred.stlouisfed.org/series/GDPC1"
+  },
+  {
+    "id": "GDP",
+    "name": "名目 GDP",
+    "unit": "十億美元",
+    "freq": "Q",
+    "source": "FRED",
+    "note": "",
+    "url": "https://fred.stlouisfed.org/series/GDP"
+  },
+  {
+    "id": "UNRATE",
+    "name": "失業率",
+    "unit": "%",
+    "freq": "M",
+    "source": "FRED",
+    "note": "",
+    "url": "https://fred.stlouisfed.org/series/UNRATE"
+  },
+  {
+    "id": "CPIAUCSL",
+    "name": "消費者物價指數 CPI",
+    "unit": "1982–84=100",
+    "freq": "M",
+    "source": "FRED",
+    "note": "",
+    "url": "https://fred.stlouisfed.org/series/CPIAUCSL"
+  },
+  {
+    "id": "CPILFESL",
+    "name": "核心 CPI",
+    "unit": "1982–84=100",
+    "freq": "M",
+    "source": "FRED",
+    "note": "",
+    "url": "https://fred.stlouisfed.org/series/CPILFESL"
+  },
+  {
+    "id": "FEDFUNDS",
+    "name": "有效聯邦基金利率",
+    "unit": "%",
+    "freq": "M",
+    "source": "FRED",
+    "note": "",
+    "url": "https://fred.stlouisfed.org/series/FEDFUNDS"
+  },
+  {
+    "id": "GS10",
+    "name": "10 年期美國公債殖利率",
+    "unit": "%",
+    "freq": "M",
+    "source": "FRED",
+    "note": "",
+    "url": "https://fred.stlouisfed.org/series/GS10"
+  },
+  {
+    "id": "GS2",
+    "name": "2 年期美國公債殖利率",
+    "unit": "%",
+    "freq": "M",
+    "source": "FRED",
+    "note": "",
+    "url": "https://fred.stlouisfed.org/series/GS2"
+  },
+  {
+    "id": "GS5",
+    "name": "5 年期美國公債殖利率",
+    "unit": "%",
+    "freq": "M",
+    "source": "FRED",
+    "note": "",
+    "url": "https://fred.stlouisfed.org/series/GS5"
+  },
+  {
+    "id": "GS30",
+    "name": "30 年期美國公債殖利率",
+    "unit": "%",
+    "freq": "M",
+    "source": "FRED",
+    "note": "",
+    "url": "https://fred.stlouisfed.org/series/GS30"
+  },
+  {
+    "id": "MORTGAGE30US",
+    "name": "30 年固定房貸利率",
+    "unit": "%",
+    "freq": "W",
+    "source": "FRED",
+    "note": "",
+    "url": "https://fred.stlouisfed.org/series/MORTGAGE30US"
+  },
+  {
+    "id": "AAA",
+    "name": "Moody's Aaa 公司債殖利率",
+    "unit": "%",
+    "freq": "M",
+    "source": "FRED",
+    "note": "",
+    "url": "https://fred.stlouisfed.org/series/AAA"
+  },
+  {
+    "id": "BAMLH0A0HYM2EY",
+    "name": "ICE 美國高收益債有效殖利率",
+    "unit": "%",
+    "freq": "D",
+    "source": "FRED",
+    "note": "",
+    "url": "https://fred.stlouisfed.org/series/BAMLH0A0HYM2EY"
+  },
+  {
+    "id": "DJIA",
+    "name": "道瓊工業指數",
+    "unit": "點",
+    "freq": "D",
+    "source": "FRED",
+    "note": "",
+    "url": "https://fred.stlouisfed.org/series/DJIA"
+  },
+  {
+    "id": "SP500",
+    "name": "S&P 500 指數",
+    "unit": "點",
+    "freq": "D",
+    "source": "FRED",
+    "note": "",
+    "url": "https://fred.stlouisfed.org/series/SP500"
+  },
+  {
+    "id": "NASDAQCOM",
+    "name": "那斯達克綜合指數",
+    "unit": "點",
+    "freq": "D",
+    "source": "FRED",
+    "note": "",
+    "url": "https://fred.stlouisfed.org/series/NASDAQCOM"
+  },
+  {
+    "id": "NIKKEI225",
+    "name": "日經 225 指數",
+    "unit": "點",
+    "freq": "D",
+    "source": "FRED",
+    "note": "",
+    "url": "https://fred.stlouisfed.org/series/NIKKEI225"
+  },
+  {
+    "id": "PCE",
+    "name": "個人消費支出",
+    "unit": "十億美元",
+    "freq": "M",
+    "source": "FRED",
+    "note": "",
+    "url": "https://fred.stlouisfed.org/series/PCE"
+  },
+  {
+    "id": "PCEC",
+    "name": "個人消費支出（季）",
+    "unit": "十億美元",
+    "freq": "Q",
+    "source": "FRED",
+    "note": "",
+    "url": "https://fred.stlouisfed.org/series/PCEC"
+  },
+  {
+    "id": "PCEC96",
+    "name": "實質個人消費支出",
+    "unit": "十億鏈結 2017 美元",
+    "freq": "M",
+    "source": "FRED",
+    "note": "",
+    "url": "https://fred.stlouisfed.org/series/PCEC96"
+  },
+  {
+    "id": "GPDI",
+    "name": "民間國內投資",
+    "unit": "十億美元",
+    "freq": "Q",
+    "source": "FRED",
+    "note": "",
+    "url": "https://fred.stlouisfed.org/series/GPDI"
+  },
+  {
+    "id": "PNFI",
+    "name": "民間非住宅固定投資",
+    "unit": "十億美元",
+    "freq": "Q",
+    "source": "FRED",
+    "note": "",
+    "url": "https://fred.stlouisfed.org/series/PNFI"
+  },
+  {
+    "id": "PRFI",
+    "name": "民間住宅固定投資",
+    "unit": "十億美元",
+    "freq": "Q",
+    "source": "FRED",
+    "note": "",
+    "url": "https://fred.stlouisfed.org/series/PRFI"
+  },
+  {
+    "id": "FPI",
+    "name": "民間固定投資",
+    "unit": "十億美元",
+    "freq": "Q",
+    "source": "FRED",
+    "note": "",
+    "url": "https://fred.stlouisfed.org/series/FPI"
+  },
+  {
+    "id": "PNFIC1",
+    "name": "實質非住宅固定投資",
+    "unit": "十億鏈結 2017 美元",
+    "freq": "Q",
+    "source": "FRED",
+    "note": "",
+    "url": "https://fred.stlouisfed.org/series/PNFIC1"
+  },
+  {
+    "id": "PNFIC96",
+    "name": "實質非住宅固定投資（舊代碼）",
+    "unit": "十億美元",
+    "freq": "Q",
+    "source": "FRED",
+    "note": "",
+    "url": "https://fred.stlouisfed.org/series/PNFIC96"
+  },
+  {
+    "id": "A679RC1Q027SBEA",
+    "name": "資訊處理設備與軟體投資",
+    "unit": "十億美元",
+    "freq": "Q",
+    "source": "FRED",
+    "note": "",
+    "url": "https://fred.stlouisfed.org/series/A679RC1Q027SBEA"
+  },
+  {
+    "id": "ULCNFB",
+    "name": "非農企業單位勞動成本",
+    "unit": "2017=100",
+    "freq": "Q",
+    "source": "FRED",
+    "note": "",
+    "url": "https://fred.stlouisfed.org/series/ULCNFB"
+  },
+  {
+    "id": "OPHNFB",
+    "name": "非農企業每小時產出",
+    "unit": "2017=100",
+    "freq": "Q",
+    "source": "FRED",
+    "note": "",
+    "url": "https://fred.stlouisfed.org/series/OPHNFB"
+  },
+  {
+    "id": "AHETPI",
+    "name": "生產及非管理員工平均時薪",
+    "unit": "美元／小時",
+    "freq": "M",
+    "source": "FRED",
+    "note": "",
+    "url": "https://fred.stlouisfed.org/series/AHETPI"
+  },
+  {
+    "id": "AWHNONAG",
+    "name": "生產及非管理員工每週工時",
+    "unit": "小時",
+    "freq": "M",
+    "source": "FRED",
+    "note": "",
+    "url": "https://fred.stlouisfed.org/series/AWHNONAG"
+  },
+  {
+    "id": "PAYEMS",
+    "name": "非農就業人數",
+    "unit": "千人",
+    "freq": "M",
+    "source": "FRED",
+    "note": "",
+    "url": "https://fred.stlouisfed.org/series/PAYEMS"
+  },
+  {
+    "id": "MANEMP",
+    "name": "製造業就業人數",
+    "unit": "千人",
+    "freq": "M",
+    "source": "FRED",
+    "note": "",
+    "url": "https://fred.stlouisfed.org/series/MANEMP"
+  },
+  {
+    "id": "CES6562000001",
+    "name": "醫療與社會援助業就業人數",
+    "unit": "千人",
+    "freq": "M",
+    "source": "FRED",
+    "note": "",
+    "url": "https://fred.stlouisfed.org/series/CES6562000001"
+  },
+  {
+    "id": "CIVPART",
+    "name": "勞動參與率",
+    "unit": "%",
+    "freq": "M",
+    "source": "FRED",
+    "note": "",
+    "url": "https://fred.stlouisfed.org/series/CIVPART"
+  },
+  {
+    "id": "CE16OV",
+    "name": "家庭調查就業人數",
+    "unit": "千人",
+    "freq": "M",
+    "source": "FRED",
+    "note": "",
+    "url": "https://fred.stlouisfed.org/series/CE16OV"
+  },
+  {
+    "id": "PSAVERT",
+    "name": "個人儲蓄率",
+    "unit": "%",
+    "freq": "M",
+    "source": "FRED",
+    "note": "",
+    "url": "https://fred.stlouisfed.org/series/PSAVERT"
+  },
+  {
+    "id": "TOTALSL",
+    "name": "消費信貸總額",
+    "unit": "百萬美元",
+    "freq": "M",
+    "source": "FRED",
+    "note": "",
+    "url": "https://fred.stlouisfed.org/series/TOTALSL"
+  },
+  {
+    "id": "HHMSDODNS",
+    "name": "家庭房屋抵押貸款餘額",
+    "unit": "百萬美元",
+    "freq": "Q",
+    "source": "FRED",
+    "note": "",
+    "url": "https://fred.stlouisfed.org/series/HHMSDODNS"
+  },
+  {
+    "id": "HDTGPDUSQ163N",
+    "name": "家庭債務占 GDP",
+    "unit": "%",
+    "freq": "Q",
+    "source": "FRED",
+    "note": "",
+    "url": "https://fred.stlouisfed.org/series/HDTGPDUSQ163N"
+  },
+  {
+    "id": "TABSHNO",
+    "name": "家庭及非營利組織總資產",
+    "unit": "百萬美元",
+    "freq": "Q",
+    "source": "FRED",
+    "note": "",
+    "url": "https://fred.stlouisfed.org/series/TABSHNO"
+  },
+  {
+    "id": "HOANBS",
+    "name": "家庭及非營利組織房地產資產",
+    "unit": "十億美元",
+    "freq": "Q",
+    "source": "FRED",
+    "note": "",
+    "url": "https://fred.stlouisfed.org/series/HOANBS"
+  },
+  {
+    "id": "TNWBSHNO",
+    "name": "家庭及非營利組織淨值",
+    "unit": "百萬美元",
+    "freq": "Q",
+    "source": "FRED",
+    "note": "",
+    "url": "https://fred.stlouisfed.org/series/TNWBSHNO"
+  },
+  {
+    "id": "CPATAX",
+    "name": "企業稅後利潤（含 IVA／CCAdj）",
+    "unit": "十億美元",
+    "freq": "Q",
+    "source": "FRED",
+    "note": "",
+    "url": "https://fred.stlouisfed.org/series/CPATAX"
+  },
+  {
+    "id": "CP",
+    "name": "企業稅後利潤（未含 IVA／CCAdj）",
+    "unit": "十億美元",
+    "freq": "Q",
+    "source": "FRED",
+    "note": "",
+    "url": "https://fred.stlouisfed.org/series/CP"
+  },
+  {
+    "id": "NETEXP",
+    "name": "商品及服務淨出口",
+    "unit": "十億美元",
+    "freq": "Q",
+    "source": "FRED",
+    "note": "",
+    "url": "https://fred.stlouisfed.org/series/NETEXP"
+  },
+  {
+    "id": "EXPGS",
+    "name": "商品及服務出口",
+    "unit": "十億美元",
+    "freq": "Q",
+    "source": "FRED",
+    "note": "",
+    "url": "https://fred.stlouisfed.org/series/EXPGS"
+  },
+  {
+    "id": "IMPGS",
+    "name": "商品及服務進口",
+    "unit": "十億美元",
+    "freq": "Q",
+    "source": "FRED",
+    "note": "",
+    "url": "https://fred.stlouisfed.org/series/IMPGS"
+  },
+  {
+    "id": "BOPGSTB",
+    "name": "商品及服務貿易差額",
+    "unit": "百萬美元",
+    "freq": "M",
+    "source": "FRED",
+    "note": "",
+    "url": "https://fred.stlouisfed.org/series/BOPGSTB"
+  },
+  {
+    "id": "FYFSD",
+    "name": "聯邦財政盈餘／赤字",
+    "unit": "百萬美元",
+    "freq": "A",
+    "source": "FRED",
+    "note": "",
+    "url": "https://fred.stlouisfed.org/series/FYFSD"
+  },
+  {
+    "id": "FYFSGDA188S",
+    "name": "聯邦盈餘／赤字占 GDP",
+    "unit": "%",
+    "freq": "A",
+    "source": "FRED",
+    "note": "",
+    "url": "https://fred.stlouisfed.org/series/FYFSGDA188S"
+  },
+  {
+    "id": "FYONGDA188S",
+    "name": "聯邦支出占 GDP",
+    "unit": "%",
+    "freq": "A",
+    "source": "FRED",
+    "note": "",
+    "url": "https://fred.stlouisfed.org/series/FYONGDA188S"
+  },
+  {
+    "id": "FYFRGDA188S",
+    "name": "聯邦收入占 GDP",
+    "unit": "%",
+    "freq": "A",
+    "source": "FRED",
+    "note": "",
+    "url": "https://fred.stlouisfed.org/series/FYFRGDA188S"
+  },
+  {
+    "id": "GFDEGDQ188S",
+    "name": "聯邦總債務占 GDP",
+    "unit": "%",
+    "freq": "Q",
+    "source": "FRED",
+    "note": "",
+    "url": "https://fred.stlouisfed.org/series/GFDEGDQ188S"
+  },
+  {
+    "id": "FGEXPND",
+    "name": "聯邦政府經常支出",
+    "unit": "十億美元",
+    "freq": "Q",
+    "source": "FRED",
+    "note": "",
+    "url": "https://fred.stlouisfed.org/series/FGEXPND"
+  },
+  {
+    "id": "FGRECPT",
+    "name": "聯邦政府經常收入",
+    "unit": "十億美元",
+    "freq": "Q",
+    "source": "FRED",
+    "note": "",
+    "url": "https://fred.stlouisfed.org/series/FGRECPT"
+  },
+  {
+    "id": "SLEXPND",
+    "name": "州與地方政府經常支出",
+    "unit": "十億美元",
+    "freq": "Q",
+    "source": "FRED",
+    "note": "",
+    "url": "https://fred.stlouisfed.org/series/SLEXPND"
+  },
+  {
+    "id": "A091RC1Q027SBEA",
+    "name": "聯邦政府利息支出",
+    "unit": "十億美元",
+    "freq": "Q",
+    "source": "FRED",
+    "note": "",
+    "url": "https://fred.stlouisfed.org/series/A091RC1Q027SBEA"
+  },
+  {
+    "id": "CSUSHPINSA",
+    "name": "Case-Shiller 全美房價",
+    "unit": "2000 年 1 月=100",
+    "freq": "M",
+    "source": "FRED",
+    "note": "",
+    "url": "https://fred.stlouisfed.org/series/CSUSHPINSA"
+  },
+  {
+    "id": "SPCS20RSA",
+    "name": "Case-Shiller 20 城市房價",
+    "unit": "2000 年 1 月=100",
+    "freq": "M",
+    "source": "FRED",
+    "note": "",
+    "url": "https://fred.stlouisfed.org/series/SPCS20RSA"
+  },
+  {
+    "id": "HOUST",
+    "name": "新屋開工",
+    "unit": "千戶，季調年率",
+    "freq": "M",
+    "source": "FRED",
+    "note": "",
+    "url": "https://fred.stlouisfed.org/series/HOUST"
+  },
+  {
+    "id": "EXHOSLUSM495S",
+    "name": "成屋銷售",
+    "unit": "戶，季調年率",
+    "freq": "M",
+    "source": "FRED",
+    "note": "",
+    "url": "https://fred.stlouisfed.org/series/EXHOSLUSM495S"
+  },
+  {
+    "id": "RRVRUSQ156N",
+    "name": "出租房空置率",
+    "unit": "%",
+    "freq": "Q",
+    "source": "FRED",
+    "note": "",
+    "url": "https://fred.stlouisfed.org/series/RRVRUSQ156N"
+  },
+  {
+    "id": "CUSR0000SEHA",
+    "name": "主要住所租金 CPI",
+    "unit": "1982–84=100",
+    "freq": "M",
+    "source": "FRED",
+    "note": "",
+    "url": "https://fred.stlouisfed.org/series/CUSR0000SEHA"
+  },
+  {
+    "id": "TTLHH",
+    "name": "家庭戶數",
+    "unit": "千戶",
+    "freq": "A",
+    "source": "FRED",
+    "note": "",
+    "url": "https://fred.stlouisfed.org/series/TTLHH"
+  },
+  {
+    "id": "DCOILWTICO",
+    "name": "WTI 原油現貨",
+    "unit": "美元／桶",
+    "freq": "D",
+    "source": "FRED",
+    "note": "",
+    "url": "https://fred.stlouisfed.org/series/DCOILWTICO"
+  },
+  {
+    "id": "DCOILBRENTEU",
+    "name": "Brent 原油現貨",
+    "unit": "美元／桶",
+    "freq": "D",
+    "source": "FRED",
+    "note": "",
+    "url": "https://fred.stlouisfed.org/series/DCOILBRENTEU"
+  },
+  {
+    "id": "DHHNGSP",
+    "name": "Henry Hub 天然氣現貨",
+    "unit": "美元／百萬 BTU",
+    "freq": "D",
+    "source": "FRED",
+    "note": "",
+    "url": "https://fred.stlouisfed.org/series/DHHNGSP"
+  },
+  {
+    "id": "IPG21112N",
+    "name": "原油工業生產指數",
+    "unit": "2017=100",
+    "freq": "M",
+    "source": "FRED",
+    "note": "",
+    "url": "https://fred.stlouisfed.org/series/IPG21112N"
+  },
+  {
+    "id": "DEXJPUS",
+    "name": "美元兌日圓",
+    "unit": "日圓／美元",
+    "freq": "D",
+    "source": "FRED",
+    "note": "",
+    "url": "https://fred.stlouisfed.org/series/DEXJPUS"
+  },
+  {
+    "id": "DEXTAUS",
+    "name": "美元兌新台幣",
+    "unit": "新台幣／美元",
+    "freq": "D",
+    "source": "FRED",
+    "note": "",
+    "url": "https://fred.stlouisfed.org/series/DEXTAUS"
+  },
+  {
+    "id": "DEXKOUS",
+    "name": "美元兌韓元",
+    "unit": "韓元／美元",
+    "freq": "D",
+    "source": "FRED",
+    "note": "",
+    "url": "https://fred.stlouisfed.org/series/DEXKOUS"
+  },
+  {
+    "id": "DEXCHUS",
+    "name": "美元兌人民幣",
+    "unit": "人民幣／美元",
+    "freq": "D",
+    "source": "FRED",
+    "note": "",
+    "url": "https://fred.stlouisfed.org/series/DEXCHUS"
+  },
+  {
+    "id": "DEXSZUS",
+    "name": "美元兌瑞郎",
+    "unit": "瑞郎／美元",
+    "freq": "D",
+    "source": "FRED",
+    "note": "",
+    "url": "https://fred.stlouisfed.org/series/DEXSZUS"
+  },
+  {
+    "id": "IRLTLT01JPM156N",
+    "name": "日本 10 年期公債殖利率",
+    "unit": "%",
+    "freq": "M",
+    "source": "FRED",
+    "note": "",
+    "url": "https://fred.stlouisfed.org/series/IRLTLT01JPM156N"
+  },
+  {
+    "id": "MRTSSM44000USS",
+    "name": "零售業銷售（不含餐飲）",
+    "unit": "百萬美元",
+    "freq": "M",
+    "source": "FRED",
+    "note": "",
+    "url": "https://fred.stlouisfed.org/series/MRTSSM44000USS"
+  },
+  {
+    "id": "MRTSSM446USS",
+    "name": "健康與個人護理商店零售",
+    "unit": "百萬美元",
+    "freq": "M",
+    "source": "FRED",
+    "note": "",
+    "url": "https://fred.stlouisfed.org/series/MRTSSM446USS"
+  },
+  {
+    "id": "DGDSRC1",
+    "name": "耐久財消費支出",
+    "unit": "十億美元",
+    "freq": "M",
+    "source": "FRED",
+    "note": "",
+    "url": "https://fred.stlouisfed.org/series/DGDSRC1"
+  },
+  {
+    "id": "AMDMVS",
+    "name": "製造業耐久財出貨",
+    "unit": "百萬美元",
+    "freq": "M",
+    "source": "FRED",
+    "note": "",
+    "url": "https://fred.stlouisfed.org/series/AMDMVS"
+  },
+  {
+    "id": "ANDEVS",
+    "name": "非國防資本財出貨（含飛機）",
+    "unit": "百萬美元",
+    "freq": "M",
+    "source": "FRED",
+    "note": "",
+    "url": "https://fred.stlouisfed.org/series/ANDEVS"
+  },
+  {
+    "id": "AMVPVS",
+    "name": "汽車及零件出貨",
+    "unit": "百萬美元",
+    "freq": "M",
+    "source": "FRED",
+    "note": "",
+    "url": "https://fred.stlouisfed.org/series/AMVPVS"
+  },
+  {
+    "id": "A34SVS",
+    "name": "電腦與電子產品出貨",
+    "unit": "百萬美元",
+    "freq": "M",
+    "source": "FRED",
+    "note": "",
+    "url": "https://fred.stlouisfed.org/series/A34SVS"
+  },
+  {
+    "id": "JTSJOL",
+    "name": "全產業職缺",
+    "unit": "千人",
+    "freq": "M",
+    "source": "FRED",
+    "note": "",
+    "url": "https://fred.stlouisfed.org/series/JTSJOL"
+  },
+  {
+    "id": "JTS6200JOL",
+    "name": "醫療與社會援助職缺",
+    "unit": "千人",
+    "freq": "M",
+    "source": "FRED",
+    "note": "",
+    "url": "https://fred.stlouisfed.org/series/JTS6200JOL"
+  },
+  {
+    "id": "USA:NY.GDP.MKTP.KD.ZG",
+    "name": "美國實質 GDP 年增率",
+    "unit": "%",
+    "freq": "A",
+    "source": "World Bank",
+    "note": "",
+    "url": "https://data.worldbank.org/indicator/NY.GDP.MKTP.KD.ZG"
+  },
+  {
+    "id": "JPN:NY.GDP.MKTP.KD.ZG",
+    "name": "日本實質 GDP 年增率",
+    "unit": "%",
+    "freq": "A",
+    "source": "World Bank",
+    "note": "",
+    "url": "https://data.worldbank.org/indicator/NY.GDP.MKTP.KD.ZG"
+  },
+  {
+    "id": "GBR:NY.GDP.MKTP.KD.ZG",
+    "name": "英國實質 GDP 年增率",
+    "unit": "%",
+    "freq": "A",
+    "source": "World Bank",
+    "note": "",
+    "url": "https://data.worldbank.org/indicator/NY.GDP.MKTP.KD.ZG"
+  },
+  {
+    "id": "DEU:NY.GDP.MKTP.KD.ZG",
+    "name": "德國實質 GDP 年增率",
+    "unit": "%",
+    "freq": "A",
+    "source": "World Bank",
+    "note": "",
+    "url": "https://data.worldbank.org/indicator/NY.GDP.MKTP.KD.ZG"
+  },
+  {
+    "id": "FRA:NY.GDP.MKTP.KD.ZG",
+    "name": "法國實質 GDP 年增率",
+    "unit": "%",
+    "freq": "A",
+    "source": "World Bank",
+    "note": "",
+    "url": "https://data.worldbank.org/indicator/NY.GDP.MKTP.KD.ZG"
+  },
+  {
+    "id": "ITA:NY.GDP.MKTP.KD.ZG",
+    "name": "義大利實質 GDP 年增率",
+    "unit": "%",
+    "freq": "A",
+    "source": "World Bank",
+    "note": "",
+    "url": "https://data.worldbank.org/indicator/NY.GDP.MKTP.KD.ZG"
+  },
+  {
+    "id": "BRA:NY.GDP.MKTP.KD.ZG",
+    "name": "巴西實質 GDP 年增率",
+    "unit": "%",
+    "freq": "A",
+    "source": "World Bank",
+    "note": "",
+    "url": "https://data.worldbank.org/indicator/NY.GDP.MKTP.KD.ZG"
+  },
+  {
+    "id": "RUS:NY.GDP.MKTP.KD.ZG",
+    "name": "俄羅斯實質 GDP 年增率",
+    "unit": "%",
+    "freq": "A",
+    "source": "World Bank",
+    "note": "",
+    "url": "https://data.worldbank.org/indicator/NY.GDP.MKTP.KD.ZG"
+  },
+  {
+    "id": "IND:NY.GDP.MKTP.KD.ZG",
+    "name": "印度實質 GDP 年增率",
+    "unit": "%",
+    "freq": "A",
+    "source": "World Bank",
+    "note": "",
+    "url": "https://data.worldbank.org/indicator/NY.GDP.MKTP.KD.ZG"
+  },
+  {
+    "id": "CHN:NY.GDP.MKTP.KD.ZG",
+    "name": "中國實質 GDP 年增率",
+    "unit": "%",
+    "freq": "A",
+    "source": "World Bank",
+    "note": "",
+    "url": "https://data.worldbank.org/indicator/NY.GDP.MKTP.KD.ZG"
+  },
+  {
+    "id": "IDN:NY.GDP.MKTP.KD.ZG",
+    "name": "印尼實質 GDP 年增率",
+    "unit": "%",
+    "freq": "A",
+    "source": "World Bank",
+    "note": "",
+    "url": "https://data.worldbank.org/indicator/NY.GDP.MKTP.KD.ZG"
+  },
+  {
+    "id": "MYS:NY.GDP.MKTP.KD.ZG",
+    "name": "馬來西亞實質 GDP 年增率",
+    "unit": "%",
+    "freq": "A",
+    "source": "World Bank",
+    "note": "",
+    "url": "https://data.worldbank.org/indicator/NY.GDP.MKTP.KD.ZG"
+  },
+  {
+    "id": "THA:NY.GDP.MKTP.KD.ZG",
+    "name": "泰國實質 GDP 年增率",
+    "unit": "%",
+    "freq": "A",
+    "source": "World Bank",
+    "note": "",
+    "url": "https://data.worldbank.org/indicator/NY.GDP.MKTP.KD.ZG"
+  },
+  {
+    "id": "VNM:NY.GDP.MKTP.KD.ZG",
+    "name": "越南實質 GDP 年增率",
+    "unit": "%",
+    "freq": "A",
+    "source": "World Bank",
+    "note": "",
+    "url": "https://data.worldbank.org/indicator/NY.GDP.MKTP.KD.ZG"
+  },
+  {
+    "id": "PHL:NY.GDP.MKTP.KD.ZG",
+    "name": "菲律賓實質 GDP 年增率",
+    "unit": "%",
+    "freq": "A",
+    "source": "World Bank",
+    "note": "",
+    "url": "https://data.worldbank.org/indicator/NY.GDP.MKTP.KD.ZG"
+  },
+  {
+    "id": "SGP:NY.GDP.MKTP.KD.ZG",
+    "name": "新加坡實質 GDP 年增率",
+    "unit": "%",
+    "freq": "A",
+    "source": "World Bank",
+    "note": "",
+    "url": "https://data.worldbank.org/indicator/NY.GDP.MKTP.KD.ZG"
+  },
+  {
+    "id": "BRA:FP.CPI.TOTL.ZG",
+    "name": "巴西CPI 年增率",
+    "unit": "%",
+    "freq": "A",
+    "source": "World Bank",
+    "note": "",
+    "url": "https://data.worldbank.org/indicator/FP.CPI.TOTL.ZG"
+  },
+  {
+    "id": "BRA:NE.CON.PRVT.KD",
+    "name": "巴西家庭及非營利組織實質消費",
+    "unit": "固定 2015 美元",
+    "freq": "A",
+    "source": "World Bank",
+    "note": "",
+    "url": "https://data.worldbank.org/indicator/NE.CON.PRVT.KD"
+  },
+  {
+    "id": "RUS:NE.EXP.GNFS.CD",
+    "name": "俄羅斯商品及服務出口",
+    "unit": "現價美元",
+    "freq": "A",
+    "source": "World Bank",
+    "note": "",
+    "url": "https://data.worldbank.org/indicator/NE.EXP.GNFS.CD"
+  },
+  {
+    "id": "IND:NE.CON.PRVT.KD",
+    "name": "印度家庭及非營利組織實質消費",
+    "unit": "固定 2015 美元",
+    "freq": "A",
+    "source": "World Bank",
+    "note": "",
+    "url": "https://data.worldbank.org/indicator/NE.CON.PRVT.KD"
+  },
+  {
+    "id": "IND:NE.GDI.FTOT.KD",
+    "name": "印度實質固定資本形成（全體）",
+    "unit": "固定 2015 美元",
+    "freq": "A",
+    "source": "World Bank",
+    "note": "",
+    "url": "https://data.worldbank.org/indicator/NE.GDI.FTOT.KD"
+  },
+  {
+    "id": "IND:NE.RSB.GNFS.ZS",
+    "name": "印度商品及服務貿易餘額占 GDP",
+    "unit": "%",
+    "freq": "A",
+    "source": "World Bank",
+    "note": "",
+    "url": "https://data.worldbank.org/indicator/NE.RSB.GNFS.ZS"
+  },
+  {
+    "id": "CHN:SP.POP.DPND",
+    "name": "中國年齡扶養比",
+    "unit": "%",
+    "freq": "A",
+    "source": "World Bank",
+    "note": "",
+    "url": "https://data.worldbank.org/indicator/SP.POP.DPND"
+  },
+  {
+    "id": "CHN:NV.AGR.TOTL.KD.ZG",
+    "name": "中國農業附加價值年增率",
+    "unit": "%",
+    "freq": "A",
+    "source": "World Bank",
+    "note": "",
+    "url": "https://data.worldbank.org/indicator/NV.AGR.TOTL.KD.ZG"
+  },
+  {
+    "id": "CHN:NV.IND.TOTL.KD.ZG",
+    "name": "中國工業附加價值年增率",
+    "unit": "%",
+    "freq": "A",
+    "source": "World Bank",
+    "note": "",
+    "url": "https://data.worldbank.org/indicator/NV.IND.TOTL.KD.ZG"
+  },
+  {
+    "id": "CHN:NV.SRV.TOTL.KD.ZG",
+    "name": "中國服務業附加價值年增率",
+    "unit": "%",
+    "freq": "A",
+    "source": "World Bank",
+    "note": "",
+    "url": "https://data.worldbank.org/indicator/NV.SRV.TOTL.KD.ZG"
+  },
+  {
+    "id": "USA:SP.POP.1564.TO.ZS",
+    "name": "美國15–64 歲人口占比",
+    "unit": "%",
+    "freq": "A",
+    "source": "World Bank",
+    "note": "",
+    "url": "https://data.worldbank.org/indicator/SP.POP.1564.TO.ZS"
+  },
+  {
+    "id": "USA:SP.POP.65UP.TO.ZS",
+    "name": "美國65 歲以上人口占比",
+    "unit": "%",
+    "freq": "A",
+    "source": "World Bank",
+    "note": "",
+    "url": "https://data.worldbank.org/indicator/SP.POP.65UP.TO.ZS"
+  },
+  {
+    "id": "JPN:NE.RSB.GNFS.CD",
+    "name": "日本商品及服務貿易餘額",
+    "unit": "現價美元",
+    "freq": "A",
+    "source": "World Bank",
+    "note": "",
+    "url": "https://data.worldbank.org/indicator/NE.RSB.GNFS.CD"
+  }
+]

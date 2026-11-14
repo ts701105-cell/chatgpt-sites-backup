@@ -1,0 +1,1 @@
+export default function Home(){return <main style={{maxWidth:680,margin:"12vh auto",padding:"0 24px",fontFamily:"Arial,sans-serif",lineHeight:1.6,color:"#102238"}}><h1>股票年度報酬資料 API</h1><p>此服務提供股票歷史調整後收盤價的年度報酬試算資料，供 GitHub Pages 版試算網頁查詢。</p><p>資料來源：Yahoo Finance。結果僅供歷史試算，不含交易費、稅與匯率變動。</p></main>}

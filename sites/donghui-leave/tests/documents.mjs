@@ -1,0 +1,9 @@
+import assert from 'node:assert/strict';import fs from 'node:fs';
+const base='http://localhost:3000';let cookie='';
+const login=await fetch(base+'/api/leave',{method:'POST',headers:{Origin:base,'Content-Type':'application/json'},body:JSON.stringify({action:'login',number:'ADMIN',password:'AdminChanged-54321'})});assert.equal(login.status,200);cookie=login.headers.get('set-cookie').split(';')[0];
+const get=async()=>await(await fetch(base+'/api/leave',{headers:{Cookie:cookie}})).json();const before=await get();const record=before.requests.find(x=>x.number==='HISTORYTEST'&&x.type==='生理假');assert(record);
+const form=()=>{const f=new FormData();f.set('file',new Blob([fs.readFileSync('work/ocr-test.png')],{type:'image/png'}),'test.png');f.set('type','事假');f.set('originalType','生理假');f.set('id',record.id);return f;};
+assert.equal((await fetch(base+'/api/documents',{method:'POST',headers:{Origin:base},body:form()})).status,403);
+const r=await fetch(base+'/api/documents',{method:'POST',headers:{Origin:base,Cookie:cookie},body:form()});const result=await r.json();assert.equal(r.status,200,JSON.stringify(result));const after=await get();assert.equal(after.requests.find(x=>x.id===record.id).type,'事假');assert.equal(after.requests.find(x=>x.id===record.id).units,record.units);assert(after.documents.some(x=>x.id===result.id&&x.originalType==='生理假'&&x.newType==='事假'));
+assert.equal((await fetch(base+'/api/documents?id='+result.id)).status,401);const file=await fetch(base+'/api/documents?id='+result.id,{headers:{Cookie:cookie}});assert.equal(file.status,200);assert.equal((await file.arrayBuffer()).byteLength,fs.statSync('work/ocr-test.png').size);
+assert.equal((await fetch(base+'/api/documents',{method:'POST',headers:{Origin:base,Cookie:cookie},body:form()})).status,409);console.log('PASS: document authorization, persisted attachment, correction audit, preserved hours, stale update rejection.');

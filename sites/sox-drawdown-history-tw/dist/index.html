@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#07111f">
+  <title>費城半導體指數重大回撤史｜SOX 成立以來 9 次跌逾 30%</title>
+  <meta name="description" content="整理費城半導體指數（SOX）自 1993 年成立以來，9 次跌幅超過 30% 的主要回撤：時間、幅度、歷時與成因。">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2307111f'/%3E%3Cpath d='M15 42L25 28l8 7 15-18' fill='none' stroke='%235eead4' stroke-width='5' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M40 17h8v8' fill='none' stroke='%23fb7185' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E">
+  <style>
+    :root{
+      color-scheme:dark;
+      --ink:#eaf2ff;--muted:#91a4bc;--panel:#0c192b;--panel2:#101f35;
+      --line:#203550;--teal:#5eead4;--cyan:#38bdf8;--rose:#fb7185;
+      --yellow:#fbbf24;--bg:#07111f;--max:1180px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:var(--bg);color:var(--ink);font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif;font-size:16px;line-height:1.7;overflow-x:hidden}
+    body::before{content:"";position:fixed;inset:0;pointer-events:none;background:radial-gradient(circle at 15% -10%,rgba(56,189,248,.15),transparent 33%),radial-gradient(circle at 90% 12%,rgba(94,234,212,.09),transparent 26%),linear-gradient(rgba(255,255,255,.018) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.018) 1px,transparent 1px);background-size:auto,auto,40px 40px,40px 40px;mask-image:linear-gradient(to bottom,#000,transparent 70%)}
+    a{color:var(--teal);text-decoration-thickness:1px;text-underline-offset:3px}
+    button{font:inherit}
+    .wrap{width:min(var(--max),calc(100% - 40px));margin:auto;position:relative}
+    header{padding:24px 0;border-bottom:1px solid rgba(145,164,188,.18)}
+    .nav{display:flex;align-items:center;justify-content:space-between;gap:20px}
+    .brand{display:flex;align-items:center;gap:11px;font-weight:800;letter-spacing:.04em}
+    .brand-mark{display:grid;place-items:center;width:38px;height:38px;border:1px solid rgba(94,234,212,.55);border-radius:11px;background:rgba(94,234,212,.08);color:var(--teal);font-size:.77rem}
+    .nav-links{display:flex;gap:24px}.nav-links a{color:var(--muted);text-decoration:none;font-size:.92rem}.nav-links a:hover{color:var(--ink)}
+    .hero{padding:76px 0 54px;display:grid;grid-template-columns:minmax(0,1.35fr) minmax(300px,.65fr);gap:48px;align-items:end}
+    .eyebrow{display:inline-flex;align-items:center;gap:10px;color:var(--teal);font-size:.82rem;font-weight:800;letter-spacing:.16em;text-transform:uppercase}
+    .eyebrow::before{content:"";width:24px;height:1px;background:var(--teal)}
+    h1{font-size:clamp(2.45rem,6vw,5.7rem);line-height:1.02;letter-spacing:-.055em;margin:22px 0 24px;max-width:850px}
+    h1 span{display:block;color:transparent;-webkit-text-stroke:1.5px rgba(234,242,255,.42)}
+    .lead{color:#b9c8da;font-size:clamp(1.04rem,1.5vw,1.25rem);max-width:760px;margin:0}
+    .hero-note{border-left:1px solid var(--line);padding-left:28px;color:var(--muted);font-size:.9rem}
+    .hero-note strong{display:block;color:var(--ink);font-size:1rem;margin-bottom:7px}
+    .snapshot{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--line);border-radius:18px;background:rgba(12,25,43,.78);backdrop-filter:blur(12px);overflow:hidden}
+    .metric{padding:25px 24px;border-right:1px solid var(--line)}.metric:last-child{border:0}
+    .metric b{display:block;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:clamp(1.85rem,4vw,3.2rem);line-height:1;color:var(--teal);letter-spacing:-.06em}
+    .metric:nth-child(2) b{color:var(--rose)}.metric:nth-child(3) b{color:var(--cyan)}.metric:nth-child(4) b{color:var(--yellow)}
+    .metric span{display:block;margin-top:11px;color:var(--muted);font-size:.82rem}
+    section{padding:88px 0}
+    .section-head{display:flex;justify-content:space-between;gap:32px;align-items:end;margin-bottom:38px}
+    .kicker{margin:0 0 10px;color:var(--teal);font-size:.78rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase}
+    h2{font-size:clamp(1.8rem,3.5vw,3.25rem);line-height:1.13;letter-spacing:-.035em;margin:0}
+    .section-copy{max-width:510px;color:var(--muted);margin:0}
+    .chart-panel{padding:32px;border:1px solid var(--line);border-radius:20px;background:linear-gradient(145deg,rgba(16,31,53,.92),rgba(7,17,31,.92))}
+    .chart-title{display:flex;justify-content:space-between;align-items:center;margin-bottom:26px;color:var(--muted);font-size:.82rem}
+    .chart-title b{color:var(--ink);font-size:1rem}
+    .bars{display:grid;gap:12px}
+    .bar-row{display:grid;grid-template-columns:170px 1fr 70px;align-items:center;gap:15px;min-height:34px}
+    .bar-label{color:#c9d5e4;font-size:.86rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .track{height:14px;border-radius:99px;background:#13243a;overflow:hidden;position:relative}
+    .bar{height:100%;width:var(--w);border-radius:inherit;background:linear-gradient(90deg,var(--cyan),var(--rose));transform-origin:left;animation:grow .9s cubic-bezier(.2,.8,.2,1) both}
+    @keyframes grow{from{transform:scaleX(0)}}
+    .bar-value{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--rose);font-weight:800;text-align:right}
+    .controls{display:flex;align-items:center;justify-content:space-between;gap:18px;margin:0 0 26px;flex-wrap:wrap}
+    .filters{display:flex;gap:8px;flex-wrap:wrap}
+    .chip{border:1px solid var(--line);background:transparent;color:var(--muted);border-radius:999px;padding:8px 15px;cursor:pointer;transition:.2s}
+    .chip:hover,.chip.active{border-color:var(--teal);color:#07111f;background:var(--teal)}
+    .event-count{color:var(--muted);font-size:.9rem}
+    .events{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .event{position:relative;min-height:330px;border:1px solid var(--line);border-radius:17px;background:rgba(12,25,43,.84);padding:24px;display:flex;flex-direction:column;transition:transform .2s,border-color .2s,opacity .2s}
+    .event:hover{transform:translateY(-4px);border-color:rgba(94,234,212,.6)}
+    .event[data-hidden="true"]{display:none}
+    .event-num{color:var(--muted);font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.76rem}
+    .event h3{font-size:1.35rem;line-height:1.25;margin:12px 0 5px}.dates{color:var(--muted);font-size:.83rem}
+    .drop{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-weight:900;font-size:2.65rem;line-height:1;color:var(--rose);letter-spacing:-.07em;margin:28px 0 9px}
+    .duration{font-size:.82rem;color:var(--cyan)}
+    .cause{margin:20px 0 0;color:#bdcada;font-size:.92rem;border-top:1px solid var(--line);padding-top:18px}
+    .tag{display:inline-block;margin-top:auto;padding-top:20px;color:var(--teal);font-size:.77rem;font-weight:700;letter-spacing:.06em}
+    .pattern-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .pattern{padding:30px;border-top:2px solid var(--teal);background:var(--panel)}.pattern:nth-child(2){border-color:var(--cyan)}.pattern:nth-child(3){border-color:var(--rose)}
+    .pattern .big{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--muted);font-size:.82rem}.pattern h3{font-size:1.3rem;margin:15px 0 9px}.pattern p{color:var(--muted);font-size:.93rem;margin:0}
+    .method{display:grid;grid-template-columns:.82fr 1.18fr;gap:38px;align-items:start}
+    .method-card{border:1px solid var(--line);border-radius:18px;background:var(--panel);padding:28px}
+    .method-card h3{margin:0 0 15px}.method-card p,.method-card li{color:var(--muted)}
+    .method-card ul{padding-left:20px;margin:0;display:grid;gap:9px}
+    details{border-bottom:1px solid var(--line);padding:19px 0}details:first-child{border-top:1px solid var(--line)}
+    summary{cursor:pointer;color:var(--ink);font-weight:700;list-style:none;display:flex;justify-content:space-between;gap:20px}
+    summary::after{content:"＋";color:var(--teal)}details[open] summary::after{content:"−"}
+    details p{color:var(--muted);margin:12px 0 0;font-size:.92rem}
+    .source-list{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:30px}
+    .source-list a{display:flex;justify-content:space-between;align-items:center;gap:15px;padding:15px 17px;border:1px solid var(--line);border-radius:12px;color:#cfe0f3;text-decoration:none;background:rgba(12,25,43,.55)}
+    .source-list a:hover{border-color:var(--teal);color:var(--teal)}
+    .source-list a::after{content:"↗";color:var(--teal)}
+    .disclaimer{margin-top:25px;color:#758aa4;font-size:.78rem}
+    footer{border-top:1px solid var(--line);padding:30px 0 46px;color:var(--muted);font-size:.8rem}.footer-row{display:flex;justify-content:space-between;gap:20px}
+    .top{color:var(--teal);text-decoration:none}
+    @media(max-width:900px){.hero{grid-template-columns:1fr;padding-top:55px}.hero-note{max-width:560px}.snapshot{grid-template-columns:repeat(2,1fr)}.metric:nth-child(2){border-right:0}.metric:nth-child(-n+2){border-bottom:1px solid var(--line)}.events{grid-template-columns:repeat(2,1fr)}.pattern-grid{grid-template-columns:1fr}.method{grid-template-columns:1fr}}
+    @media(max-width:620px){.wrap{width:min(100% - 28px,var(--max))}.nav-links{display:none}header{padding:17px 0}.hero{padding:50px 0 38px;gap:30px}h1{font-size:2.65rem}.snapshot{border-radius:14px}.metric{padding:20px 16px}.metric b{font-size:2rem}section{padding:66px 0}.section-head{display:block}.section-copy{margin-top:18px}.chart-panel{padding:22px 17px}.bar-row{grid-template-columns:105px 1fr 58px;gap:9px}.bar-label{font-size:.72rem}.events{grid-template-columns:1fr}.event{min-height:0}.source-list{grid-template-columns:1fr}.footer-row{display:block}.footer-row span{display:block;margin-bottom:8px}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.bar{animation:none}.event{transition:none}}
+  </style>
+</head>
+<body>
+  <header id="top">
+    <div class="wrap nav">
+      <div class="brand"><div class="brand-mark">SOX</div><span>半導體週期觀察</span></div>
+      <nav class="nav-links" aria-label="頁面導覽"><a href="#overview">跌幅排行</a><a href="#events">9 次事件</a><a href="#method">統計口徑</a></nav>
+    </div>
+  </header>
+  <main>
+    <div class="wrap hero">
+      <div>
+        <div class="eyebrow">1993—2026 · Historical Drawdowns</div>
+        <h1>費城半導體指數<span>重大回撤史</span></h1>
+        <p class="lead">SOX 成立以來，從局部收盤高點跌至其後低點，已完成且跌幅明確超過 30% 的主要下跌週期，共計 9 次。</p>
+      </div>
+      <aside class="hero-note"><strong>閱讀重點</strong>半導體不只受自身庫存循環影響。跌得最深的兩次，背後分別是科技泡沫破裂與全球金融危機。</aside>
+    </div>
+    <div class="wrap snapshot" aria-label="重要統計摘要">
+      <div class="metric"><b>9</b><span>次跌幅超過 30%</span></div>
+      <div class="metric"><b>−85%</b><span>最大回撤｜2000–02</span></div>
+      <div class="metric"><b>−46.5%</b><span>9 次回撤中位數</span></div>
+      <div class="metric"><b>3 類</b><span>庫存、宏觀、估值</span></div>
+    </div>
+
+    <section id="overview">
+      <div class="wrap">
+        <div class="section-head"><div><p class="kicker">Drawdown ranking</p><h2>哪幾次跌得最深？</h2></div><p class="section-copy">網路泡沫與金融海嘯遠超過一般庫存修正；單看「跌了 30%」不足以判斷是否接近底部，必須先辨識危機類型。</p></div>
+        <div class="chart-panel" role="img" aria-label="9 次主要回撤最大跌幅長條圖">
+          <div class="chart-title"><b>最大回撤幅度</b><span>高點 → 其後低點｜約數</span></div>
+          <div class="bars">
+            <div class="bar-row"><span class="bar-label">2000–02 網路泡沫</span><div class="track"><div class="bar" style="--w:100%"></div></div><span class="bar-value">−85.0%</span></div>
+            <div class="bar-row"><span class="bar-label">2007–08 金融海嘯</span><div class="track"><div class="bar" style="--w:80.8%"></div></div><span class="bar-value">−68.7%</span></div>
+            <div class="bar-row"><span class="bar-label">1997–98 亞洲金融危機</span><div class="track"><div class="bar" style="--w:62.4%"></div></div><span class="bar-value">−53.0%</span></div>
+            <div class="bar-row"><span class="bar-label">1995–96 DRAM 過剩</span><div class="track"><div class="bar" style="--w:61.5%"></div></div><span class="bar-value">−52.3%</span></div>
+            <div class="bar-row"><span class="bar-label">2021–22 升息／庫存</span><div class="track"><div class="bar" style="--w:54.7%"></div></div><span class="bar-value">−46.5%</span></div>
+            <div class="bar-row"><span class="bar-label">2024–25 AI／關稅</span><div class="track"><div class="bar" style="--w:46.7%"></div></div><span class="bar-value">−39.7%</span></div>
+            <div class="bar-row"><span class="bar-label">2004 庫存修正</span><div class="track"><div class="bar" style="--w:43.8%"></div></div><span class="bar-value">−37.2%</span></div>
+            <div class="bar-row"><span class="bar-label">2020 COVID</span><div class="track"><div class="bar" style="--w:41.2%"></div></div><span class="bar-value">−35.0%</span></div>
+            <div class="bar-row"><span class="bar-label">2011 歐債危機</span><div class="track"><div class="bar" style="--w:36.5%"></div></div><span class="bar-value">−31.0%</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="events">
+      <div class="wrap">
+        <div class="section-head"><div><p class="kicker">Nine major selloffs</p><h2>9 次下跌週期</h2></div><p class="section-copy">同一波跌勢只算一次。可切換檢視全部事件，或只看跌幅超過 50% 的極端行情。</p></div>
+        <div class="controls">
+          <div class="filters" role="group" aria-label="篩選事件"><button class="chip active" data-filter="all" aria-pressed="true">全部 9 次</button><button class="chip" data-filter="extreme" aria-pressed="false">跌逾 50%</button><button class="chip" data-filter="recent" aria-pressed="false">2020 年後</button></div>
+          <span class="event-count" aria-live="polite">顯示 9 次</span>
+        </div>
+        <div class="events">
+          <article class="event" data-drop="52.3" data-year="1995"><span class="event-num">01 / 09</span><h3>DRAM 產能過剩</h3><span class="dates">1995/09/11 → 1996/07/24</span><div class="drop">−52.3%</div><span class="duration">約 10 個月</span><p class="cause">DRAM 價格崩跌、PC 庫存偏高，記憶體供給快速擴張後進入去庫存。</p><span class="tag">半導體庫存循環</span></article>
+          <article class="event" data-drop="53" data-year="1997"><span class="event-num">02 / 09</span><h3>亞洲金融危機</h3><span class="dates">1997/08/20 → 1998/10/08</span><div class="drop">−53.0%</div><span class="duration">約 14 個月</span><p class="cause">亞洲需求急縮、記憶體供過於求，後期再疊加俄羅斯金融危機與全球避險。</p><span class="tag">區域金融危機</span></article>
+          <article class="event" data-drop="85" data-year="2000"><span class="event-num">03 / 09</span><h3>網路泡沫破裂</h3><span class="dates">2000/03/10 → 2002/10/09</span><div class="drop">約 −85%</div><span class="duration">約 31 個月</span><p class="cause">電信與網路設備資本支出崩塌，科技業庫存出清，並伴隨美國經濟衰退。</p><span class="tag">科技泡沫＋景氣衰退</span></article>
+          <article class="event" data-drop="37.2" data-year="2004"><span class="event-num">04 / 09</span><h3>庫存修正</h3><span class="dates">2004/01/12 → 2004/09/08</span><div class="drop">−37.2%</div><span class="duration">約 8 個月</span><p class="cause">2003 年復甦後重複下單、庫存累積，PC 與電子需求增速放緩。</p><span class="tag">半導體庫存循環</span></article>
+          <article class="event" data-drop="68.7" data-year="2007"><span class="event-num">05 / 09</span><h3>全球金融海嘯</h3><span class="dates">2007/07/17 → 2008/11/20</span><div class="drop">−68.7%</div><span class="duration">約 16 個月</span><p class="cause">信用市場凍結、全球經濟衰退與消費電子需求崩跌；SOX 約由 546.59 跌至 171.32。</p><span class="tag">系統性金融危機</span></article>
+          <article class="event" data-drop="31" data-year="2011"><span class="event-num">06 / 09</span><h3>歐債危機</h3><span class="dates">2011/02/17 → 2011/08/19 附近</span><div class="drop">約 −31%</div><span class="duration">約 6 個月</span><p class="cause">歐債危機、美國主權評等遭降級，加上日本 311 地震與供應鏈干擾。</p><span class="tag">宏觀＋供應鏈衝擊</span></article>
+          <article class="event" data-drop="35" data-year="2020"><span class="event-num">07 / 09</span><h3>COVID 流動性危機</h3><span class="dates">2020/02/19 → 2020/03/18</span><div class="drop">−35.0%</div><span class="duration">約 1 個月</span><p class="cause">疫情快速擴散、封城與市場流動性衝擊；並非典型的晶片庫存衰退。</p><span class="tag">外部宏觀衝擊</span></article>
+          <article class="event" data-drop="46.5" data-year="2021"><span class="event-num">08 / 09</span><h3>升息、估值與庫存反轉</h3><span class="dates">2021/12/27 → 2022/10/14</span><div class="drop">−46.5%</div><span class="duration">約 10 個月</span><p class="cause">Fed 激進升息壓縮科技股估值，PC、手機與記憶體庫存反轉，再疊加對中出口管制。</p><span class="tag">估值壓縮＋庫存循環</span></article>
+          <article class="event" data-drop="39.7" data-year="2024"><span class="event-num">09 / 09</span><h3>AI 疑慮與關稅衝擊</h3><span class="dates">2024/07/10 → 2025/04/08</span><div class="drop">−39.7%</div><span class="duration">約 9 個月</span><p class="cause">日圓套利交易平倉、DeepSeek 引發 AI 算力需求疑慮，之後再遇關稅政策衝擊。</p><span class="tag">部位去槓桿＋政策風險</span></article>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <div class="section-head"><div><p class="kicker">Recurring patterns</p><h2>三種下跌機制</h2></div><p class="section-copy">歷史不會完全重演，但危機類型會影響下跌速度、深度與修復時間。</p></div>
+        <div class="pattern-grid">
+          <div class="pattern"><span class="big">01 / INVENTORY</span><h3>庫存循環</h3><p>需求放緩與重複下單消失後，晶片價格及訂單同步修正。代表：1995–96、2004。</p></div>
+          <div class="pattern"><span class="big">02 / MACRO</span><h3>金融與宏觀危機</h3><p>信用、市場流動性或外部事件主導。代表：1998、2008、2011、2020。</p></div>
+          <div class="pattern"><span class="big">03 / VALUATION</span><h3>泡沫與估值壓縮</h3><p>資本支出預期反轉，並受到利率上升放大。代表：2000–02、2021–22。</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="method">
+      <div class="wrap method">
+        <div><p class="kicker">Methodology</p><h2>統計口徑與邊界案例</h2><p class="section-copy" style="margin-top:18px">本頁以「獨立市場下跌週期」為主，較適合研究半導體景氣；若採歷史最高點未收復前都算同一段，答案會不同。</p></div>
+        <div>
+          <div class="method-card"><h3>本頁如何計算</h3><ul><li>以每日收盤價的局部高點，到其後該波最低收盤價計算。</li><li>跌幅須明確超過 30%；同一波下跌只計一次。</li><li>1995 年指數曾進行 2-for-1 分割，早期數列須使用調整後口徑。</li></ul></div>
+          <details><summary>為什麼 2006 年沒有列入？</summary><p>不同資料供應商約為 −29.3% 至 −30.14%。因為處於資料差異造成的門檻邊界，本表採 Nasdaq／FRED 主要口徑，不列入明確超過 30% 的 9 次。</p></details>
+          <details><summary>2015–16 與 2018 年呢？</summary><p>2015–16 的較完整日收盤序列約 −25.05%；2018 年中美貿易戰期間約 −26%，均未達門檻。</p></details>
+          <details><summary>為何不把 2000–08 算成同一次？</summary><p>若要求指數收復 2000 年歷史高點才結束回撤，會把網路泡沫、2004 庫存修正與 2008 金融海嘯混成約 −87.15% 的一段，較不利於辨識不同景氣衝擊。</p></details>
+          <h3 style="margin-top:42px">資料與延伸閱讀</h3>
+          <div class="source-list">
+            <a href="https://fred.stlouisfed.org/series/NASDAQSOX" target="_blank" rel="noreferrer">FRED｜NASDAQ SOX 日資料</a>
+            <a href="https://indexes.nasdaqomx.com/Index/Overview/SOX" target="_blank" rel="noreferrer">Nasdaq｜SOX 指數資訊</a>
+            <a href="https://web-dev.hatenablog.com/entry/fin/stats/ddwn/sox" target="_blank" rel="noreferrer">SOX 歷史回撤整理</a>
+            <a href="https://quantflowlab.com/semiconductor-cycle-history/" target="_blank" rel="noreferrer">半導體週期歷史</a>
+          </div>
+          <p class="disclaimer">註：跌幅與日期可能因資料商、時區、指數調整方式及高低點定義而有小幅差異。事件成因為依當時市場與經濟背景所做的綜合歸納。本頁僅供研究，不構成投資建議。資料整理截至 2026 年 9 月。</p>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer><div class="wrap footer-row"><span>SOX 重大回撤史 · 資料整理截至 2026/09</span><a class="top" href="#top">回到頂端 ↑</a></div></footer>
+  <script>
+    const buttons=[...document.querySelectorAll('.chip')];
+    const cards=[...document.querySelectorAll('.event')];
+    const count=document.querySelector('.event-count');
+    buttons.forEach(button=>button.addEventListener('click',()=>{
+      buttons.forEach(b=>{b.classList.remove('active');b.setAttribute('aria-pressed','false')});
+      button.classList.add('active');button.setAttribute('aria-pressed','true');
+      const filter=button.dataset.filter;let visible=0;
+      cards.forEach(card=>{const show=filter==='all'||(filter==='extreme'&&Number(card.dataset.drop)>50)||(filter==='recent'&&Number(card.dataset.year)>=2020);card.dataset.hidden=String(!show);if(show)visible++});
+      count.textContent=`顯示 ${visible} 次`;
+    }));
+  </script>
+</body>
+</html>

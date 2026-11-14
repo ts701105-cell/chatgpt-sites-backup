@@ -1,0 +1,383 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>十全國小五年級｜國語康軒五上 第6課 故事「動」起來｜互動複習</title>
+<style>
+:root{
+  --bg:#f6f8ff; --card:#ffffff; --ink:#24304a; --muted:#667085;
+  --primary:#5b6cff; --primary2:#7c4dff; --ok:#198754; --bad:#d92d20;
+  --warn:#f59e0b; --line:#e5e7eb; --shadow:0 10px 28px rgba(56,68,120,.10);
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:"Noto Sans TC","Microsoft JhengHei",system-ui,sans-serif;background:
+radial-gradient(circle at 10% 10%,#e9ecff 0,transparent 28%),
+radial-gradient(circle at 90% 0%,#f3e8ff 0,transparent 24%),var(--bg);color:var(--ink)}
+button,input{font:inherit}
+.wrap{max-width:1100px;margin:auto;padding:18px}
+.hero{background:linear-gradient(135deg,#5867ff,#8a56ff);color:#fff;border-radius:24px;padding:26px;box-shadow:var(--shadow);position:relative;overflow:hidden}
+.hero:after{content:"✦";position:absolute;right:26px;top:8px;font-size:96px;opacity:.14}
+.hero h1{margin:0 0 8px;font-size:clamp(25px,4vw,38px)}
+.hero p{margin:5px 0;opacity:.96}
+.badge{display:inline-block;background:rgba(255,255,255,.18);padding:7px 11px;border-radius:999px;margin-right:8px;margin-top:8px;font-size:14px}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:14px 0}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:13px;text-align:center;box-shadow:var(--shadow)}
+.stat b{display:block;font-size:24px}
+.nav{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0}
+.nav button{border:0;background:#fff;border-radius:999px;padding:10px 14px;box-shadow:var(--shadow);cursor:pointer;color:var(--ink)}
+.nav button.active{background:var(--primary);color:#fff}
+.page{display:none}
+.page.active{display:block}
+.card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:18px;margin:12px 0;box-shadow:var(--shadow)}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+h2{margin:0 0 12px}
+h3{margin:8px 0}
+.note{background:#fff8e6;border-left:5px solid var(--warn);padding:12px 14px;border-radius:12px}
+.goodnote{background:#eefaf4;border-left:5px solid var(--ok);padding:12px 14px;border-radius:12px}
+.vocab{display:grid;grid-template-columns:repeat(auto-fit,minmax(155px,1fr));gap:10px}
+.vocab .item{border:1px solid var(--line);border-radius:16px;padding:13px;background:#fbfcff}
+.vocab .char{font-size:32px;font-weight:800;color:var(--primary2)}
+.vocab small{color:var(--muted)}
+.speak{border:0;border-radius:10px;padding:6px 9px;background:#eef0ff;cursor:pointer}
+.q{border:1px solid var(--line);border-radius:18px;padding:16px;margin:12px 0;background:#fff}
+.q-title{font-weight:800;margin-bottom:10px;line-height:1.6}
+.opt{display:block;width:100%;text-align:left;border:1px solid #d9ddeb;background:#fff;border-radius:12px;padding:10px 12px;margin:8px 0;cursor:pointer}
+.opt:hover{border-color:var(--primary);background:#f7f7ff}
+.opt.correct{background:#e9f8ef;border-color:var(--ok)}
+.opt.wrong{background:#fff0ef;border-color:var(--bad)}
+.feedback{margin-top:8px;padding:10px 12px;border-radius:12px;display:none}
+.feedback.ok{display:block;background:#e9f8ef;color:#11643b}
+.feedback.bad{display:block;background:#fff0ef;color:#8b1e16}
+.primary,.secondary{border:0;border-radius:12px;padding:10px 14px;cursor:pointer}
+.primary{background:var(--primary);color:white}
+.secondary{background:#eef0f5;color:#24304a}
+.actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:12px}
+.progress{height:12px;background:#e9ecf5;border-radius:999px;overflow:hidden}
+.progress i{display:block;height:100%;background:linear-gradient(90deg,#5b6cff,#9a5cff);width:0}
+.match-board{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.match-col{display:flex;flex-direction:column;gap:8px}
+.match-btn{padding:10px;border:1px solid var(--line);border-radius:12px;background:#fff;cursor:pointer}
+.match-btn.sel{outline:3px solid #cfd3ff}
+.match-btn.done{opacity:.45;text-decoration:line-through}
+.result-big{text-align:center;padding:20px}
+.result-big .score{font-size:54px;font-weight:900;color:var(--primary2)}
+.pill{display:inline-block;border-radius:999px;padding:6px 10px;background:#f0f1f6;margin:4px}
+footer{color:var(--muted);font-size:13px;text-align:center;padding:24px 8px}
+@media(max-width:720px){.stats{grid-template-columns:1fr 1fr}.grid2{grid-template-columns:1fr}.hero{padding:20px}.match-board{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <section class="hero">
+    <div class="badge">十全國小五年級｜第一次段考複習</div>
+    <div class="badge">康軒國語五上</div>
+    <h1>第6課｜故事「動」起來 🎬</h1>
+    <p>自編互動練習：生字語詞、動畫發展、表格閱讀、比較整理、說明文理解、模擬測驗與錯題重做。</p>
+    <p style="font-size:14px">※ 本站為段考複習用自編教材，非康軒出版社官方題庫或原題。</p>
+  </section>
+
+  <section class="stats">
+    <div class="stat"><span>⭐ 總得分</span><b id="totalScore">0</b></div>
+    <div class="stat"><span>✅ 答對</span><b id="correctCount">0</b></div>
+    <div class="stat"><span>📚 已作答</span><b id="answeredCount">0</b></div>
+    <div class="stat"><span>🎯 正確率</span><b id="accuracy">0%</b></div>
+  </section>
+
+  <div class="card">
+    <div style="display:flex;justify-content:space-between;gap:12px;align-items:center">
+      <b>本課學習進度</b><span id="progressText">0%</span>
+    </div>
+    <div class="progress"><i id="progressBar"></i></div>
+  </div>
+
+  <nav class="nav" id="nav">
+    <button class="active" data-page="learn">① 課程重點</button>
+    <button data-page="vocab">② 字詞闖關</button>
+    <button data-page="reading">③ 閱讀理解</button>
+    <button data-page="match">④ 配對遊戲</button>
+    <button data-page="exam">⑤ 模擬測驗</button>
+    <button data-page="wrong">⑥ 錯題本</button>
+  </nav>
+
+  <main>
+    <section id="learn" class="page active">
+      <div class="card">
+        <h2>🎯 本課學習重點</h2>
+        <div class="grid2">
+          <div>
+            <h3>閱讀重點</h3>
+            <p>本課以動畫為主題，透過<b>迪士尼、皮克斯、吉卜力</b>等例子，介紹動畫如何結合故事、繪畫、音樂、科技與團隊合作，讓平面的故事變得生動。</p>
+            <div class="goodnote">閱讀時可以抓住：<b>動畫為何吸引人 → 不同團隊的特色 → 代表作品 → 技術與藝術如何進步 → 團隊精益求精</b>。</div>
+          </div>
+          <div>
+            <h3>語文重點</h3>
+            <p>練習讀懂<b>非連續文本與表格</b>，從多項資料中比較相同與不同之處，並運用四字詞語造句。</p>
+            <div class="note">段考容易考：生字語詞、多義字、表格判讀、作品與特色配對、比較、舉例說明、作者觀點。</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>🧠 文章概念圖（自編整理）</h2>
+        <p>動畫不只是「會動的圖」。一部能打動人的作品，往往融合了故事、繪畫、音樂、表演、科技與團隊合作。不同動畫團隊各有特色，但都需要創意、判斷力與不斷改進的態度。</p>
+        <p><span class="pill">故事</span> ＋ <span class="pill">繪畫</span> ＋ <span class="pill">音樂</span> ＋ <span class="pill">科技</span> ＋ <span class="pill">團隊</span> → <span class="pill">動畫作品</span></p>
+      </div>
+
+      <div class="card">
+        <h2>📊 表格閱讀練習資料（自編整理）</h2>
+        <div style="overflow:auto">
+          <table style="width:100%;border-collapse:collapse;min-width:620px">
+            <thead>
+              <tr>
+                <th style="border:1px solid #e5e7eb;padding:10px">動畫團隊</th>
+                <th style="border:1px solid #e5e7eb;padding:10px">代表作品</th>
+                <th style="border:1px solid #e5e7eb;padding:10px">可觀察重點</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="border:1px solid #e5e7eb;padding:10px"><b>迪士尼</b></td>
+                <td style="border:1px solid #e5e7eb;padding:10px">《汽船威利號》、長篇動畫作品</td>
+                <td style="border:1px solid #e5e7eb;padding:10px">聲音與畫面結合、經典故事改編、角色魅力</td>
+              </tr>
+              <tr>
+                <td style="border:1px solid #e5e7eb;padding:10px"><b>皮克斯</b></td>
+                <td style="border:1px solid #e5e7eb;padding:10px">《小錫兵》、《玩具總動員》</td>
+                <td style="border:1px solid #e5e7eb;padding:10px">電腦動畫、光影色彩、角色與場景細節</td>
+              </tr>
+              <tr>
+                <td style="border:1px solid #e5e7eb;padding:10px"><b>吉卜力</b></td>
+                <td style="border:1px solid #e5e7eb;padding:10px">《神隱少女》等</td>
+                <td style="border:1px solid #e5e7eb;padding:10px">細膩畫面、情感共鳴、人文與想像</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>🔑 本課重點字詞</h2>
+        <div class="vocab" id="learnVocab"></div>
+      </div>
+    </section>
+
+    <section id="vocab" class="page">
+      <div class="card">
+        <h2>🔤 字詞闖關</h2>
+        <p>選出最合適的答案。答錯的題目會自動加入錯題本。</p><div class="goodnote">本區共有 <b>25 題</b>，建議分兩次完成。</div>
+        <div id="vocabQuiz"></div>
+      </div>
+    </section>
+
+    <section id="reading" class="page">
+      <div class="card">
+        <h2>📖 閱讀理解＋表格判讀</h2>
+        <div class="note">以下短文與表格為本站自編，不是課本原文。</div>
+        <div class="goodnote" style="margin-top:10px">本區共有 <b>15 題</b>，包含短文理解與表格判讀。</div>
+        <p style="line-height:1.9">
+          五年級的動畫欣賞課中，老師把全班分成三組。第一組研究早期動畫，發現早期作品雖然畫面技術不像現在複雜，
+          但角色動作、音樂與聲音的搭配已能帶給觀眾新鮮感。第二組研究電腦動畫，注意到光影、材質與場景越來越細膩，
+          角色表情也更自然。第三組研究手繪風格動畫，認為作品不只靠華麗效果吸引人，故事中的情感與價值也能引起觀眾共鳴。
+          最後三組共同整理：不論使用哪種技術，好的動畫都需要清楚的劇情、細心的製作，以及願意反覆修正的團隊。
+        </p>
+        <div style="overflow:auto;margin:14px 0">
+          <table style="width:100%;border-collapse:collapse;min-width:580px">
+            <thead>
+              <tr>
+                <th style="border:1px solid #e5e7eb;padding:9px">組別</th>
+                <th style="border:1px solid #e5e7eb;padding:9px">研究焦點</th>
+                <th style="border:1px solid #e5e7eb;padding:9px">主要發現</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td style="border:1px solid #e5e7eb;padding:9px">第一組</td><td style="border:1px solid #e5e7eb;padding:9px">早期動畫</td><td style="border:1px solid #e5e7eb;padding:9px">角色動作、音樂、聲音帶來新鮮感</td></tr>
+              <tr><td style="border:1px solid #e5e7eb;padding:9px">第二組</td><td style="border:1px solid #e5e7eb;padding:9px">電腦動畫</td><td style="border:1px solid #e5e7eb;padding:9px">光影、材質、場景與表情更細膩</td></tr>
+              <tr><td style="border:1px solid #e5e7eb;padding:9px">第三組</td><td style="border:1px solid #e5e7eb;padding:9px">手繪風格動畫</td><td style="border:1px solid #e5e7eb;padding:9px">情感與價值能引起共鳴</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div id="readingQuiz"></div>
+      </div>
+    </section>
+
+    <section id="match" class="page">
+      <div class="card">
+        <h2>🧩 語詞配對</h2>
+        <p>先點左邊語詞，再點右邊最接近的意思。</p>
+        <div class="match-board">
+          <div class="match-col" id="matchLeft"></div>
+          <div class="match-col" id="matchRight"></div>
+        </div>
+        <div id="matchMsg" class="feedback"></div>
+        <div class="actions"><button class="secondary" onclick="resetMatch()">重新配對</button></div>
+      </div>
+    </section>
+
+    <section id="exam" class="page">
+      <div class="card">
+        <h2>🏆 第1課模擬測驗</h2>
+        <p>共 30 題，每題 10 分。可以重做，系統會保留錯題。</p>
+        <div id="examQuiz"></div>
+        <div id="examResult"></div>
+      </div>
+    </section>
+
+    <section id="wrong" class="page">
+      <div class="card">
+        <h2>❤️ 錯題本</h2>
+        <p>所有答錯題目會自動收進這裡。重新答對後可從錯題本移除。</p>
+        <div id="wrongList"></div>
+        <div class="actions">
+          <button class="secondary" onclick="clearWrong()">清空錯題本</button>
+          <button class="secondary" onclick="resetAll()">重設本課全部進度</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>題目、短文與表格皆為段考複習用途的自編內容；非康軒出版社官方題庫或課本原文。</footer>
+</div>
+
+<script>
+const vocab = [["娛", "娛樂、娛悅"], ["汽", "汽船、汽車"], ["哨", "口哨、哨子"], ["典", "經典、典範"], ["框", "框架、外框"], ["劇", "劇情、戲劇"], ["父", "父母、父親"], ["責", "負責、責任"], ["判", "判斷、研判"], ["鳴", "共鳴、鳴叫"], ["穎", "脫穎而出"], ["獲", "榮獲、獲得"], ["佳", "最佳、佳作"], ["膩", "細膩、油膩"], ["效", "效果、效率"], ["隊", "團隊、隊伍"], ["益", "精益求精、利益"], ["貌", "樣貌、外貌"], ["官", "感官、器官"], ["增", "增加、增進"]];
+
+const questions = {"vocab":[{"id":"v1","q":"「娛樂」最接近哪個意思？","o":["使人放鬆、得到樂趣的活動","一種交通工具","一種植物","一種考試"],"a":0,"e":"娛樂是讓人放鬆、獲得樂趣的活動。"},{"id":"v2","q":"「汽船」中的「汽」和哪個語詞同字？","o":["汽車","氣球","器官","企圖"],"a":0,"e":"汽船和汽車都使用「汽」。"},{"id":"v3","q":"「口哨」是什麼？","o":["用嘴吹出的尖亮聲音","一種畫筆","一種食物","一種船"],"a":0,"e":"口哨通常指用嘴唇吹氣發出的聲音。"},{"id":"v4","q":"「經典」最接近哪個意思？","o":["具有代表性、長久受到肯定的作品","剛完成而未公開的作品","一定最昂貴的作品","沒有特色的作品"],"a":0,"e":"經典常指具有代表性並經得起時間考驗的作品。"},{"id":"v5","q":"「框架」在文章中常指什麼？","o":["基本結構或範圍","最後答案","聲音大小","顏色深淺"],"a":0,"e":"框架可指事物的基本結構。"},{"id":"v6","q":"「劇情」是什麼？","o":["戲劇或故事的情節內容","畫面的顏色","演員的身高","電影票價格"],"a":0,"e":"劇情就是戲劇、電影或故事中的情節發展。"},{"id":"v7","q":"「負責」最接近哪個意思？","o":["承擔應做的工作和責任","把工作全推給別人","暫時忘記工作","只做自己喜歡的部分"],"a":0,"e":"負責就是承擔職責並把事情做好。"},{"id":"v8","q":"「判斷力」是什麼？","o":["分析情況並作出判斷的能力","跑得很快的能力","背很多字的能力","畫圖的速度"],"a":0,"e":"判斷力是分析資訊並作出適當決定的能力。"},{"id":"v9","q":"「共鳴」用在文章中，常表示什麼？","o":["在情感或想法上產生相似感受","一起發出很大的噪音","把作品刪掉","把畫面變黑"],"a":0,"e":"共鳴可指對某種情感或想法產生認同與感受。"},{"id":"v10","q":"「脫穎而出」最接近哪個意思？","o":["表現優秀而突出","故意躲起來","完全沒有參加","表現普通"],"a":0,"e":"脫穎而出形容才能或表現突出。"},{"id":"v11","q":"「榮獲」通常用來搭配什麼？","o":["獎項","雨水","早餐","課桌"],"a":0,"e":"常說榮獲冠軍、榮獲獎項。"},{"id":"v12","q":"「最佳」的意思最接近哪一項？","o":["最好","最慢","最少","最舊"],"a":0,"e":"最佳就是最好的。"},{"id":"v13","q":"「細膩」最適合形容哪一項？","o":["畫面處理精細周密","聲音一定很大","動作一定最快","物品一定最重"],"a":0,"e":"細膩可形容描寫、情感或畫面處理得精細。"},{"id":"v14","q":"「效果」最接近哪個意思？","o":["事物產生的結果或呈現作用","一個人的名字","一種食物","一個地點"],"a":0,"e":"效果是事物所產生的結果或作用。"},{"id":"v15","q":"「團隊」最重要的特色是什麼？","o":["多人合作完成共同目標","每個人互不往來","只有一個人工作","不需要分工"],"a":0,"e":"團隊強調成員合作與共同目標。"},{"id":"v16","q":"「精益求精」最接近哪個意思？","o":["已經很好還要再追求更好","覺得差不多就停止","完全不修改","只求速度不求品質"],"a":0,"e":"精益求精指好上加好，不斷追求更高品質。"},{"id":"v17","q":"「樣貌」最接近哪個意思？","o":["外表或呈現的樣子","聲音速度","時間長短","價格高低"],"a":0,"e":"樣貌指外表或事物呈現的樣子。"},{"id":"v18","q":"「感官」通常包括什麼？","o":["視覺、聽覺等感受外界的能力","數學計算能力","寫字速度","跑步速度"],"a":0,"e":"感官是感受外界刺激的器官與感覺，如視覺、聽覺等。"},{"id":"v19","q":"「增加」的反義詞最接近哪個？","o":["減少","增添","提高","擴大"],"a":0,"e":"增加和減少意思相反。"},{"id":"v20","q":"哪一句最適合使用「細膩」？","o":["這部動畫的表情變化描繪得十分細膩。","這艘船開得很細膩。","今天的氣溫很細膩。","球場跑得很細膩。"],"a":0,"e":"細膩適合形容描寫、畫面、情感等精細。"},{"id":"v21","q":"哪一句最適合使用「共鳴」？","o":["故事中的親情讓許多觀眾產生共鳴。","我用共鳴削鉛筆。","天空有一朵共鳴。","共鳴是一艘汽船。"],"a":0,"e":"觀眾因相似情感而產生共鳴。"},{"id":"v22","q":"哪一句最能表現「精益求精」？","o":["完成初稿後仍反覆修改畫面細節。","完成一次就拒絕再看。","只求快，不檢查。","遇到問題立即放棄。"],"a":0,"e":"反覆改進、追求更好就是精益求精。"},{"id":"v23","q":"「團隊合作」和哪一項最有關？","o":["分工、溝通、共同目標","互相隱瞞","各做各的且不交流","把責任都交給一人"],"a":0,"e":"團隊合作需要分工、溝通與共同目標。"},{"id":"v24","q":"「脫穎而出」最適合放在哪一句？","o":["他的動畫短片在眾多作品中脫穎而出。","雨水在天空脫穎而出。","課桌在教室脫穎而出地睡覺。","鉛筆脫穎而出地吃飯。"],"a":0,"e":"脫穎而出常形容人在競爭中表現突出。"},{"id":"v25","q":"哪組語詞關係最密切？","o":["劇情／共鳴","汽船／判斷力","口哨／團隊","感官／父母"],"a":0,"e":"好的劇情可能引起觀眾情感共鳴。"}],"reading":[{"id":"r1","q":"第一組研究的主題是什麼？","o":["早期動畫","電腦動畫","手繪風格動畫","真人電影"],"a":0,"e":"表格顯示第一組研究早期動畫。"},{"id":"r2","q":"第二組最注意哪類變化？","o":["光影、材質、場景與角色表情","只有票價","只有片長","只有配音員姓名"],"a":0,"e":"第二組研究電腦動畫的畫面與表現細節。"},{"id":"r3","q":"第三組認為作品除了效果之外，還有什麼重要？","o":["故事中的情感與價值","商品價格","上映地點","海報大小"],"a":0,"e":"第三組特別注意情感與價值。"},{"id":"r4","q":"三組共同認為好的動畫需要什麼？","o":["清楚劇情、細心製作、願意修正的團隊","只要畫面漂亮","只要音樂大聲","只要角色很多"],"a":0,"e":"短文最後整理出三項共同條件。"},{"id":"r5","q":"從表格看，哪一組最適合研究「角色表情更自然」？","o":["第二組","第一組","第三組","三組都沒有"],"a":0,"e":"第二組研究電腦動畫，主要發現包含角色表情更細膩。"},{"id":"r6","q":"哪一組的研究最強調「共鳴」？","o":["第三組","第一組","第二組","沒有任何一組"],"a":0,"e":"第三組強調情感與價值引起共鳴。"},{"id":"r7","q":"第一組的發現說明早期動畫即使技術較簡單，仍能靠什麼吸引觀眾？","o":["角色動作與聲音音樂搭配","昂貴票價","大量文字","沒有劇情"],"a":0,"e":"角色動作、音樂與聲音搭配能帶來新鮮感。"},{"id":"r8","q":"短文主要用了哪種組織方式？","o":["分組比較後再統整共同點","完全照時間寫日記","只寫一個人物","只列生字"],"a":0,"e":"文章先分別介紹三組，再統整共同結論。"},{"id":"r9","q":"若把表格中的「研究焦點」欄刪掉，最難快速知道什麼？","o":["每組主要研究哪一類動畫","每組有幾個人","老師姓名","上課時間"],"a":0,"e":"研究焦點欄直接指出每組研究對象。"},{"id":"r10","q":"從短文可推論，動畫技術進步後仍不能缺少什麼？","o":["好的故事與團隊製作","昂貴設備一定排第一","越多特效越好","完全不需要情感"],"a":0,"e":"結尾強調劇情、細心製作和團隊。"},{"id":"r11","q":"「反覆修正」最接近哪個語詞？","o":["精益求精","脫穎而出","共鳴","娛樂"],"a":0,"e":"反覆修正、追求更好就是精益求精。"},{"id":"r12","q":"這份表格屬於哪一種文本？","o":["非連續文本","童詩","書信","日記"],"a":0,"e":"表格不是連續段落文字，屬於非連續文本。"},{"id":"r13","q":"讀表格時，先看欄位標題有什麼好處？","o":["知道每一欄資料代表什麼","可以不用讀內容","可以直接猜答案","能讓表格變短"],"a":0,"e":"欄位標題能幫助理解資料分類。"},{"id":"r14","q":"哪一句最適合概括短文主旨？","o":["動畫形式不同，但好作品都需要故事、技術與團隊用心製作","只有電腦動畫最好","早期動畫完全沒有價值","手繪動畫不需要技術"],"a":0,"e":"短文比較不同類型，最後強調共同成功要素。"},{"id":"r15","q":"如果要替三組研究成果下總標題，哪一個最合適？","o":["動畫如何讓故事更生動","三種交通工具","五年級午餐比較","校園植物觀察"],"a":0,"e":"三組都圍繞動畫表現與故事生命力。"}],"exam":[{"id":"e1","q":"〈故事「動」起來〉主要介紹哪個主題？","o":["動畫如何結合藝術、科技與故事","如何駕駛汽船","如何寫童詩","如何設計商標"],"a":0,"e":"本課以動畫發展與特色為主要內容。"},{"id":"e2","q":"動畫常融合哪些元素？","o":["繪畫、音樂、文學與影像技術","只有數學","只有體育","只有地理"],"a":0,"e":"動畫是多種藝術與技術合作的成果。"},{"id":"e3","q":"《汽船威利號》在本課脈絡中和哪個角色有關？","o":["米老鼠","小熊維尼","唐老鴨","白雪公主"],"a":0,"e":"本課以《汽船威利號》介紹米老鼠早期動畫。"},{"id":"e4","q":"早期動畫讓觀眾感到新鮮的一項重要特色是什麼？","o":["聲音與畫面結合","完全沒有聲音","只有文字","全部由真人演出"],"a":0,"e":"聲畫結合是早期動畫發展的重要特色之一。"},{"id":"e5","q":"長篇動畫能吸引觀眾，除了技術還需要什麼？","o":["完整而能引發情感的故事","越多角色越好","完全不要音樂","只要片長夠久"],"a":0,"e":"劇情與情感是動畫吸引人的核心之一。"},{"id":"e6","q":"皮克斯在本課中較常和哪項特色連結？","o":["電腦動畫與細膩視覺效果","水墨畫","舞臺劇","只有黑白照片"],"a":0,"e":"皮克斯常作為電腦動畫發展的代表。"},{"id":"e7","q":"《玩具總動員》在課文脈絡中主要可用來說明什麼？","o":["電腦動畫技術與故事結合","汽船發展史","商標註冊","童詩押韻"],"a":0,"e":"該作品可用來觀察電腦動畫和故事表現的結合。"},{"id":"e8","q":"吉卜力作品在本課整理中較強調哪一項？","o":["細膩畫面與人文情感","只追求最快速度","完全不需要劇情","只靠廣告"],"a":0,"e":"吉卜力常以細膩畫面與情感深度受到討論。"},{"id":"e9","q":"《神隱少女》在本課中可用來觀察什麼？","o":["故事情感、想像與人文內涵","船舶結構","商標法規","數學公式"],"a":0,"e":"本課以動畫作品比較故事與藝術特色。"},{"id":"e10","q":"作者舉不同動畫團隊的例子，主要作用是什麼？","o":["具體說明動畫發展與不同特色","讓讀者記住票價","比較公司大小","介紹旅遊地點"],"a":0,"e":"舉例能讓說明更具體。"},{"id":"e11","q":"表格最適合用來做什麼？","o":["比較多項資料的相同與不同","表達人物對話","寫一首詩","描寫單一景色"],"a":0,"e":"表格能把多項資料分類並排，方便比較。"},{"id":"e12","q":"讀表格時，第一步最適合做什麼？","o":["先看表格標題與欄位名稱","直接猜最後一格","只看顏色","先把表格遮住"],"a":0,"e":"先看標題與欄位，才能知道資料主題和分類。"},{"id":"e13","q":"如果題目問「哪兩個團隊都重視故事？」應怎麼做？","o":["橫向或逐列比較相關欄位","只讀第一格","只看表格邊框","完全不看資料"],"a":0,"e":"比較題要對照多列資料。"},{"id":"e14","q":"「非連續文本」最接近哪一類資料？","o":["表格、圖表、流程圖","只有連續段落的小說","只有對話的劇本","只有詩句"],"a":0,"e":"表格、圖表等通常屬於非連續文本。"},{"id":"e15","q":"「劇情緊湊又有趣」主要是在說動畫的哪一面？","o":["故事內容","票價","播放設備","公司地址"],"a":0,"e":"劇情指故事情節。"},{"id":"e16","q":"「光影效果與色彩運用」主要是在說哪一面？","o":["視覺表現","味覺","交通方式","法律規定"],"a":0,"e":"光影與色彩屬於視覺藝術表現。"},{"id":"e17","q":"「音樂讓觀眾更投入」主要影響哪種感官？","o":["聽覺","味覺","嗅覺","觸覺"],"a":0,"e":"音樂主要透過聽覺影響觀眾。"},{"id":"e18","q":"動畫同時運用畫面與音樂，表示它可以同時刺激哪些感官？","o":["視覺與聽覺","味覺與嗅覺","只有觸覺","只有味覺"],"a":0,"e":"畫面影響視覺，音樂影響聽覺。"},{"id":"e19","q":"「共鳴」最可能發生在什麼情況？","o":["觀眾被故事情感打動","觀眾完全看不懂","設備關機","影片尚未播放"],"a":0,"e":"情感或經驗相似時容易產生共鳴。"},{"id":"e20","q":"團隊製作動畫為什麼需要分工？","o":["作品包含故事、畫面、音樂、技術等多種工作","因為一個人完全不能畫圖","因為只需要很多人","因為分工一定比較便宜"],"a":0,"e":"動畫製作包含多種專業，分工合作能整合不同工作。"},{"id":"e21","q":"哪一項最能表現「負責」？","o":["按時完成自己分配到的動畫工作","出錯後全部推給別人","不看分工表","只做自己想做的部分"],"a":0,"e":"完成應負的工作是負責的表現。"},{"id":"e22","q":"哪一項最能表現「判斷力」？","o":["比較多種做法後選出最適合的畫面表現","完全不看資料就決定","只跟著別人猜","遇到問題就不處理"],"a":0,"e":"判斷力需要分析資訊後作出選擇。"},{"id":"e23","q":"哪一項最能表現「精益求精」？","o":["完成後仍檢查並修正細節","做到一半就停止","不接受任何建議","只求快"],"a":0,"e":"精益求精是持續改進。"},{"id":"e24","q":"一部動畫在比賽中「脫穎而出」，代表什麼？","o":["它在眾多作品中表現突出","它沒有參賽","它被取消資格","它只是最早交件"],"a":0,"e":"脫穎而出指從眾多競爭者中突出。"},{"id":"e25","q":"一部作品「榮獲最佳動畫獎」，「榮獲」可以換成什麼？","o":["光榮地獲得","失去","拒絕","取消"],"a":0,"e":"榮獲就是光榮地獲得。"},{"id":"e26","q":"本課使用多個動畫案例，屬於哪種說明方法？","o":["舉例說明","只寫感想","只用對話","押韻"],"a":0,"e":"以具體作品說明動畫特色，是舉例說明。"},{"id":"e27","q":"作者把不同團隊放在表格中整理，有什麼好處？","o":["能快速看出各自特色與差異","讓資料更難找","讓作品變長","讓故事消失"],"a":0,"e":"表格能幫助分類比較。"},{"id":"e28","q":"若一道題要求「根據表格推論」，答案應怎麼找？","o":["先讀明示資料，再綜合比較得到合理結論","只憑個人喜好","完全不看表格","選最長的選項"],"a":0,"e":"推論要以資料為根據。"},{"id":"e29","q":"本課最後帶出的共同精神最接近哪一項？","o":["創意、合作與精益求精能讓作品更好","只要設備昂貴就成功","動畫不需要故事","一個人一定比團隊好"],"a":0,"e":"動畫好作品需要創意、合作及持續改進。"},{"id":"e30","q":"完成本課複習後，最應具備哪一項能力？","o":["能讀懂動畫主題說明文與表格，並比較作品特色","只記住片名","只會畫角色","只會背生字順序"],"a":0,"e":"本課重點包含文字閱讀、表格判讀與比較整理。"}]};
+
+const matchPairs = [["娛樂", "使人放鬆、獲得樂趣的活動"], ["經典", "具有代表性、長久受到肯定"], ["框架", "事物的基本結構"], ["劇情", "故事或戲劇的情節內容"], ["判斷力", "分析情況並作出決定的能力"], ["共鳴", "在情感或想法上產生相似感受"], ["脫穎而出", "在眾多競爭者中表現突出"], ["細膩", "精細、周密"], ["團隊", "合作完成共同目標的一群人"], ["精益求精", "已經很好仍繼續追求更好"]];
+
+const KEY="shiquan_g5_chinese_l6_v1_80";
+let state = JSON.parse(localStorage.getItem(KEY)||'{"answered":{},"wrong":{},"matchDone":[],"score":0}');
+function save(){ localStorage.setItem(KEY,JSON.stringify(state)); updateStats(); }
+
+document.querySelectorAll("#nav button").forEach(b=>{
+  b.onclick=()=>{
+    document.querySelectorAll("#nav button").forEach(x=>x.classList.remove("active"));
+    document.querySelectorAll(".page").forEach(x=>x.classList.remove("active"));
+    b.classList.add("active"); document.getElementById(b.dataset.page).classList.add("active");
+    if(b.dataset.page==="wrong") renderWrong();
+    window.scrollTo({top:document.querySelector("#nav").offsetTop-10,behavior:"smooth"});
+  };
+});
+
+function speak(text){
+  if(!("speechSynthesis" in window)){alert("此瀏覽器不支援語音功能");return}
+  speechSynthesis.cancel();
+  const u=new SpeechSynthesisUtterance(text);u.lang="zh-TW";u.rate=.85;speechSynthesis.speak(u);
+}
+
+function renderVocab(){
+ const el=document.getElementById("learnVocab");
+ el.innerHTML=vocab.map(([a,b])=>`<div class="item"><div class="char">${a}</div><b>${b}</b><br><button class="speak" onclick="speak('${a}，${b}')">🔊 聽讀音</button></div>`).join("");
+}
+
+function renderQuiz(kind, target){
+ const arr=questions[kind], el=document.getElementById(target);
+ el.innerHTML=arr.map((x,i)=>`
+ <div class="q" id="q_${x.id}">
+   <div class="q-title">${i+1}. ${x.q}</div>
+   ${x.o.map((o,j)=>`<button class="opt" onclick="answer('${kind}','${x.id}',${j},this)">${String.fromCharCode(65+j)}. ${o}</button>`).join("")}
+   <div class="feedback" id="f_${x.id}"></div>
+ </div>`).join("");
+}
+
+function getQ(kind,id){return questions[kind].find(x=>x.id===id)}
+function answer(kind,id,choice,btn){
+ const q=getQ(kind,id), box=document.getElementById("q_"+id), fb=document.getElementById("f_"+id);
+ box.querySelectorAll(".opt").forEach(x=>x.disabled=true);
+ const ok=choice===q.a;
+ box.querySelectorAll(".opt")[q.a].classList.add("correct");
+ if(!ok) btn.classList.add("wrong");
+ fb.className="feedback "+(ok?"ok":"bad");
+ fb.innerHTML=(ok?"✅ 答對了！ ":"❌ 再複習一下。 ")+q.e;
+ const first=!state.answered[id];
+ state.answered[id]={kind,choice,ok};
+ if(ok){
+   delete state.wrong[id];
+   if(first) state.score+=10;
+ }else{
+   state.wrong[id]={kind,id};
+ }
+ save();
+ if(kind==="exam") updateExamResult();
+}
+
+function allQuestionCount(){return [...questions.vocab,...questions.reading,...questions.exam].length + matchPairs.length}
+function updateStats(){
+ const vals=Object.values(state.answered);
+ const correct=vals.filter(x=>x.ok).length + state.matchDone.length;
+ const answered=vals.length + state.matchDone.length;
+ document.getElementById("totalScore").textContent=state.score + state.matchDone.length*5;
+ document.getElementById("correctCount").textContent=correct;
+ document.getElementById("answeredCount").textContent=answered;
+ document.getElementById("accuracy").textContent=answered?Math.round(correct/answered*100)+"%":"0%";
+ const pct=Math.round(answered/allQuestionCount()*100);
+ document.getElementById("progressText").textContent=pct+"%";
+ document.getElementById("progressBar").style.width=pct+"%";
+}
+
+function updateExamResult(){
+ const ids=questions.exam.map(x=>x.id), ans=ids.filter(id=>state.answered[id]);
+ if(!ans.length){document.getElementById("examResult").innerHTML="";return}
+ const ok=ans.filter(id=>state.answered[id].ok).length;
+ document.getElementById("examResult").innerHTML=`<div class="result-big"><div>目前模擬測驗</div><div class="score">${ok*10}</div><div>已作答 ${ans.length}/30 題｜答對 ${ok} 題</div></div>`;
+}
+
+function renderWrong(){
+ const keys=Object.keys(state.wrong), el=document.getElementById("wrongList");
+ if(!keys.length){el.innerHTML='<div class="goodnote">🎉 目前沒有錯題！繼續保持。</div>';return}
+ el.innerHTML=keys.map(id=>{
+   const it=state.wrong[id], q=getQ(it.kind,id);
+   return `<div class="q"><div class="q-title">${q.q}</div>
+   ${q.o.map((o,j)=>`<button class="opt" onclick="redoWrong('${it.kind}','${id}',${j},this)">${String.fromCharCode(65+j)}. ${o}</button>`).join("")}
+   <div class="feedback" id="wf_${id}"></div></div>`;
+ }).join("");
+}
+function redoWrong(kind,id,choice,btn){
+ const q=getQ(kind,id), fb=document.getElementById("wf_"+id), box=btn.parentElement;
+ box.querySelectorAll(".opt").forEach(x=>x.disabled=true);
+ if(choice===q.a){
+   btn.classList.add("correct"); delete state.wrong[id]; state.answered[id]={kind,choice,ok:true};
+   fb.className="feedback ok";fb.textContent="✅ 這次答對了！已從錯題本移除。";
+ }else{
+   btn.classList.add("wrong");box.querySelectorAll(".opt")[q.a].classList.add("correct");
+   fb.className="feedback bad";fb.textContent="❌ 還差一點："+q.e;
+ }
+ save(); setTimeout(renderWrong,1100);
+}
+function clearWrong(){state.wrong={};save();renderWrong()}
+function resetAll(){if(confirm("確定要清除第6課全部學習紀錄嗎？")){localStorage.removeItem(KEY);location.reload()}}
+
+let selectedLeft=null;
+function shuffle(a){return [...a].sort(()=>Math.random()-.5)}
+function renderMatch(){
+ selectedLeft=null;
+ const done=new Set(state.matchDone||[]);
+ document.getElementById("matchLeft").innerHTML=matchPairs.map(([l])=>`<button class="match-btn ${done.has(l)?"done":""}" ${done.has(l)?"disabled":""} onclick="pickLeft(this,'${l}')">${l}</button>`).join("");
+ document.getElementById("matchRight").innerHTML=shuffle(matchPairs).map(([l,r])=>`<button class="match-btn ${done.has(l)?"done":""}" ${done.has(l)?"disabled":""} data-left="${l}" onclick="pickRight(this,'${l}')">${r}</button>`).join("");
+}
+function pickLeft(btn,l){
+ document.querySelectorAll("#matchLeft .match-btn").forEach(x=>x.classList.remove("sel"));
+ btn.classList.add("sel"); selectedLeft=l;
+}
+function pickRight(btn,l){
+ const msg=document.getElementById("matchMsg");
+ if(!selectedLeft){msg.className="feedback bad";msg.textContent="請先選左邊的語詞。";return}
+ if(selectedLeft===l){
+   state.matchDone=Array.from(new Set([...(state.matchDone||[]),l]));
+   msg.className="feedback ok";msg.textContent="✅ 配對成功！";
+   save();renderMatch();
+ }else{
+   msg.className="feedback bad";msg.textContent="❌ 不是這一組，再試一次。";
+ }
+}
+function resetMatch(){state.matchDone=[];save();renderMatch();document.getElementById("matchMsg").className="feedback";}
+
+renderVocab();
+renderQuiz("vocab","vocabQuiz");
+renderQuiz("reading","readingQuiz");
+renderQuiz("exam","examQuiz");
+renderMatch();updateStats();updateExamResult();
+</script>
+</body>
+</html>

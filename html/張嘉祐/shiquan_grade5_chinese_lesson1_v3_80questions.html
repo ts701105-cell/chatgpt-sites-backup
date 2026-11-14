@@ -1,0 +1,422 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>十全國小五年級｜國語康軒五上 第1課 蚊帳大使｜互動複習</title>
+<style>
+:root{
+  --bg:#f6f8ff; --card:#ffffff; --ink:#24304a; --muted:#667085;
+  --primary:#5b6cff; --primary2:#7c4dff; --ok:#198754; --bad:#d92d20;
+  --warn:#f59e0b; --line:#e5e7eb; --shadow:0 10px 28px rgba(56,68,120,.10);
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:"Noto Sans TC","Microsoft JhengHei",system-ui,sans-serif;background:
+radial-gradient(circle at 10% 10%,#e9ecff 0,transparent 28%),
+radial-gradient(circle at 90% 0%,#f3e8ff 0,transparent 24%),var(--bg);color:var(--ink)}
+button,input{font:inherit}
+.wrap{max-width:1100px;margin:auto;padding:18px}
+.hero{background:linear-gradient(135deg,#5867ff,#8a56ff);color:#fff;border-radius:24px;padding:26px;box-shadow:var(--shadow);position:relative;overflow:hidden}
+.hero:after{content:"✦";position:absolute;right:26px;top:8px;font-size:96px;opacity:.14}
+.hero h1{margin:0 0 8px;font-size:clamp(25px,4vw,38px)}
+.hero p{margin:5px 0;opacity:.96}
+.badge{display:inline-block;background:rgba(255,255,255,.18);padding:7px 11px;border-radius:999px;margin-right:8px;margin-top:8px;font-size:14px}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:14px 0}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:13px;text-align:center;box-shadow:var(--shadow)}
+.stat b{display:block;font-size:24px}
+.nav{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0}
+.nav button{border:0;background:#fff;border-radius:999px;padding:10px 14px;box-shadow:var(--shadow);cursor:pointer;color:var(--ink)}
+.nav button.active{background:var(--primary);color:#fff}
+.page{display:none}
+.page.active{display:block}
+.card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:18px;margin:12px 0;box-shadow:var(--shadow)}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+h2{margin:0 0 12px}
+h3{margin:8px 0}
+.note{background:#fff8e6;border-left:5px solid var(--warn);padding:12px 14px;border-radius:12px}
+.goodnote{background:#eefaf4;border-left:5px solid var(--ok);padding:12px 14px;border-radius:12px}
+.vocab{display:grid;grid-template-columns:repeat(auto-fit,minmax(155px,1fr));gap:10px}
+.vocab .item{border:1px solid var(--line);border-radius:16px;padding:13px;background:#fbfcff}
+.vocab .char{font-size:32px;font-weight:800;color:var(--primary2)}
+.vocab small{color:var(--muted)}
+.speak{border:0;border-radius:10px;padding:6px 9px;background:#eef0ff;cursor:pointer}
+.q{border:1px solid var(--line);border-radius:18px;padding:16px;margin:12px 0;background:#fff}
+.q-title{font-weight:800;margin-bottom:10px;line-height:1.6}
+.opt{display:block;width:100%;text-align:left;border:1px solid #d9ddeb;background:#fff;border-radius:12px;padding:10px 12px;margin:8px 0;cursor:pointer}
+.opt:hover{border-color:var(--primary);background:#f7f7ff}
+.opt.correct{background:#e9f8ef;border-color:var(--ok)}
+.opt.wrong{background:#fff0ef;border-color:var(--bad)}
+.feedback{margin-top:8px;padding:10px 12px;border-radius:12px;display:none}
+.feedback.ok{display:block;background:#e9f8ef;color:#11643b}
+.feedback.bad{display:block;background:#fff0ef;color:#8b1e16}
+.primary,.secondary{border:0;border-radius:12px;padding:10px 14px;cursor:pointer}
+.primary{background:var(--primary);color:white}
+.secondary{background:#eef0f5;color:#24304a}
+.actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:12px}
+.progress{height:12px;background:#e9ecf5;border-radius:999px;overflow:hidden}
+.progress i{display:block;height:100%;background:linear-gradient(90deg,#5b6cff,#9a5cff);width:0}
+.match-board{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.match-col{display:flex;flex-direction:column;gap:8px}
+.match-btn{padding:10px;border:1px solid var(--line);border-radius:12px;background:#fff;cursor:pointer}
+.match-btn.sel{outline:3px solid #cfd3ff}
+.match-btn.done{opacity:.45;text-decoration:line-through}
+.result-big{text-align:center;padding:20px}
+.result-big .score{font-size:54px;font-weight:900;color:var(--primary2)}
+.pill{display:inline-block;border-radius:999px;padding:6px 10px;background:#f0f1f6;margin:4px}
+footer{color:var(--muted);font-size:13px;text-align:center;padding:24px 8px}
+@media(max-width:720px){.stats{grid-template-columns:1fr 1fr}.grid2{grid-template-columns:1fr}.hero{padding:20px}.match-board{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <section class="hero">
+    <div class="badge">十全國小五年級｜第一次段考複習</div>
+    <div class="badge">康軒國語五上</div>
+    <h1>第1課｜蚊帳大使 🦟</h1>
+    <p>自編互動練習：字詞、課文理解、語文應用、模擬測驗、錯題重做。</p>
+    <p style="font-size:14px">※ 本站為段考複習用自編教材，非康軒出版社官方題庫或原題。</p>
+  </section>
+
+  <section class="stats">
+    <div class="stat"><span>⭐ 總得分</span><b id="totalScore">0</b></div>
+    <div class="stat"><span>✅ 答對</span><b id="correctCount">0</b></div>
+    <div class="stat"><span>📚 已作答</span><b id="answeredCount">0</b></div>
+    <div class="stat"><span>🎯 正確率</span><b id="accuracy">0%</b></div>
+  </section>
+
+  <div class="card">
+    <div style="display:flex;justify-content:space-between;gap:12px;align-items:center">
+      <b>本課學習進度</b><span id="progressText">0%</span>
+    </div>
+    <div class="progress"><i id="progressBar"></i></div>
+  </div>
+
+  <nav class="nav" id="nav">
+    <button class="active" data-page="learn">① 課程重點</button>
+    <button data-page="vocab">② 字詞闖關</button>
+    <button data-page="reading">③ 閱讀理解</button>
+    <button data-page="match">④ 配對遊戲</button>
+    <button data-page="exam">⑤ 模擬測驗</button>
+    <button data-page="wrong">⑥ 錯題本</button>
+  </nav>
+
+  <main>
+    <section id="learn" class="page active">
+      <div class="card">
+        <h2>🎯 本課學習重點</h2>
+        <div class="grid2">
+          <div>
+            <h3>閱讀重點</h3>
+            <p>從人物的行動、原因與結果整理文章重點，理解「一個想法如何化成實際行動」。</p>
+            <div class="goodnote">閱讀時可以抓住：<b>人物 → 發現問題 → 採取行動 → 帶來影響</b>。</div>
+          </div>
+          <div>
+            <h3>語文重點</h3>
+            <p>認識本課常用生字與語詞，並能依上下文判斷詞義、正確造句。</p>
+            <div class="note">段考容易考：形近字、字義、語詞運用、文章主旨、人物行動與原因。</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>🧠 文章概念圖（自編摘要）</h2>
+        <p>本課以幫助他人的實際行動為核心，從「看見需要」開始，進一步募集資源、號召大家參與，讓善意產生更大的力量。</p>
+        <p><span class="pill">看見問題</span> → <span class="pill">想出方法</span> → <span class="pill">募集／捐贈</span> → <span class="pill">持續行動</span> → <span class="pill">產生影響</span></p>
+      </div>
+
+      <div class="card">
+        <h2>🔑 必會語詞</h2>
+        <div class="vocab" id="learnVocab"></div>
+      </div>
+    </section>
+
+    <section id="vocab" class="page">
+      <div class="card">
+        <h2>🔤 字詞闖關</h2>
+        <p>選出最合適的答案。答錯的題目會自動加入錯題本。</p><div class="goodnote">本區共有 <b>25 題</b>，建議分兩次完成。</div>
+        <div id="vocabQuiz"></div>
+      </div>
+    </section>
+
+    <section id="reading" class="page">
+      <div class="card">
+        <h2>📖 閱讀理解</h2>
+        <div class="note">以下短文為本站自編，不是課本原文。</div><div class="goodnote" style="margin-top:10px">本區共有 <b>15 題</b> 閱讀理解。</div>
+        <p style="line-height:1.9">
+          小安在報導中看見某些地區的孩子常受到蚊蟲傳播疾病的威脅。他想：「如果能讓更多人知道這件事，也許就能多一點幫助。」
+          於是，他和同學先查資料，再利用校慶設計義賣活動，把所得捐給相關公益團體。活動結束後，他沒有就此停止，
+          還把做法整理成海報，鼓勵其他班級一起參與。原本只是少數人的想法，後來變成許多人共同投入的行動。
+        </p>
+        <div id="readingQuiz"></div>
+      </div>
+    </section>
+
+    <section id="match" class="page">
+      <div class="card">
+        <h2>🧩 語詞配對</h2>
+        <p>先點左邊語詞，再點右邊最接近的意思。</p>
+        <div class="match-board">
+          <div class="match-col" id="matchLeft"></div>
+          <div class="match-col" id="matchRight"></div>
+        </div>
+        <div id="matchMsg" class="feedback"></div>
+        <div class="actions"><button class="secondary" onclick="resetMatch()">重新配對</button></div>
+      </div>
+    </section>
+
+    <section id="exam" class="page">
+      <div class="card">
+        <h2>🏆 第1課模擬測驗</h2>
+        <p>共 30 題，每題 10 分。可以重做，系統會保留錯題。</p>
+        <div id="examQuiz"></div>
+        <div id="examResult"></div>
+      </div>
+    </section>
+
+    <section id="wrong" class="page">
+      <div class="card">
+        <h2>❤️ 錯題本</h2>
+        <p>所有答錯題目會自動收進這裡。重新答對後可從錯題本移除。</p>
+        <div id="wrongList"></div>
+        <div class="actions">
+          <button class="secondary" onclick="clearWrong()">清空錯題本</button>
+          <button class="secondary" onclick="resetAll()">重設本課全部進度</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    題目與摘要皆為段考複習用途的自編內容。生字／語詞範圍參考教育部教育百科公開的康軒五上第1課詞彙資料。
+  </footer>
+</div>
+
+<script>
+const vocab = [
+  ["蚊","蚊子、蚊蟲"],["帳","蚊帳、帳篷"],["洲","非洲、沙洲"],["瘧","瘧疾"],
+  ["疾","疾病"],["死","死亡"],["叮","叮咬"],["存","生存、存在"],["募","募集、募款"],
+  ["集","集合、聚集"],["寄","寄送、寄託"],["贈","捐贈、贈送"],["獎","獎勵、獎狀"],
+  ["狀","形狀、獎狀"],["藏","收藏、躲藏"],["誌","雜誌、標誌"],["基","基金、地基"],["赴","前往；全力以赴"]
+];
+
+const questions = {
+vocab: [
+ {id:"v1",q:"「募集」最接近下列哪一個意思？",o:["把東西藏起來","招募、聚集所需要的人或物","把東西平均分配","把物品寄回家"],a:1,e:"「募集」有招募、聚集的意思，例如募集物資、募集善款。"},
+ {id:"v2",q:"下列哪個語詞中的「贈」使用正確？",o:["贈送","贈跑","贈睡","贈看"],a:0,e:"「贈」有送給的意思，常見語詞有贈送、捐贈。"},
+ {id:"v3",q:"「全力以赴」的意思最接近哪一個？",o:["先休息再說","投入全部心力去完成事情","只做最簡單的部分","把工作交給別人"],a:1,e:"「全力以赴」表示投入全部的心力。"},
+ {id:"v4",q:"「瘧疾」中的「疾」最接近哪個意思？",o:["快速","疾病","嫉妒","急忙"],a:1,e:"「疾」可表示病，如疾病、疾患。"},
+ {id:"v5",q:"下列何者和「蚊帳」的功能最接近？",o:["遮擋蚊蟲","增加音量","測量長度","保存食物"],a:0,e:"蚊帳主要用來隔開蚊蟲、避免叮咬。"},
+ {id:"v6",q:"「獎狀」中的「狀」在這個語詞裡是指什麼？",o:["證書、文書的一種","生病的樣子","道路","聲音"],a:0,e:"獎狀是為了獎勵而頒發的證書。"},
+ {id:"v7",q:"下列哪一組語詞最適合放入句子：「大家一起＿＿物資，並＿＿給需要幫助的人。」",o:["募集／捐贈","收藏／躲藏","叮咬／死亡","獎狀／非洲"],a:0,e:"先募集物資，再捐贈給需要的人，語意最通順。"},
+ {id:"v8",q:"「收藏」和「躲藏」都有哪一個共同字？",o:["收","躲","藏","集"],a:2,e:"兩個語詞都含有「藏」字。"},
+ {id:"v9",q:"「寄送」的「寄」最適合用在哪一句？",o:["媽媽把包裹寄到外婆家。","哥哥把球寄進籃框。","小狗把尾巴寄起來。","天空寄得很藍。"],a:0,e:"「寄」有託人或利用郵件傳送的意思。"},
+ {id:"v10",q:"下列哪一個語詞和「疾病」意思最接近？",o:["疾患","集合","基金","獎狀"],a:0,e:"「疾患」和「疾病」意思相近。"},
+ {id:"v11",q:"「叮咬」通常用來形容什麼？",o:["蚊蟲咬人","風吹樹葉","水流經石頭","鉛筆寫字"],a:0,e:"蚊子、昆蟲咬人時常用「叮咬」。"},
+ {id:"v12",q:"「基金」中的「基」和哪個語詞的「基」意思最接近？",o:["地基","奇蹟","肌肉","雞蛋"],a:0,e:"「基」有基礎、根本的意思。"},
+ {id:"v13",q:"下列哪一組是反義關係？",o:["集合／聚集","生存／死亡","捐贈／贈送","收藏／保存"],a:1,e:"生存和死亡在意思上相反。"},
+ {id:"v14",q:"「非洲」中的「洲」應該怎麼用？",o:["亞洲","周末","州長","週記"],a:0,e:"亞洲、非洲、美洲的「洲」字相同。"},
+ {id:"v15",q:"「雜誌」的「誌」和下列哪個語詞同字？",o:["標誌","意志","治理","製作"],a:0,e:"「雜誌」和「標誌」都使用「誌」。"},
+ {id:"v16",q:"「生存」最接近哪一個意思？",o:["維持生命","停止活動","快速奔跑","整理物品"],a:0,e:"「生存」就是活著、維持生命。"},
+ {id:"v17",q:"「捐贈」和「贈送」共同的意思是什麼？",o:["把東西送給別人","把東西藏起來","把東西借走","把東西丟掉"],a:0,e:"兩者都有把物品送給別人的意思。"},
+ {id:"v18",q:"下列哪句的語詞使用最恰當？",o:["大家募集愛心物資幫助災民。","大家募集天空回家。","大家收藏疾病參加比賽。","大家叮咬獎狀完成作業。"],a:0,e:"「募集愛心物資」搭配自然，語意正確。"},
+ {id:"v19",q:"「赴」字最適合出現在哪一個語詞？",o:["前赴後繼","赴盒彩色","赴筆鉛筆","赴桌椅子"],a:0,e:"「赴」有前往的意思，「前赴後繼」用字正確。"},
+ {id:"v20",q:"下列哪一個詞語可用來形容『把東西收集後保存』？",o:["收藏","捐贈","叮咬","死亡"],a:0,e:"「收藏」就是收集並保存。"},
+ {id:"v21",q:"「基金」通常是指什麼？",o:["為特定目的籌集或保留的金錢","一種昆蟲","一張獎狀","一種疾病"],a:0,e:"基金通常是為特定用途而籌集、保留的資金。"},
+ {id:"v22",q:"哪一個句子中的「存」字使用最恰當？",o:["把重要資料存起來。","把天空存得很藍。","把聲音存得很高。","把雨天存出去。"],a:0,e:"「存」有保存、存在等意思。"},
+ {id:"v23",q:"「聚集」最適合形容哪一種情況？",o:["很多人集中到同一個地方","一個人獨自在房間","把東西分散各處","把燈關掉"],a:0,e:"「聚集」就是集中在一起。"},
+ {id:"v24",q:"哪一個詞最適合填入：「學校頒發＿＿表揚熱心助人的同學。」",o:["獎狀","瘧疾","基金","蚊帳"],a:0,e:"獎狀可用來表揚或獎勵。"},
+ {id:"v25",q:"下列哪一個詞和「寄送」意思最接近？",o:["寄出","藏起","集合","叮咬"],a:0,e:"「寄送」和「寄出」意思相近。"}
+],
+reading: [
+ {id:"r1",q:"自編短文中，小安先做了什麼？",o:["直接捐很多錢","查資料了解問題","要求全校停課","自己做蚊帳"],a:1,e:"短文寫到他和同學先查資料，再規畫義賣活動。"},
+ {id:"r2",q:"小安把義賣所得做什麼用途？",o:["買玩具","辦同樂會","捐給公益團體","存進自己的帳戶"],a:2,e:"義賣所得被捐給相關公益團體。"},
+ {id:"r3",q:"活動結束後，小安又做了什麼？",o:["把做法整理成海報，鼓勵其他班級","立刻忘記這件事","停止所有活動","把資料丟掉"],a:0,e:"他持續把方法分享出去，希望更多人加入。"},
+ {id:"r4",q:"這段短文最適合用哪一句話概括？",o:["一個人的想法能透過行動影響更多人","做任何事都不需要查資料","公益活動只能由大人完成","校慶活動一定要義賣"],a:0,e:"重點在於看見問題、採取行動，並帶動更多人參與。"},
+ {id:"r5",q:"小安的行動順序何者正確？",o:["義賣→查資料→做海報","查資料→義賣→分享做法","做海報→義賣→查資料","捐款→查資料→停止"],a:1,e:"先了解問題，再行動，最後持續分享與擴大影響。"},
+ {id:"r6",q:"小安為什麼先查資料？",o:["想更了解問題再決定怎麼幫忙","因為老師要求抄課文","為了逃避義賣活動","因為他不知道校慶日期"],a:0,e:"先查資料可以了解問題的原因與需求，讓行動更有方向。"},
+ {id:"r7",q:"「原本只是少數人的想法，後來變成許多人共同投入的行動。」這句話主要說明什麼？",o:["行動可以帶動更多人參與","人多一定比較好","少數人的想法沒有價值","每個人都要做一樣的事"],a:0,e:"這句強調善意行動可以產生擴散效果。"},
+ {id:"r8",q:"小安最值得學習的地方是什麼？",o:["看見問題後願意採取行動","只想得到獎狀","只在活動當天參與","把所有事情交給別人"],a:0,e:"從發現問題到採取行動，是短文最重要的精神。"},
+ {id:"r9",q:"如果要替這篇短文取標題，哪一個最合適？",o:["從一個想法開始","最快的跑步方法","校園植物觀察","我的收藏品"],a:0,e:"短文主軸是由想法開始，逐步形成實際行動。"},
+ {id:"r10",q:"短文中哪一個做法最能表示「延續影響」？",o:["活動後製作海報分享做法","活動前查資料","校慶當天義賣","把錢交給老師"],a:0,e:"把做法分享出去能讓更多人加入，延續原本的影響。"},
+ {id:"r11",q:"小安和同學辦義賣的主要目的是什麼？",o:["籌得資源幫助有需要的人","讓自己得到第一名","買更多玩具","延長校慶時間"],a:0,e:"義賣的目的在於籌集資源幫助需要幫助的人。"},
+ {id:"r12",q:"短文中「也許就能多一點幫助」表現出小安什麼態度？",o:["願意關心並嘗試解決問題","完全不在意","只想責怪別人","覺得事情與自己無關"],a:0,e:"這句話表現出關心與願意行動。"},
+ {id:"r13",q:"如果刪掉『把做法整理成海報』這件事，文章少了哪一層意義？",o:["把行動分享出去、影響更多人","查資料的重要性","義賣本身的流程","校慶的日期"],a:0,e:"海報代表分享與擴散行動經驗。"},
+ {id:"r14",q:"這段文章使用『先……再……後來……』的事件安排，主要有什麼作用？",o:["讓事件發展更有順序","讓文章變得更難懂","只為了增加字數","完全沒有作用"],a:0,e:"依時間或行動順序敘述，能讓讀者清楚掌握事件發展。"},
+ {id:"r15",q:"根據短文，小安的行動最符合下列哪一項？",o:["從了解問題到實際參與，再帶動他人","先責怪別人再放棄","只想不做","只做一次就停止"],a:0,e:"他的行動包含了解、參與、分享與擴大影響。"}
+],
+exam: [
+ {id:"e1",q:"「捐贈」的「贈」是什麼意思？",o:["拿走","送與","收藏","計算"],a:1,e:"「贈」就是送給、送與。"},
+ {id:"e2",q:"哪一個語詞和「集合」意思最接近？",o:["聚集","分散","躲藏","死亡"],a:0,e:"「集合」和「聚集」都有集中在一起的意思。"},
+ {id:"e3",q:"下列何者是「全力以赴」的正確用法？",o:["比賽前，我決定全力以赴。","我把書本全力以赴在桌上。","這盒彩筆看起來全力以赴。","今天的天氣非常全力以赴。"],a:0,e:"這個成語用來形容投入全部心力完成事情。"},
+ {id:"e4",q:"「非洲」的「洲」和下列哪個語詞使用同一個字？",o:["州長","亞洲","周圍","週末"],a:1,e:"亞洲、非洲的「洲」都是洲。"},
+ {id:"e5",q:"閱讀文章時，要快速整理事件重點，哪一組最有幫助？",o:["人物、原因、行動、結果","字數、頁數、紙張、顏色","插圖大小、字體、頁碼、封面","只看第一個字"],a:0,e:"人物、原因、行動、結果能幫助整理敘事文章的重點。"},
+ {id:"e6",q:"「募集善款」是指什麼？",o:["把錢藏起來","向大家徵集捐款","把錢平均花掉","把錢寄給自己"],a:1,e:"募集善款就是向大家徵集捐款。"},
+ {id:"e7",q:"哪個句子最能表現「良善的想法化成行動」？",o:["知道有人需要幫助後，主動規畫募款活動。","看到問題後，假裝沒看見。","一直說想幫忙，但從不開始。","只要求別人幫忙。"],a:0,e:"真正的行動包含發現問題後採取具體做法。"},
+ {id:"e8",q:"下列哪個語詞中的字形完全正確？",o:["蚊帳","蚊脹","文帳","聞帳"],a:0,e:"正確寫法是「蚊帳」。"},
+ {id:"e9",q:"哪一個是「捐贈」最合理的受詞？",o:["愛心物資","跑步速度","天空顏色","下課時間"],a:0,e:"物資、書籍、款項等都可以用「捐贈」搭配。"},
+ {id:"e10",q:"本課閱讀重點最適合下列哪項能力？",o:["整理人物行動與事件發展","背誦所有標點符號名稱","只看插圖猜答案","計算面積"],a:0,e:"這一課可練習從人物行動和事件發展整理文章重點。"},
+ {id:"e11",q:"「瘧疾」和哪一項最有關？",o:["疾病","樂器","交通工具","植物"],a:0,e:"瘧疾是一種疾病。"},
+ {id:"e12",q:"哪一句最適合使用「募集」？",o:["班上正在募集二手書送給偏鄉學校。","弟弟募集一碗麵吃。","我募集電視節目。","天空募集一朵雲。"],a:0,e:"募集常搭配物資、善款、人員等。"},
+ {id:"e13",q:"「收藏」與「捐贈」在行動上有什麼不同？",o:["收藏是保留，捐贈是送出","收藏是送出，捐贈是保留","兩者完全一樣","兩者都指生病"],a:0,e:"收藏是把物品保存起來；捐贈是送給別人。"},
+ {id:"e14",q:"要判斷一篇文章的主旨，最應該注意什麼？",o:["主要事件與作者想傳達的重點","每一行有幾個字","紙張顏色","插圖數量"],a:0,e:"主旨通常從主要事件和文章核心意思整理而來。"},
+ {id:"e15",q:"「生存」的反義詞最接近哪一個？",o:["死亡","聚集","收藏","前往"],a:0,e:"「生存」和「死亡」意思相反。"},
+ {id:"e16",q:"下列哪句最符合「看見需要、付諸行動」？",o:["發現同學沒帶文具，主動借給他。","看到垃圾後繞路離開。","知道問題後只抱怨。","等待別人全部完成。"],a:0,e:"看到需要後採取具體行動，最符合本課精神。"},
+ {id:"e17",q:"「赴」在「全力以赴」中可理解為什麼？",o:["前往、投入","停止","收藏","疾病"],a:0,e:"「赴」有前往、投入的意思。"},
+ {id:"e18",q:"哪一組最適合當作事件發展順序？",o:["發現問題→想方法→行動→產生影響","結果→原因→人物→標題","插圖→頁碼→封面→紙張","答案→題目→課本→鉛筆"],a:0,e:"這組順序能清楚整理事件發展。"},
+ {id:"e19",q:"下列何者最能表示「持續」？",o:["活動結束後仍繼續推廣","只做一次就忘記","還沒開始就放棄","把事情推給別人"],a:0,e:"持續就是不中斷、繼續做下去。"},
+ {id:"e20",q:"本課最重要的學習精神，下列何者最適合？",o:["關心他人並把善意化成行動","只追求獎狀","什麼事都不必合作","遇到問題就放棄"],a:0,e:"本課核心在於關心他人、主動行動與擴大善意影響。"},
+ {id:"e21",q:"下列哪一個不是「募集」常搭配的詞？",o:["善款","物資","志工","天空"],a:3,e:"募集常搭配善款、物資、志工等，不能說「募集天空」。"},
+ {id:"e22",q:"哪一個詞可用來形容『把東西送出去幫助他人』？",o:["捐贈","收藏","躲藏","叮咬"],a:0,e:"把物品或金錢送給需要的人可用「捐贈」。"},
+ {id:"e23",q:"如果文章提到『先了解需求，再決定怎麼幫助』，這反映什麼做事方式？",o:["先了解再行動","完全不思考","只憑運氣","只等別人"],a:0,e:"先了解情況再採取行動，做法較有方向。"},
+ {id:"e24",q:"下列哪一項最能表現合作精神？",o:["和同學一起規畫活動","自己把所有人排除","拒絕交換意見","只命令別人"],a:0,e:"共同規畫、互相分工是合作的表現。"},
+ {id:"e25",q:"「獎勵」和「獎狀」的共同字是？",o:["獎","狀","勵","勞"],a:0,e:"兩個語詞都含「獎」字。"},
+ {id:"e26",q:"下列哪一句最適合放入『寄送』？",o:["我們把募集到的物資寄送出去。","我們把操場寄送得很大。","我們把天空寄送成藍色。","我們把聲音寄送得很甜。"],a:0,e:"包裹、物資、文件等可以使用「寄送」。"},
+ {id:"e27",q:"如果一篇文章一直描寫人物如何幫助別人，主旨可能是什麼？",o:["關心他人與實際行動的重要","天氣變化","數學計算","運動規則"],a:0,e:"從主要事件可推敲文章要傳達的核心精神。"},
+ {id:"e28",q:"『把小小的善意變成更大的力量』最接近哪一個意思？",o:["個人的行動可以帶動更多人","只有大人才有能力幫忙","幫助別人一定要花很多錢","善意沒有實際作用"],a:0,e:"小小的行動經由分享和合作，可以擴大影響。"},
+ {id:"e29",q:"要整理人物行動，可優先找哪一類語句？",o:["描述人物做了什麼的句子","只描述天氣的句子","只看標點符號","只找最長的句子"],a:0,e:"人物行動就是人物實際做了哪些事情。"},
+ {id:"e30",q:"完成本課複習後，最應能做到哪一項？",o:["理解字詞並整理事件重點","只記住頁碼","只背插圖顏色","完全不看上下文"],a:0,e:"本課學習應包含字詞理解與閱讀重點整理。"}
+]
+
+};
+
+const matchPairs = [
+ ["募集","招募、聚集"],["捐贈","捐獻、贈送"],["獎狀","獎勵用的證書"],["收藏","收集並保存"],
+ ["瘧疾","由蚊媒等傳播的疾病之一"],["全力以赴","投入全部心力"],["寄送","把物品寄出去"],
+ ["生存","維持生命、活著"],["聚集","集中在一起"],["基金","為特定目的籌集或保留的金錢"]
+];
+
+const KEY="shiquan_g5_chinese_l1_v3_80";
+let state = JSON.parse(localStorage.getItem(KEY)||'{"answered":{},"wrong":{},"matchDone":[],"score":0}');
+function save(){ localStorage.setItem(KEY,JSON.stringify(state)); updateStats(); }
+
+document.querySelectorAll("#nav button").forEach(b=>{
+  b.onclick=()=>{
+    document.querySelectorAll("#nav button").forEach(x=>x.classList.remove("active"));
+    document.querySelectorAll(".page").forEach(x=>x.classList.remove("active"));
+    b.classList.add("active"); document.getElementById(b.dataset.page).classList.add("active");
+    if(b.dataset.page==="wrong") renderWrong();
+    window.scrollTo({top:document.querySelector("#nav").offsetTop-10,behavior:"smooth"});
+  };
+});
+
+function speak(text){
+  if(!("speechSynthesis" in window)){alert("此瀏覽器不支援語音功能");return}
+  speechSynthesis.cancel();
+  const u=new SpeechSynthesisUtterance(text);u.lang="zh-TW";u.rate=.85;speechSynthesis.speak(u);
+}
+
+function renderVocab(){
+ const el=document.getElementById("learnVocab");
+ el.innerHTML=vocab.map(([a,b])=>`<div class="item"><div class="char">${a}</div><b>${b}</b><br><button class="speak" onclick="speak('${a}，${b}')">🔊 聽讀音</button></div>`).join("");
+}
+
+function renderQuiz(kind, target){
+ const arr=questions[kind], el=document.getElementById(target);
+ el.innerHTML=arr.map((x,i)=>`
+ <div class="q" id="q_${x.id}">
+   <div class="q-title">${i+1}. ${x.q}</div>
+   ${x.o.map((o,j)=>`<button class="opt" onclick="answer('${kind}','${x.id}',${j},this)">${String.fromCharCode(65+j)}. ${o}</button>`).join("")}
+   <div class="feedback" id="f_${x.id}"></div>
+ </div>`).join("");
+}
+
+function getQ(kind,id){return questions[kind].find(x=>x.id===id)}
+function answer(kind,id,choice,btn){
+ const q=getQ(kind,id), box=document.getElementById("q_"+id), fb=document.getElementById("f_"+id);
+ box.querySelectorAll(".opt").forEach(x=>x.disabled=true);
+ const ok=choice===q.a;
+ box.querySelectorAll(".opt")[q.a].classList.add("correct");
+ if(!ok) btn.classList.add("wrong");
+ fb.className="feedback "+(ok?"ok":"bad");
+ fb.innerHTML=(ok?"✅ 答對了！ ":"❌ 再複習一下。 ")+q.e;
+ const first=!state.answered[id];
+ state.answered[id]={kind,choice,ok};
+ if(ok){
+   delete state.wrong[id];
+   if(first) state.score+=10;
+ }else{
+   state.wrong[id]={kind,id};
+ }
+ save();
+ if(kind==="exam") updateExamResult();
+}
+
+function allQuestionCount(){return [...questions.vocab,...questions.reading,...questions.exam].length + matchPairs.length}
+function updateStats(){
+ const vals=Object.values(state.answered);
+ const correct=vals.filter(x=>x.ok).length + state.matchDone.length;
+ const answered=vals.length + state.matchDone.length;
+ document.getElementById("totalScore").textContent=state.score + state.matchDone.length*5;
+ document.getElementById("correctCount").textContent=correct;
+ document.getElementById("answeredCount").textContent=answered;
+ document.getElementById("accuracy").textContent=answered?Math.round(correct/answered*100)+"%":"0%";
+ const pct=Math.round(answered/allQuestionCount()*100);
+ document.getElementById("progressText").textContent=pct+"%";
+ document.getElementById("progressBar").style.width=pct+"%";
+}
+
+function updateExamResult(){
+ const ids=questions.exam.map(x=>x.id), ans=ids.filter(id=>state.answered[id]);
+ if(!ans.length){document.getElementById("examResult").innerHTML="";return}
+ const ok=ans.filter(id=>state.answered[id].ok).length;
+ document.getElementById("examResult").innerHTML=`<div class="result-big"><div>目前模擬測驗</div><div class="score">${ok*10}</div><div>已作答 ${ans.length}/30 題｜答對 ${ok} 題</div></div>`;
+}
+
+function renderWrong(){
+ const keys=Object.keys(state.wrong), el=document.getElementById("wrongList");
+ if(!keys.length){el.innerHTML='<div class="goodnote">🎉 目前沒有錯題！繼續保持。</div>';return}
+ el.innerHTML=keys.map(id=>{
+   const it=state.wrong[id], q=getQ(it.kind,id);
+   return `<div class="q"><div class="q-title">${q.q}</div>
+   ${q.o.map((o,j)=>`<button class="opt" onclick="redoWrong('${it.kind}','${id}',${j},this)">${String.fromCharCode(65+j)}. ${o}</button>`).join("")}
+   <div class="feedback" id="wf_${id}"></div></div>`;
+ }).join("");
+}
+function redoWrong(kind,id,choice,btn){
+ const q=getQ(kind,id), fb=document.getElementById("wf_"+id), box=btn.parentElement;
+ box.querySelectorAll(".opt").forEach(x=>x.disabled=true);
+ if(choice===q.a){
+   btn.classList.add("correct"); delete state.wrong[id]; state.answered[id]={kind,choice,ok:true};
+   fb.className="feedback ok";fb.textContent="✅ 這次答對了！已從錯題本移除。";
+ }else{
+   btn.classList.add("wrong");box.querySelectorAll(".opt")[q.a].classList.add("correct");
+   fb.className="feedback bad";fb.textContent="❌ 還差一點："+q.e;
+ }
+ save(); setTimeout(renderWrong,1100);
+}
+function clearWrong(){state.wrong={};save();renderWrong()}
+function resetAll(){if(confirm("確定要清除第1課全部學習紀錄嗎？")){localStorage.removeItem(KEY);location.reload()}}
+
+let selectedLeft=null;
+function shuffle(a){return [...a].sort(()=>Math.random()-.5)}
+function renderMatch(){
+ selectedLeft=null;
+ const done=new Set(state.matchDone||[]);
+ document.getElementById("matchLeft").innerHTML=matchPairs.map(([l])=>`<button class="match-btn ${done.has(l)?"done":""}" ${done.has(l)?"disabled":""} onclick="pickLeft(this,'${l}')">${l}</button>`).join("");
+ document.getElementById("matchRight").innerHTML=shuffle(matchPairs).map(([l,r])=>`<button class="match-btn ${done.has(l)?"done":""}" ${done.has(l)?"disabled":""} data-left="${l}" onclick="pickRight(this,'${l}')">${r}</button>`).join("");
+}
+function pickLeft(btn,l){
+ document.querySelectorAll("#matchLeft .match-btn").forEach(x=>x.classList.remove("sel"));
+ btn.classList.add("sel"); selectedLeft=l;
+}
+function pickRight(btn,l){
+ const msg=document.getElementById("matchMsg");
+ if(!selectedLeft){msg.className="feedback bad";msg.textContent="請先選左邊的語詞。";return}
+ if(selectedLeft===l){
+   state.matchDone=Array.from(new Set([...(state.matchDone||[]),l]));
+   msg.className="feedback ok";msg.textContent="✅ 配對成功！";
+   save();renderMatch();
+ }else{
+   msg.className="feedback bad";msg.textContent="❌ 不是這一組，再試一次。";
+ }
+}
+function resetMatch(){state.matchDone=[];save();renderMatch();document.getElementById("matchMsg").className="feedback";}
+
+renderVocab();
+renderQuiz("vocab","vocabQuiz");
+renderQuiz("reading","readingQuiz");
+renderQuiz("exam","examQuiz");
+renderMatch();updateStats();updateExamResult();
+</script>
+</body>
+</html>

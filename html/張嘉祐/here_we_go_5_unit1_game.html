@@ -1,0 +1,451 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Here We Go 5｜Unit 1 星期大冒險</title>
+<style>
+  :root{
+    --bg:#f7fbff; --card:#ffffff; --ink:#17324d; --muted:#6b7d90;
+    --brand:#4f7cff; --brand2:#8c63ff; --good:#19a974; --bad:#df4b5f;
+    --line:#dbe7f3; --shadow:0 12px 30px rgba(38,77,120,.12);
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:system-ui,-apple-system,"Segoe UI","Noto Sans TC",sans-serif;background:linear-gradient(160deg,#eff7ff,#faf8ff 55%,#fffef3);color:var(--ink)}
+  button{font:inherit}
+  .wrap{max-width:1100px;margin:auto;padding:20px}
+  .hero{background:linear-gradient(135deg,#4f7cff,#8c63ff);color:white;border-radius:24px;padding:28px;box-shadow:var(--shadow);position:relative;overflow:hidden}
+  .hero:after{content:"📅";position:absolute;right:28px;top:18px;font-size:90px;opacity:.18}
+  .hero h1{margin:0 0 8px;font-size:clamp(28px,5vw,46px)}
+  .hero p{margin:6px 0;max-width:760px}
+  .tag{display:inline-block;background:rgba(255,255,255,.18);padding:6px 10px;border-radius:999px;margin:4px 6px 0 0;font-size:14px}
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:16px 0}
+  .stat{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:14px;text-align:center;box-shadow:var(--shadow)}
+  .stat b{display:block;font-size:24px}
+  .nav{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin:18px 0}
+  .nav button{border:none;border-radius:18px;padding:16px 12px;background:white;box-shadow:var(--shadow);cursor:pointer;font-weight:800;color:var(--ink)}
+  .nav button.active{background:linear-gradient(135deg,#eef3ff,#f1ecff);outline:3px solid #b9c7ff}
+  .panel{display:none;background:var(--card);border:1px solid var(--line);border-radius:24px;padding:22px;box-shadow:var(--shadow);margin-bottom:18px}
+  .panel.active{display:block}
+  .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+  .card{border:1px solid var(--line);border-radius:18px;padding:16px;background:#fff;min-height:130px;display:flex;flex-direction:column;justify-content:space-between}
+  .word{font-size:24px;font-weight:900}
+  .zh{color:var(--muted)}
+  .speak{align-self:flex-start;border:none;background:#edf3ff;color:#3459c7;border-radius:12px;padding:8px 12px;cursor:pointer}
+  .gamebox{max-width:760px;margin:0 auto}
+  .question{font-size:clamp(24px,4vw,38px);font-weight:900;margin:14px 0 18px;text-align:center}
+  .choices{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+  .choice{padding:16px;border:2px solid var(--line);background:#fff;border-radius:16px;cursor:pointer;font-weight:800;min-height:64px}
+  .choice:hover{border-color:#9fb3ff;background:#f7f9ff}
+  .choice.good{border-color:#60d2ac;background:#effcf7}
+  .choice.bad{border-color:#f1a3ad;background:#fff4f6}
+  .feedback{text-align:center;min-height:34px;font-weight:900;margin:12px 0}
+  .feedback.good{color:var(--good)} .feedback.bad{color:var(--bad)}
+  .next{display:block;margin:12px auto 0;border:none;background:linear-gradient(135deg,var(--brand),var(--brand2));color:#fff;font-weight:900;border-radius:14px;padding:12px 20px;cursor:pointer}
+  .next:disabled{opacity:.45;cursor:not-allowed}
+  .match-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+  .match-card{min-height:84px;border:2px solid var(--line);border-radius:16px;background:#fff;cursor:pointer;font-weight:900;padding:10px}
+  .match-card.selected{border-color:#8c63ff;background:#f4efff}
+  .match-card.matched{border-color:#70d8b8;background:#effcf7;opacity:.65;cursor:default}
+  .sentence{background:#f8fbff;border:1px dashed #aabed4;border-radius:16px;padding:14px;margin:10px 0}
+  .footer{color:var(--muted);font-size:13px;text-align:center;padding:6px 0 24px}
+  .small{font-size:14px;color:var(--muted)}
+  .pill{display:inline-block;padding:5px 9px;border-radius:999px;background:#edf3ff;color:#3756a8;font-size:13px;font-weight:700}
+  @media(max-width:760px){
+    .stats,.nav,.grid{grid-template-columns:repeat(2,1fr)}
+    .match-grid{grid-template-columns:repeat(2,1fr)}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <section class="hero">
+    <div class="pill">十全國小五年級｜翰林 Here We Go 5</div>
+    <h1>Unit 1 星期大冒險</h1>
+    <p><b>What Day Is Today?</b> 透過單字卡、配對、選擇題與句型闖關練習星期英文。</p>
+    <span class="tag">Sunday–Saturday</span>
+    <span class="tag">What day is today?</span>
+    <span class="tag">Is it Monday today?</span>
+  </section>
+
+  <section class="stats">
+    <div class="stat"><span>⭐ 分數</span><b id="score">0</b></div>
+    <div class="stat"><span>🔥 連對</span><b id="streak">0</b></div>
+    <div class="stat"><span>🏆 最佳連對</span><b id="best">0</b></div>
+    <div class="stat"><span>✅ 答對</span><b id="correct">0</b></div>
+  </section>
+
+  <nav class="nav">
+    <button class="tab active" data-panel="learn">📚 單字卡</button>
+    <button class="tab" data-panel="match">🧩 配對遊戲</button>
+    <button class="tab" data-panel="quiz">🎯 快問快答</button>
+    <button class="tab" data-panel="sentence">🚀 句型闖關</button>
+    <button class="tab" data-panel="pronounce">🎤 發音練習</button>
+  </nav>
+
+  <section id="learn" class="panel active">
+    <h2>📚 單字學習卡</h2>
+    <p class="small">按 🔊 可用瀏覽器語音唸出英文。</p>
+    <div id="wordCards" class="grid"></div>
+    <div class="sentence">
+      <b>本課重點句型</b><br>
+      What day is today? → It’s Friday.<br>
+      What day is it? → It’s Tuesday.<br>
+      Is it Monday today? → Yes, it is. / No, it isn’t. It’s Tuesday.
+    </div>
+  </section>
+
+  <section id="match" class="panel">
+    <h2>🧩 中英配對</h2>
+    <p>找出相同意思的英文與中文。全部配完可獲得額外 50 分！</p>
+    <div id="matchGrid" class="match-grid"></div>
+    <div id="matchMsg" class="feedback"></div>
+    <button class="next" onclick="startMatch()">重新洗牌</button>
+  </section>
+
+  <section id="quiz" class="panel">
+    <h2>🎯 快問快答</h2>
+    <div class="gamebox">
+      <div id="quizQuestion" class="question"></div>
+      <div id="quizChoices" class="choices"></div>
+      <div id="quizFeedback" class="feedback"></div>
+      <button id="quizNext" class="next" onclick="nextQuiz()" disabled>下一題</button>
+    </div>
+  </section>
+
+  <section id="sentence" class="panel">
+    <h2>🚀 句型闖關</h2>
+    <p class="small">題目皆為依本課句型自行設計的練習。</p>
+    <div class="gamebox">
+      <div id="sentQuestion" class="question"></div>
+      <div id="sentChoices" class="choices"></div>
+      <div id="sentFeedback" class="feedback"></div>
+      <button id="sentNext" class="next" onclick="nextSentence()" disabled>下一關</button>
+    </div>
+  </section>
+
+
+  <section id="pronounce" class="panel">
+    <h2>🎤 發音練習評分</h2>
+    <p class="small">建議使用 Chrome 或 Edge，並允許麥克風權限。系統會依「語音辨識結果與目標句子的接近程度」給分，適合日常練習，不等同專業口說測驗。</p>
+    <div class="gamebox">
+      <div style="text-align:center;margin:10px 0">
+        <span class="pill" id="pronType">單字練習</span>
+      </div>
+      <div id="pronTarget" class="question">Monday</div>
+      <div style="text-align:center">
+        <button class="speak" id="pronListen">🔊 先聽示範</button>
+        <button class="next" id="pronStart" style="display:inline-block;margin:8px">🎤 開始錄音</button>
+        <button class="speak" id="pronNew">🎲 換一題</button>
+      </div>
+      <div id="pronStatus" class="feedback">按「開始錄音」後念出上方英文。</div>
+      <div class="sentence">
+        <b>你說的是：</b> <span id="pronHeard">—</span><br>
+        <b>發音分數：</b> <span id="pronScore" style="font-size:28px;font-weight:900">—</span><br>
+        <b>評語：</b> <span id="pronComment">—</span>
+      </div>
+      <div style="text-align:center">
+        <button class="speak" id="pronWordMode">單字模式</button>
+        <button class="speak" id="pronSentenceMode">句型模式</button>
+      </div>
+    </div>
+  </section>
+
+  <div style="text-align:center;margin:16px">
+    <button class="next" onclick="resetAll()">🔄 全部重新開始</button>
+  </div>
+  <div class="footer">學習用途｜題目為原創練習，不重製課本故事內容。</div>
+</div>
+
+<script>
+const words = [
+  ["Sunday","星期日","☀️"],["Monday","星期一","🌙"],["Tuesday","星期二","🌮"],["Wednesday","星期三","🐪"],
+  ["Thursday","星期四","⚡"],["Friday","星期五","🎉"],["Saturday","星期六","🎮"],["today","今天","📅"]
+];
+
+let score=0, streak=0, best=0, correct=0;
+function renderStats(){
+  scoreEl.textContent=score; streakEl.textContent=streak; bestEl.textContent=best; correctEl.textContent=correct;
+}
+const scoreEl=document.getElementById("score"), streakEl=document.getElementById("streak"),
+bestEl=document.getElementById("best"), correctEl=document.getElementById("correct");
+
+function reward(points=10){
+  streak++; correct++; best=Math.max(best,streak); score += points + Math.min(streak-1,5)*2; renderStats();
+}
+function miss(){ streak=0; renderStats(); }
+
+function speak(text){
+  if(!("speechSynthesis" in window)) return;
+  speechSynthesis.cancel();
+  const u=new SpeechSynthesisUtterance(text); u.lang="en-US"; u.rate=.82;
+  speechSynthesis.speak(u);
+}
+
+const wordCards=document.getElementById("wordCards");
+words.forEach(([en,zh,emo])=>{
+  const d=document.createElement("div"); d.className="card";
+  d.innerHTML=`<div><div style="font-size:34px">${emo}</div><div class="word">${en}</div><div class="zh">${zh}</div></div>
+  <button class="speak">🔊 聽發音</button>`;
+  d.querySelector("button").onclick=()=>speak(en);
+  wordCards.appendChild(d);
+});
+
+document.querySelectorAll(".tab").forEach(btn=>{
+  btn.onclick=()=>{
+    document.querySelectorAll(".tab").forEach(x=>x.classList.remove("active"));
+    document.querySelectorAll(".panel").forEach(x=>x.classList.remove("active"));
+    btn.classList.add("active"); document.getElementById(btn.dataset.panel).classList.add("active");
+  }
+});
+
+function shuffle(a){ return [...a].sort(()=>Math.random()-.5); }
+
+// MATCH
+let first=null, lockMatch=false, matched=0;
+function startMatch(){
+  const deck=shuffle(words.flatMap(([en,zh],i)=>[
+    {id:i,txt:en,type:"en"},{id:i,txt:zh,type:"zh"}
+  ]));
+  const grid=document.getElementById("matchGrid"); grid.innerHTML="";
+  document.getElementById("matchMsg").textContent="";
+  first=null; matched=0; lockMatch=false;
+  deck.forEach(item=>{
+    const b=document.createElement("button"); b.className="match-card"; b.textContent=item.txt; b.dataset.id=item.id; b.dataset.type=item.type;
+    b.onclick=()=>pickMatch(b,item); grid.appendChild(b);
+  });
+}
+function pickMatch(btn,item){
+  if(lockMatch||btn.classList.contains("matched")||btn===first) return;
+  btn.classList.add("selected");
+  if(!first){ first=btn; return; }
+  lockMatch=true;
+  const same=first.dataset.id===String(item.id) && first.dataset.type!==item.type;
+  if(same){
+    first.classList.remove("selected"); btn.classList.remove("selected");
+    first.classList.add("matched"); btn.classList.add("matched"); reward(10); matched++;
+    document.getElementById("matchMsg").textContent="配對成功！+ 分";
+    document.getElementById("matchMsg").className="feedback good";
+    first=null; lockMatch=false;
+    if(matched===words.length){ score+=50; renderStats(); document.getElementById("matchMsg").textContent="🎉 全部完成！額外 +50 分"; }
+  }else{
+    miss(); document.getElementById("matchMsg").textContent="再試一次！";
+    document.getElementById("matchMsg").className="feedback bad";
+    setTimeout(()=>{first.classList.remove("selected");btn.classList.remove("selected");first=null;lockMatch=false;},650);
+  }
+}
+
+// QUIZ
+let quizLocked=false;
+function makeQuiz(){
+  const pool = words.slice(0,7);
+  const target=pool[Math.floor(Math.random()*pool.length)];
+  const mode=Math.random()<.5 ? "zh2en":"en2zh";
+  const answer=mode==="zh2en"?target[0]:target[1];
+  const q=mode==="zh2en"?`「${target[1]}」的英文是？`:`${target[0]} 是星期幾？`;
+  let wrong=shuffle(pool.filter(x=>x!==target)).slice(0,3).map(x=>mode==="zh2en"?x[0]:x[1]);
+  return {q,answer,choices:shuffle([answer,...wrong])};
+}
+function nextQuiz(){
+  quizLocked=false; document.getElementById("quizNext").disabled=true;
+  const data=makeQuiz(); const q=document.getElementById("quizQuestion"), box=document.getElementById("quizChoices"), fb=document.getElementById("quizFeedback");
+  q.textContent=data.q; box.innerHTML=""; fb.textContent=""; fb.className="feedback";
+  data.choices.forEach(c=>{
+    const b=document.createElement("button"); b.className="choice"; b.textContent=c;
+    b.onclick=()=>{
+      if(quizLocked)return; quizLocked=true;
+      [...box.children].forEach(x=>x.disabled=true);
+      if(c===data.answer){b.classList.add("good");fb.textContent="✅ 答對了！";fb.className="feedback good";reward(12); if(/[A-Za-z]/.test(c))speak(c);}
+      else{b.classList.add("bad");fb.textContent=`❌ 正確答案：${data.answer}`;fb.className="feedback bad";miss(); [...box.children].find(x=>x.textContent===data.answer)?.classList.add("good");}
+      document.getElementById("quizNext").disabled=false;
+    }; box.appendChild(b);
+  });
+}
+
+// SENTENCE
+const sentBank=[
+  {q:"今天是星期五。哪一句回答最正確？",a:"It’s Friday.",c:["It’s Friday.","Is it Friday?","What day is Friday?","Today Friday is."]},
+  {q:"想問「今天星期幾？」",a:"What day is today?",c:["What day is today?","What time is today?","How day is today?","What is day today?"]},
+  {q:"想問「今天是星期一嗎？」",a:"Is it Monday today?",c:["Is it Monday today?","It is Monday today?","Are it Monday today?","What Monday is today?"]},
+  {q:"A: Is it Monday today? B: 今天其實是星期二。",a:"No, it isn’t. It’s Tuesday.",c:["No, it isn’t. It’s Tuesday.","Yes, it is. It’s Tuesday.","No, it don’t. Tuesday.","It Tuesday no."]},
+  {q:"A: What day is it? B: 星期三。",a:"It’s Wednesday.",c:["It’s Wednesday.","Is Wednesday.","Wednesday it?","What Wednesday."]},
+  {q:"A: Is it Saturday today? B: 對，今天是。",a:"Yes, it is.",c:["Yes, it is.","Yes, it does.","Yes, today.","It yes."]},
+  {q:"選出拼字正確的「星期四」",a:"Thursday",c:["Thursday","Thrusday","Thurday","Thusday"]},
+  {q:"選出拼字正確的「星期三」",a:"Wednesday",c:["Wednesday","Wendesday","Wednsday","Wensday"]}
+];
+let sentIndex=0, sentLocked=false, sentOrder=[];
+function startSentence(){ sentOrder=shuffle(sentBank); sentIndex=0; showSentence(); }
+function showSentence(){
+  sentLocked=false; document.getElementById("sentNext").disabled=true;
+  const data=sentOrder[sentIndex%sentOrder.length], q=document.getElementById("sentQuestion"), box=document.getElementById("sentChoices"), fb=document.getElementById("sentFeedback");
+  q.textContent=`第 ${sentIndex+1} 關｜${data.q}`; box.innerHTML=""; fb.textContent=""; fb.className="feedback";
+  shuffle(data.c).forEach(c=>{
+    const b=document.createElement("button"); b.className="choice"; b.textContent=c;
+    b.onclick=()=>{
+      if(sentLocked)return; sentLocked=true; [...box.children].forEach(x=>x.disabled=true);
+      if(c===data.a){b.classList.add("good"); fb.textContent="🌟 過關！"; fb.className="feedback good"; reward(15);}
+      else{b.classList.add("bad"); fb.textContent=`正確答案：${data.a}`; fb.className="feedback bad"; miss(); [...box.children].find(x=>x.textContent===data.a)?.classList.add("good");}
+      document.getElementById("sentNext").disabled=false;
+    }; box.appendChild(b);
+  });
+}
+function nextSentence(){ sentIndex++; if(sentIndex>=sentOrder.length){score+=80;renderStats();alert("🏆 句型闖關完成！額外 +80 分");startSentence();} else showSentence(); }
+
+
+// PRONUNCIATION PRACTICE
+const pronWords = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+const pronSentences = [
+  "What day is today?",
+  "It is Monday.",
+  "It is Tuesday.",
+  "It is Wednesday.",
+  "It is Thursday.",
+  "It is Friday.",
+  "Is it Saturday today?",
+  "Yes, it is.",
+  "No, it isn't."
+];
+let pronMode = "word";
+let pronTargetText = "Monday";
+let recognition = null;
+
+function normalizeSpeech(s){
+  return (s || "")
+    .toLowerCase()
+    .replace(/[’']/g,"")
+    .replace(/[^a-z0-9 ]/g," ")
+    .replace(/\bit is\b/g,"its")
+    .replace(/\bit isnt\b/g,"it isnt")
+    .replace(/\s+/g," ")
+    .trim();
+}
+
+function levenshtein(a,b){
+  const m=a.length,n=b.length;
+  const dp=Array.from({length:m+1},()=>Array(n+1).fill(0));
+  for(let i=0;i<=m;i++) dp[i][0]=i;
+  for(let j=0;j<=n;j++) dp[0][j]=j;
+  for(let i=1;i<=m;i++){
+    for(let j=1;j<=n;j++){
+      const cost=a[i-1]===b[j-1]?0:1;
+      dp[i][j]=Math.min(dp[i-1][j]+1,dp[i][j-1]+1,dp[i-1][j-1]+cost);
+    }
+  }
+  return dp[m][n];
+}
+
+function pronunciationScore(target, heard, confidence){
+  const a=normalizeSpeech(target), b=normalizeSpeech(heard);
+  if(!b) return 0;
+  if(a===b) {
+    // Confidence is informative, but exact recognized text should score highly.
+    const bonus = typeof confidence==="number" && confidence>0 ? Math.round(confidence*5) : 3;
+    return Math.min(100,95+bonus);
+  }
+  const dist=levenshtein(a,b);
+  const charSim=Math.max(0,1-dist/Math.max(a.length,b.length,1));
+
+  const aw=a.split(" "), bw=b.split(" ");
+  const common=aw.filter(w=>bw.includes(w)).length;
+  const wordSim=common/Math.max(aw.length,bw.length,1);
+
+  let score=Math.round((charSim*0.65 + wordSim*0.35)*100);
+  if(typeof confidence==="number" && confidence>0){
+    score=Math.round(score*0.85 + confidence*100*0.15);
+  }
+  return Math.max(0,Math.min(100,score));
+}
+
+function pronComment(score){
+  if(score>=95) return "🌟 太棒了！非常接近標準辨識。";
+  if(score>=85) return "👏 很好！再注意重音與尾音會更棒。";
+  if(score>=70) return "👍 不錯！可以再聽一次示範後重念。";
+  if(score>=50) return "💪 有進步空間，慢一點、每個音節說清楚。";
+  return "🎧 再聽一次示範，放慢速度重新挑戰。";
+}
+
+function setPronTarget(){
+  const pool=pronMode==="word"?pronWords:pronSentences;
+  pronTargetText=pool[Math.floor(Math.random()*pool.length)];
+  document.getElementById("pronTarget").textContent=pronTargetText;
+  document.getElementById("pronType").textContent=pronMode==="word"?"單字練習":"句型練習";
+  document.getElementById("pronHeard").textContent="—";
+  document.getElementById("pronScore").textContent="—";
+  document.getElementById("pronComment").textContent="—";
+  document.getElementById("pronStatus").textContent="按「開始錄音」後念出上方英文。";
+  document.getElementById("pronStatus").className="feedback";
+}
+
+function setupRecognition(){
+  const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+  if(!SR) return null;
+  const r=new SR();
+  r.lang="en-US";
+  r.interimResults=false;
+  r.maxAlternatives=3;
+  r.continuous=false;
+  return r;
+}
+
+function startPronunciation(){
+  recognition = setupRecognition();
+  const status=document.getElementById("pronStatus");
+  if(!recognition){
+    status.textContent="這個瀏覽器目前不支援語音辨識。請改用最新版 Chrome 或 Edge。";
+    status.className="feedback bad";
+    return;
+  }
+  const btn=document.getElementById("pronStart");
+  btn.disabled=true;
+  status.textContent="🎙️ 正在聽…請念出上方英文";
+  status.className="feedback";
+
+  recognition.onresult=(event)=>{
+    let bestText="", bestConf=-1;
+    const results=event.results[0];
+    for(let i=0;i<results.length;i++){
+      if(results[i].confidence>bestConf){
+        bestConf=results[i].confidence;
+        bestText=results[i].transcript;
+      }
+    }
+    const sc=pronunciationScore(pronTargetText,bestText,bestConf);
+    document.getElementById("pronHeard").textContent=bestText || "未辨識到";
+    document.getElementById("pronScore").textContent=sc+" / 100";
+    document.getElementById("pronComment").textContent=pronComment(sc);
+    if(sc>=85){
+      status.textContent="✅ 發音挑戰成功！";
+      status.className="feedback good";
+      reward(sc>=95?20:12);
+    }else{
+      status.textContent="再試一次就會更好！";
+      status.className="feedback bad";
+      miss();
+    }
+  };
+  recognition.onerror=(event)=>{
+    const map={
+      "not-allowed":"麥克風權限被拒絕，請在瀏覽器允許此網站使用麥克風。",
+      "audio-capture":"找不到可用的麥克風。",
+      "no-speech":"沒有聽到聲音，請靠近麥克風再試一次。",
+      "network":"語音辨識服務連線失敗，請確認網路連線。"
+    };
+    status.textContent=map[event.error]||("語音辨識失敗："+event.error);
+    status.className="feedback bad";
+  };
+  recognition.onend=()=>{btn.disabled=false;};
+  try{ recognition.start(); }catch(e){ btn.disabled=false; }
+}
+
+document.getElementById("pronListen").onclick=()=>speak(pronTargetText);
+document.getElementById("pronStart").onclick=startPronunciation;
+document.getElementById("pronNew").onclick=setPronTarget;
+document.getElementById("pronWordMode").onclick=()=>{pronMode="word";setPronTarget();};
+document.getElementById("pronSentenceMode").onclick=()=>{pronMode="sentence";setPronTarget();};
+
+function resetAll(){ score=0;streak=0;best=0;correct=0;renderStats();startMatch();nextQuiz();startSentence();setPronTarget(); }
+
+startMatch(); nextQuiz(); startSentence(); setPronTarget(); renderStats();
+</script>
+</body>
+</html>

@@ -1,0 +1,12 @@
+allowBuilds:
+  esbuild: true
+  fflate: false
+  node-int64: false
+  read-excel-file: false
+  saxen: false
+  sharp: true
+  tesseract.js: false
+  unzipper-esm: false
+  worker-f: false
+  workerd: true
+

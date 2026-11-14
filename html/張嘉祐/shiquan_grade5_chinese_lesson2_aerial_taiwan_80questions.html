@@ -1,0 +1,426 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>十全國小五年級｜國語康軒五上 第2課 從空中看臺灣｜互動複習</title>
+<style>
+:root{
+  --bg:#f6f8ff; --card:#ffffff; --ink:#24304a; --muted:#667085;
+  --primary:#5b6cff; --primary2:#7c4dff; --ok:#198754; --bad:#d92d20;
+  --warn:#f59e0b; --line:#e5e7eb; --shadow:0 10px 28px rgba(56,68,120,.10);
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:"Noto Sans TC","Microsoft JhengHei",system-ui,sans-serif;background:
+radial-gradient(circle at 10% 10%,#e9ecff 0,transparent 28%),
+radial-gradient(circle at 90% 0%,#f3e8ff 0,transparent 24%),var(--bg);color:var(--ink)}
+button,input{font:inherit}
+.wrap{max-width:1100px;margin:auto;padding:18px}
+.hero{background:linear-gradient(135deg,#5867ff,#8a56ff);color:#fff;border-radius:24px;padding:26px;box-shadow:var(--shadow);position:relative;overflow:hidden}
+.hero:after{content:"✦";position:absolute;right:26px;top:8px;font-size:96px;opacity:.14}
+.hero h1{margin:0 0 8px;font-size:clamp(25px,4vw,38px)}
+.hero p{margin:5px 0;opacity:.96}
+.badge{display:inline-block;background:rgba(255,255,255,.18);padding:7px 11px;border-radius:999px;margin-right:8px;margin-top:8px;font-size:14px}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:14px 0}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:13px;text-align:center;box-shadow:var(--shadow)}
+.stat b{display:block;font-size:24px}
+.nav{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0}
+.nav button{border:0;background:#fff;border-radius:999px;padding:10px 14px;box-shadow:var(--shadow);cursor:pointer;color:var(--ink)}
+.nav button.active{background:var(--primary);color:#fff}
+.page{display:none}
+.page.active{display:block}
+.card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:18px;margin:12px 0;box-shadow:var(--shadow)}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+h2{margin:0 0 12px}
+h3{margin:8px 0}
+.note{background:#fff8e6;border-left:5px solid var(--warn);padding:12px 14px;border-radius:12px}
+.goodnote{background:#eefaf4;border-left:5px solid var(--ok);padding:12px 14px;border-radius:12px}
+.vocab{display:grid;grid-template-columns:repeat(auto-fit,minmax(155px,1fr));gap:10px}
+.vocab .item{border:1px solid var(--line);border-radius:16px;padding:13px;background:#fbfcff}
+.vocab .char{font-size:32px;font-weight:800;color:var(--primary2)}
+.vocab small{color:var(--muted)}
+.speak{border:0;border-radius:10px;padding:6px 9px;background:#eef0ff;cursor:pointer}
+.q{border:1px solid var(--line);border-radius:18px;padding:16px;margin:12px 0;background:#fff}
+.q-title{font-weight:800;margin-bottom:10px;line-height:1.6}
+.opt{display:block;width:100%;text-align:left;border:1px solid #d9ddeb;background:#fff;border-radius:12px;padding:10px 12px;margin:8px 0;cursor:pointer}
+.opt:hover{border-color:var(--primary);background:#f7f7ff}
+.opt.correct{background:#e9f8ef;border-color:var(--ok)}
+.opt.wrong{background:#fff0ef;border-color:var(--bad)}
+.feedback{margin-top:8px;padding:10px 12px;border-radius:12px;display:none}
+.feedback.ok{display:block;background:#e9f8ef;color:#11643b}
+.feedback.bad{display:block;background:#fff0ef;color:#8b1e16}
+.primary,.secondary{border:0;border-radius:12px;padding:10px 14px;cursor:pointer}
+.primary{background:var(--primary);color:white}
+.secondary{background:#eef0f5;color:#24304a}
+.actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:12px}
+.progress{height:12px;background:#e9ecf5;border-radius:999px;overflow:hidden}
+.progress i{display:block;height:100%;background:linear-gradient(90deg,#5b6cff,#9a5cff);width:0}
+.match-board{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.match-col{display:flex;flex-direction:column;gap:8px}
+.match-btn{padding:10px;border:1px solid var(--line);border-radius:12px;background:#fff;cursor:pointer}
+.match-btn.sel{outline:3px solid #cfd3ff}
+.match-btn.done{opacity:.45;text-decoration:line-through}
+.result-big{text-align:center;padding:20px}
+.result-big .score{font-size:54px;font-weight:900;color:var(--primary2)}
+.pill{display:inline-block;border-radius:999px;padding:6px 10px;background:#f0f1f6;margin:4px}
+footer{color:var(--muted);font-size:13px;text-align:center;padding:24px 8px}
+@media(max-width:720px){.stats{grid-template-columns:1fr 1fr}.grid2{grid-template-columns:1fr}.hero{padding:20px}.match-board{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <section class="hero">
+    <div class="badge">十全國小五年級｜第一次段考複習</div>
+    <div class="badge">康軒國語五上</div>
+    <h1>第2課｜從空中看臺灣 🇹🇼</h1>
+    <p>自編互動練習：生字語詞、課文結構、因果推論、觀點辨識、閱讀理解、模擬測驗與錯題重做。</p>
+    <p style="font-size:14px">※ 本站為段考複習用自編教材，非康軒出版社官方題庫或原題。</p>
+  </section>
+
+  <section class="stats">
+    <div class="stat"><span>⭐ 總得分</span><b id="totalScore">0</b></div>
+    <div class="stat"><span>✅ 答對</span><b id="correctCount">0</b></div>
+    <div class="stat"><span>📚 已作答</span><b id="answeredCount">0</b></div>
+    <div class="stat"><span>🎯 正確率</span><b id="accuracy">0%</b></div>
+  </section>
+
+  <div class="card">
+    <div style="display:flex;justify-content:space-between;gap:12px;align-items:center">
+      <b>本課學習進度</b><span id="progressText">0%</span>
+    </div>
+    <div class="progress"><i id="progressBar"></i></div>
+  </div>
+
+  <nav class="nav" id="nav">
+    <button class="active" data-page="learn">① 課程重點</button>
+    <button data-page="vocab">② 字詞闖關</button>
+    <button data-page="reading">③ 閱讀理解</button>
+    <button data-page="match">④ 配對遊戲</button>
+    <button data-page="exam">⑤ 模擬測驗</button>
+    <button data-page="wrong">⑥ 錯題本</button>
+  </nav>
+
+  <main>
+    <section id="learn" class="page active">
+      <div class="card">
+        <h2>🎯 本課學習重點</h2>
+        <div class="grid2">
+          <div>
+            <h3>閱讀重點</h3>
+            <p>從空拍視角觀察臺灣的自然景觀與環境問題，練習找出文章中的<b>原因、結果、感受與期望</b>。</p>
+            <div class="goodnote">閱讀時可以抓住：<b>為什麼拍 → 看見什麼美麗 → 看見什麼哀愁 → 希望臺灣變得如何</b>。</div>
+          </div>
+          <div>
+            <h3>語文重點</h3>
+            <p>辨認文章中的<b>敘述、描寫與觀點</b>，並練習從上下文推論因果關係。</p>
+            <div class="note">段考容易考：形近字、語詞運用、因果關係、文章結構、作者觀點、環境議題。</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>🧠 文章概念圖（自編摘要）</h2>
+        <p>本課藉由空中視角帶讀者看見臺灣：一方面有壯麗山川、縱谷與海岸等自然之美，另一方面也能看見開發、污染與環境破壞留下的痕跡。文章最後把焦點拉回「珍惜土地、讓美麗延續」。</p>
+        <p><span class="pill">拍攝原因</span> → <span class="pill">臺灣的美麗</span> → <span class="pill">臺灣的哀愁</span> → <span class="pill">珍惜與行動</span></p>
+      </div>
+
+      <div class="card">
+        <h2>🔑 必會語詞</h2>
+        <div class="vocab" id="learnVocab"></div>
+      </div>
+    </section>
+
+    <section id="vocab" class="page">
+      <div class="card">
+        <h2>🔤 字詞闖關</h2>
+        <p>選出最合適的答案。答錯的題目會自動加入錯題本。</p><div class="goodnote">本區共有 <b>25 題</b>，建議分兩次完成。</div>
+        <div id="vocabQuiz"></div>
+      </div>
+    </section>
+
+    <section id="reading" class="page">
+      <div class="card">
+        <h2>📖 閱讀理解</h2>
+        <div class="note">以下短文為本站自編，不是課本原文。</div>
+        <div class="goodnote" style="margin-top:10px">本區共有 <b>15 題</b> 閱讀理解。</div>
+        <p style="line-height:1.9">
+          小羽第一次搭乘小型飛機從高空觀看臺灣。起飛後不久，她看見山巒像一層層波浪向遠方延伸，
+          河流穿過縱谷，陽光落在田野上，景色像一幅巨大的畫。飛行一段時間後，她也看見山坡上出現
+          大片裸露土地，河川旁堆著廢棄物，城市邊緣還有顏色異常的水流。她原本只期待欣賞風景，
+          卻開始思考：「美麗的土地，為什麼也會有這些傷痕？」返家後，她把看到的景象整理成報告，
+          並提出減少垃圾、珍惜水資源和關心土地使用等做法。她認為，只有更多人先看見問題，
+          才可能一起讓環境慢慢變好。
+        </p>
+        <div id="readingQuiz"></div>
+      </div>
+    </section>
+
+    <section id="match" class="page">
+      <div class="card">
+        <h2>🧩 語詞配對</h2>
+        <p>先點左邊語詞，再點右邊最接近的意思。</p>
+        <div class="match-board">
+          <div class="match-col" id="matchLeft"></div>
+          <div class="match-col" id="matchRight"></div>
+        </div>
+        <div id="matchMsg" class="feedback"></div>
+        <div class="actions"><button class="secondary" onclick="resetMatch()">重新配對</button></div>
+      </div>
+    </section>
+
+    <section id="exam" class="page">
+      <div class="card">
+        <h2>🏆 第1課模擬測驗</h2>
+        <p>共 30 題，每題 10 分。可以重做，系統會保留錯題。</p>
+        <div id="examQuiz"></div>
+        <div id="examResult"></div>
+      </div>
+    </section>
+
+    <section id="wrong" class="page">
+      <div class="card">
+        <h2>❤️ 錯題本</h2>
+        <p>所有答錯題目會自動收進這裡。重新答對後可從錯題本移除。</p>
+        <div id="wrongList"></div>
+        <div class="actions">
+          <button class="secondary" onclick="clearWrong()">清空錯題本</button>
+          <button class="secondary" onclick="resetAll()">重設本課全部進度</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    題目與摘要皆為段考複習用途的自編內容。生字／語詞範圍參考教育部教育百科公開的康軒五上第1課詞彙資料。
+  </footer>
+</div>
+
+<script>
+const vocab = [
+  ["德","德國、品德"],["乎","似乎、幾乎"],["血","血液、流血"],["攝","拍攝、攝影"],
+  ["颱","颱風"],["錄","記錄、錄影"],["哀","哀愁、悲哀"],["巒","山巒"],
+  ["縱","縱谷、縱向"],["臍","臍帶"],["禍","人禍、災禍"],["殘","殘破、殘缺"],
+  ["檳","檳榔"],["榔","檳榔"],["降","降低、下降"],["鏟","鏟除、鐵鏟"],
+  ["汙","汙水、汙染"],["斷","不斷、中斷"]
+];
+
+const questions = {
+vocab: [
+ {id:"v1",q:"「拍攝」中的「攝」最接近哪一個意思？",o:["拍照、錄影","飲食","奔跑","計算"],a:0,e:"「拍攝」是利用相機或攝影器材記錄影像。"},
+ {id:"v2",q:"「似乎」最接近哪個意思？",o:["好像","一定","永遠","完全沒有"],a:0,e:"「似乎」表示好像、彷彿。"},
+ {id:"v3",q:"「哀愁」的意思最接近哪一項？",o:["悲傷憂愁","興奮開心","快速奔跑","安靜睡覺"],a:0,e:"「哀愁」指悲哀、憂愁的情緒。"},
+ {id:"v4",q:"「山巒」是指什麼？",o:["連綿的山峰","城市道路","海邊沙灘","地下河流"],a:0,e:"「山巒」通常指連綿起伏的山峰。"},
+ {id:"v5",q:"「縱谷」中的「縱」最接近哪個方向？",o:["南北或上下延伸","左右橫向","圓形旋轉","完全不動"],a:0,e:"「縱」有直向、上下延伸的意思。"},
+ {id:"v6",q:"「人禍」和下列哪個意思最接近？",o:["人為因素造成的災害","自然形成的彩虹","季節變化","正常降雨"],a:0,e:"「人禍」是由人為因素引起的禍害。"},
+ {id:"v7",q:"下列哪個詞語和「殘破」最接近？",o:["破損不完整","嶄新完整","整齊乾淨","高大堅固"],a:0,e:"「殘破」指殘缺、破損。"},
+ {id:"v8",q:"「汙水」最可能和哪個問題有關？",o:["水污染","聲音太大","交通壅塞","氣溫降低"],a:0,e:"汙水若未妥善處理，可能造成水污染。"},
+ {id:"v9",q:"哪一句中的「記錄」使用最恰當？",o:["我用相機記錄旅行景色。","我把天空記錄得很甜。","弟弟記錄一碗湯。","風把樹記錄倒了。"],a:0,e:"「記錄」可指把事情、影像或資料保存下來。"},
+ {id:"v10",q:"「降低」的反義詞最接近哪一個？",o:["提高","減少","下降","縮小"],a:0,e:"「降低」和「提高」意思相反。"},
+ {id:"v11",q:"「不斷」最接近哪個意思？",o:["持續不停","立刻停止","偶爾一次","完全忘記"],a:0,e:"「不斷」表示持續、沒有中斷。"},
+ {id:"v12",q:"「臍帶」中的「臍」和身體哪個部位最有關？",o:["肚臍","耳朵","手掌","腳趾"],a:0,e:"「臍」和肚臍有關。"},
+ {id:"v13",q:"下列哪個是「颱」字常見的語詞？",o:["颱風","颱桌","颱書","颱山"],a:0,e:"「颱」最常見於「颱風」。"},
+ {id:"v14",q:"「鏟除」中的「鏟」最接近什麼動作？",o:["用工具挖除、除去","用筆書寫","用耳朵聽","用眼睛看"],a:0,e:"「鏟」可指用鏟子挖除，也可引申為除去。"},
+ {id:"v15",q:"「血液」中的「血」正確讀音與意思應和哪項相關？",o:["人體循環的液體","空氣","石頭","樹葉"],a:0,e:"血液是人體循環系統中的液體。"},
+ {id:"v16",q:"哪一句最適合使用「似乎」？",o:["天空似乎快要下雨了。","我似乎一定拿第一名。","二加二似乎一定等於四。","太陽似乎每天都不存在。"],a:0,e:"「似乎」適合表達不完全確定的推測。"},
+ {id:"v17",q:"「德國」的「德」和哪個語詞使用同一個字？",o:["品德","得到","等待","特別"],a:0,e:"「德國」和「品德」都使用「德」。"},
+ {id:"v18",q:"「錄影」和「記錄」共同的字是？",o:["錄","影","記","紀"],a:0,e:"兩個語詞都有「錄」。"},
+ {id:"v19",q:"「檳榔」是什麼？",o:["一種植物及其果實","一種山脈","一條河川","一種拍攝工具"],a:0,e:"檳榔是一種植物，臺灣部分地區可見栽種。"},
+ {id:"v20",q:"下列哪一組語詞搭配最自然？",o:["拍攝風景","哀愁奔跑","降低山巒","臍帶縱谷"],a:0,e:"「拍攝風景」是常見且自然的搭配。"},
+ {id:"v21",q:"「殘破」最適合形容下列哪項？",o:["受損的老屋","完整的新書","剛買的新鞋","盛開的花朵"],a:0,e:"「殘破」適合形容受損、破舊的事物。"},
+ {id:"v22",q:"「人禍」和「天災」最大的差別是什麼？",o:["人禍主要由人為因素造成","人禍一定發生在山上","天災一定沒有損失","兩者意思完全相同"],a:0,e:"人禍強調人為造成；天災則多指自然因素造成的災害。"},
+ {id:"v23",q:"哪個詞最適合填入：「攝影師從空中＿＿山河景色。」",o:["拍攝","叮咬","收藏","募集"],a:0,e:"攝影師會拍攝景色。"},
+ {id:"v24",q:"哪一句中的「降低」用法正確？",o:["節約用電可以降低能源浪費。","我降低一張照片。","天空降低得很漂亮。","弟弟降低一本書。"],a:0,e:"「降低」可搭配風險、溫度、浪費、速度等。"},
+ {id:"v25",q:"「汙染」和「汙水」共同表達的概念是什麼？",o:["環境受到不潔物質影響","景色非常美麗","交通很方便","聲音很清楚"],a:0,e:"兩者都和環境不潔、受到污染有關。"}
+],
+reading: [
+ {id:"r1",q:"小羽一開始搭飛機的主要期待是什麼？",o:["欣賞空中的臺灣風景","調查交通事故","尋找同學","測量氣溫"],a:0,e:"短文說她原本期待欣賞風景。"},
+ {id:"r2",q:"她從空中先看到哪些美麗景象？",o:["山巒、縱谷、田野","垃圾、汙水、工地","商店、車站、教室","操場、球場、泳池"],a:0,e:"短文先描寫山巒、河流、縱谷與田野等景觀。"},
+ {id:"r3",q:"後來她看到哪些讓人擔心的景象？",o:["裸露土地、廢棄物、異常水流","彩虹、白雲、花田","校園、圖書館、操場","飛機、火車、捷運"],a:0,e:"這些景象呈現環境受到破壞或污染的可能。"},
+ {id:"r4",q:"「美麗的土地，為什麼也會有這些傷痕？」這句話主要表達什麼？",o:["對環境問題的疑問與憂心","對飛行速度的不滿","對天氣的預測","對食物的期待"],a:0,e:"她從欣賞風景轉而思考土地遭受的傷害。"},
+ {id:"r5",q:"返家後，小羽做了什麼？",o:["整理報告並提出改善做法","把照片全部刪掉","完全忘記這件事","只去買紀念品"],a:0,e:"她把觀察整理成報告並提出行動建議。"},
+ {id:"r6",q:"小羽提出的做法不包括哪一項？",o:["增加垃圾量","減少垃圾","珍惜水資源","關心土地使用"],a:0,e:"她提出的是減少垃圾、珍惜水資源等改善做法。"},
+ {id:"r7",q:"這篇短文的結構最接近哪一種？",o:["先寫美景，再寫問題，最後提出想法","只寫人物外表","只介紹飛機構造","只列出數字"],a:0,e:"短文先描寫美景，再轉到環境問題，最後提出行動。"},
+ {id:"r8",q:"哪一段內容屬於『描寫』？",o:["山巒像波浪向遠方延伸，陽光落在田野上。","她認為大家應該先看見問題。","她搭乘小型飛機。","她返家後做報告。"],a:0,e:"以具體景象呈現畫面，屬於描寫。"},
+ {id:"r9",q:"哪一句最接近『觀點』？",o:["她認為更多人先看見問題，環境才可能變好。","飛機起飛了。","她看見一條河。","她回到家。"],a:0,e:"「認為」後面呈現人物的看法與主張。"},
+ {id:"r10",q:"小羽從美景轉而注意環境問題，這表示她的心情可能如何變化？",o:["從驚喜轉為擔心與思考","從生氣轉為大笑","從疲累轉為飢餓","完全沒有變化"],a:0,e:"文章由欣賞美景轉向看到土地傷痕，情緒自然轉為憂心。"},
+ {id:"r11",q:"『只有更多人先看見問題，才可能一起讓環境慢慢變好。』主要強調什麼？",o:["了解問題是共同改善的起點","問題越多越好","只有一個人能改變環境","看見問題就一定立刻解決"],a:0,e:"先認識問題，才有機會形成共同的改善行動。"},
+ {id:"r12",q:"若要替短文分成三部分，最合理的是？",o:["看見美景／發現問題／提出行動","起飛／吃飯／睡覺","上課／下課／放學","山巒／鉛筆／書包"],a:0,e:"這三部分最能概括短文的發展。"},
+ {id:"r13",q:"空中視角對文章有什麼作用？",o:["讓人一次看到較大範圍的土地景觀與問題","只讓人看到飛機內部","讓文字變得更短","讓所有問題消失"],a:0,e:"從高空能看到大範圍地景與環境變化。"},
+ {id:"r14",q:"如果只保留美景描寫、刪掉環境問題，文章會少了什麼？",o:["對土地保護的反思","山巒的畫面","飛行的事實","人物名稱"],a:0,e:"環境問題讓文章不只欣賞美景，也帶出珍惜土地的主題。"},
+ {id:"r15",q:"這篇短文最接近哪個主旨？",o:["看見土地的美麗與傷痕，並思考如何珍惜環境","搭飛機一定很好玩","只有攝影師需要關心環境","山巒比河流重要"],a:0,e:"文章核心是看見美麗與問題後，產生珍惜環境的行動。"}
+],
+exam: [
+ {id:"e1",q:"「山巒」最適合指什麼？",o:["連綿起伏的山峰","平坦道路","一棟大樓","一片教室"],a:0,e:"山巒指連綿的山。"},
+ {id:"e2",q:"「拍攝」和哪個活動最有關？",o:["攝影","游泳","烹飪","跑步"],a:0,e:"拍攝是攝影或錄影活動。"},
+ {id:"e3",q:"文章中同時寫『美麗』和『哀愁』，最可能是為了什麼？",o:["呈現臺灣既有美景也有環境問題","說明所有地方都很悲傷","證明美景不存在","只為了增加形容詞"],a:0,e:"美麗與哀愁形成對照，帶出珍惜環境的主題。"},
+ {id:"e4",q:"如果作者寫『風災之後，我更想記錄土地的變化』，前後關係最接近哪一種？",o:["因果關係","並列無關","完全矛盾","沒有任何關係"],a:0,e:"前面的事件成為後面行動的原因。"},
+ {id:"e5",q:"下列哪項屬於人為環境問題？",o:["任意排放汙水","自然降雨","日出日落","季節更替"],a:0,e:"任意排放汙水是人為造成的環境問題。"},
+ {id:"e6",q:"「似乎」最適合用來表達什麼？",o:["推測、不完全確定","絕對肯定","命令","數學公式"],a:0,e:"似乎表示看起來、好像。"},
+ {id:"e7",q:"「人禍」和哪項最接近？",o:["人為疏失造成的災害","自然形成的雲層","每天正常潮汐","四季更替"],a:0,e:"人禍強調人為原因。"},
+ {id:"e8",q:"哪一組最適合概括本課文章結構？",o:["總說美麗與哀愁→分寫美麗→分寫哀愁→提出期望","只寫景色→結束","人物介紹→食譜→結束","問題→答案→算式"],a:0,e:"本課可整理成總說、分寫美麗、分寫哀愁、總結期望。"},
+ {id:"e9",q:"哪一句比較像『描寫』？",o:["層層山巒在雲影下延伸。","我們應該保護環境。","我昨天拍了照片。","作者是一位攝影者。"],a:0,e:"描寫會讓讀者看到較具體的畫面。"},
+ {id:"e10",q:"哪一句比較像『觀點』？",o:["我們應該讓土地少一點傷痕。","河流穿過山谷。","飛機在上午起飛。","照片放在桌上。"],a:0,e:"「應該」表達說話者的看法與主張。"},
+ {id:"e11",q:"如果要找『因』，應先找哪種內容？",o:["事情發生的原因","最後的結果","人物名字","標點符號"],a:0,e:"因果關係中的「因」就是原因。"},
+ {id:"e12",q:"如果要找『果』，應找哪種內容？",o:["原因造成的結果","開頭標題","人物外貌","生字筆畫"],a:0,e:"「果」是事情發生後產生的結果。"},
+ {id:"e13",q:"哪一個詞語最適合形容環境受到損害後的樣子？",o:["殘破","完整","嶄新","潔淨"],a:0,e:"殘破表示破損、不完整。"},
+ {id:"e14",q:"「降低污染」中的「降低」可以換成哪個意思相近的詞？",o:["減少","提高","增加","擴大"],a:0,e:"降低污染就是減少污染程度。"},
+ {id:"e15",q:"哪句最適合使用「不斷」？",o:["雨勢不斷增強。","我不斷一本書。","山巒不斷很高。","照片不斷很藍。"],a:0,e:"「不斷」用來表示持續發生。"},
+ {id:"e16",q:"「記錄」和「紀錄」在日常用法上都可和什麼概念相關？",o:["把事情保存下來","完全忘記","破壞環境","停止觀察"],a:0,e:"兩者都常與保存事情、資料或成績有關，但詞性和慣用搭配可能不同。"},
+ {id:"e17",q:"從空中觀察環境的一個優點是什麼？",o:["可以看到較大範圍的地景變化","一定能看清每一隻昆蟲","完全不受天氣影響","可以立刻解決污染"],a:0,e:"空中視角適合觀察大範圍地景。"},
+ {id:"e18",q:"哪一項最能代表『臺灣的美麗』？",o:["山巒與縱谷景觀","未處理的汙水","大量廢棄物","裸露破壞的山坡"],a:0,e:"自然山川常被用來呈現臺灣之美。"},
+ {id:"e19",q:"哪一項最能代表『臺灣的哀愁』？",o:["污染與不當開發","清澈河川","翠綠山林","美麗海岸"],a:0,e:"污染與破壞呈現土地承受的傷害。"},
+ {id:"e20",q:"如果作者在文章最後寫『希望下一代仍看得到這片美景』，這屬於什麼？",o:["期望","敘述時間","數學計算","人物外貌"],a:0,e:"「希望」直接表達作者的期望。"},
+ {id:"e21",q:"「汙水」最可能造成哪種後果？",o:["水質惡化","山變得更高","天空變近","文字變長"],a:0,e:"汙水可能使河川或海洋水質惡化。"},
+ {id:"e22",q:"「鏟除」最接近哪個意思？",o:["除去","增加","收藏","記錄"],a:0,e:"鏟除就是除去、清除。"},
+ {id:"e23",q:"「颱風」屬於哪一類現象？",o:["自然現象","人工建築","交通工具","攝影器材"],a:0,e:"颱風是自然形成的天氣系統。"},
+ {id:"e24",q:"文章把美景和破壞景象放在一起，形成什麼效果？",o:["對比","重複","押韻","計算"],a:0,e:"兩種相反或差異大的景象放在一起形成對比。"},
+ {id:"e25",q:"哪一種閱讀方法最適合本課？",o:["找原因、結果、描寫與觀點","只背頁碼","只看插圖不讀文字","只數句號"],a:0,e:"這些策略能幫助理解本課結構與主旨。"},
+ {id:"e26",q:"看到環境問題後，最符合本課精神的行動是？",o:["先了解原因，再從生活中減少浪費與污染","假裝沒看見","把問題都推給別人","只抱怨不行動"],a:0,e:"看見問題並採取合理行動，符合本課珍惜土地的精神。"},
+ {id:"e27",q:"「從空中看臺灣」這個標題直接提供了哪兩個線索？",o:["觀察角度與地點","人物年齡與時間","食物與交通","答案與分數"],a:0,e:"「從空中」是觀察角度，「臺灣」是地點。"},
+ {id:"e28",q:"如果一段先寫『因為看見災後景象』，下一句寫『所以決定拍攝紀錄』，兩句關係是？",o:["因果","轉折","無關","列舉"],a:0,e:"「因為……所以……」是典型因果關係。"},
+ {id:"e29",q:"要判斷作者真正想傳達的主旨，最應綜合哪些內容？",o:["美景、問題與最後期望","只有第一個生字","只有照片顏色","只有段落數量"],a:0,e:"主旨需要綜合全文主要內容與結尾觀點。"},
+ {id:"e30",q:"本課最適合帶給讀者哪一種思考？",o:["欣賞臺灣之美，也願意關心土地受到的傷害","只要風景漂亮就不用管環境","環境問題和人無關","所有開發都一定不好"],a:0,e:"本課重點是看見美麗與哀愁，進一步珍惜與關心土地。"}
+]
+};
+
+const matchPairs = [
+ ["拍攝","用攝影器材記錄影像"],["哀愁","悲哀與憂愁"],["山巒","連綿起伏的山峰"],
+ ["縱谷","長條狀延伸的谷地"],["人禍","人為因素造成的禍害"],["殘破","破損、不完整"],
+ ["汙水","受到污染或含廢物的水"],["降低","使程度變低"],["不斷","持續、不中斷"],["記錄","把事情或資料保存下來"]
+];
+
+const KEY="shiquan_g5_chinese_l2_v1_80";
+let state = JSON.parse(localStorage.getItem(KEY)||'{"answered":{},"wrong":{},"matchDone":[],"score":0}');
+function save(){ localStorage.setItem(KEY,JSON.stringify(state)); updateStats(); }
+
+document.querySelectorAll("#nav button").forEach(b=>{
+  b.onclick=()=>{
+    document.querySelectorAll("#nav button").forEach(x=>x.classList.remove("active"));
+    document.querySelectorAll(".page").forEach(x=>x.classList.remove("active"));
+    b.classList.add("active"); document.getElementById(b.dataset.page).classList.add("active");
+    if(b.dataset.page==="wrong") renderWrong();
+    window.scrollTo({top:document.querySelector("#nav").offsetTop-10,behavior:"smooth"});
+  };
+});
+
+function speak(text){
+  if(!("speechSynthesis" in window)){alert("此瀏覽器不支援語音功能");return}
+  speechSynthesis.cancel();
+  const u=new SpeechSynthesisUtterance(text);u.lang="zh-TW";u.rate=.85;speechSynthesis.speak(u);
+}
+
+function renderVocab(){
+ const el=document.getElementById("learnVocab");
+ el.innerHTML=vocab.map(([a,b])=>`<div class="item"><div class="char">${a}</div><b>${b}</b><br><button class="speak" onclick="speak('${a}，${b}')">🔊 聽讀音</button></div>`).join("");
+}
+
+function renderQuiz(kind, target){
+ const arr=questions[kind], el=document.getElementById(target);
+ el.innerHTML=arr.map((x,i)=>`
+ <div class="q" id="q_${x.id}">
+   <div class="q-title">${i+1}. ${x.q}</div>
+   ${x.o.map((o,j)=>`<button class="opt" onclick="answer('${kind}','${x.id}',${j},this)">${String.fromCharCode(65+j)}. ${o}</button>`).join("")}
+   <div class="feedback" id="f_${x.id}"></div>
+ </div>`).join("");
+}
+
+function getQ(kind,id){return questions[kind].find(x=>x.id===id)}
+function answer(kind,id,choice,btn){
+ const q=getQ(kind,id), box=document.getElementById("q_"+id), fb=document.getElementById("f_"+id);
+ box.querySelectorAll(".opt").forEach(x=>x.disabled=true);
+ const ok=choice===q.a;
+ box.querySelectorAll(".opt")[q.a].classList.add("correct");
+ if(!ok) btn.classList.add("wrong");
+ fb.className="feedback "+(ok?"ok":"bad");
+ fb.innerHTML=(ok?"✅ 答對了！ ":"❌ 再複習一下。 ")+q.e;
+ const first=!state.answered[id];
+ state.answered[id]={kind,choice,ok};
+ if(ok){
+   delete state.wrong[id];
+   if(first) state.score+=10;
+ }else{
+   state.wrong[id]={kind,id};
+ }
+ save();
+ if(kind==="exam") updateExamResult();
+}
+
+function allQuestionCount(){return [...questions.vocab,...questions.reading,...questions.exam].length + matchPairs.length}
+function updateStats(){
+ const vals=Object.values(state.answered);
+ const correct=vals.filter(x=>x.ok).length + state.matchDone.length;
+ const answered=vals.length + state.matchDone.length;
+ document.getElementById("totalScore").textContent=state.score + state.matchDone.length*5;
+ document.getElementById("correctCount").textContent=correct;
+ document.getElementById("answeredCount").textContent=answered;
+ document.getElementById("accuracy").textContent=answered?Math.round(correct/answered*100)+"%":"0%";
+ const pct=Math.round(answered/allQuestionCount()*100);
+ document.getElementById("progressText").textContent=pct+"%";
+ document.getElementById("progressBar").style.width=pct+"%";
+}
+
+function updateExamResult(){
+ const ids=questions.exam.map(x=>x.id), ans=ids.filter(id=>state.answered[id]);
+ if(!ans.length){document.getElementById("examResult").innerHTML="";return}
+ const ok=ans.filter(id=>state.answered[id].ok).length;
+ document.getElementById("examResult").innerHTML=`<div class="result-big"><div>目前模擬測驗</div><div class="score">${ok*10}</div><div>已作答 ${ans.length}/30 題｜答對 ${ok} 題</div></div>`;
+}
+
+function renderWrong(){
+ const keys=Object.keys(state.wrong), el=document.getElementById("wrongList");
+ if(!keys.length){el.innerHTML='<div class="goodnote">🎉 目前沒有錯題！繼續保持。</div>';return}
+ el.innerHTML=keys.map(id=>{
+   const it=state.wrong[id], q=getQ(it.kind,id);
+   return `<div class="q"><div class="q-title">${q.q}</div>
+   ${q.o.map((o,j)=>`<button class="opt" onclick="redoWrong('${it.kind}','${id}',${j},this)">${String.fromCharCode(65+j)}. ${o}</button>`).join("")}
+   <div class="feedback" id="wf_${id}"></div></div>`;
+ }).join("");
+}
+function redoWrong(kind,id,choice,btn){
+ const q=getQ(kind,id), fb=document.getElementById("wf_"+id), box=btn.parentElement;
+ box.querySelectorAll(".opt").forEach(x=>x.disabled=true);
+ if(choice===q.a){
+   btn.classList.add("correct"); delete state.wrong[id]; state.answered[id]={kind,choice,ok:true};
+   fb.className="feedback ok";fb.textContent="✅ 這次答對了！已從錯題本移除。";
+ }else{
+   btn.classList.add("wrong");box.querySelectorAll(".opt")[q.a].classList.add("correct");
+   fb.className="feedback bad";fb.textContent="❌ 還差一點："+q.e;
+ }
+ save(); setTimeout(renderWrong,1100);
+}
+function clearWrong(){state.wrong={};save();renderWrong()}
+function resetAll(){if(confirm("確定要清除第2課全部學習紀錄嗎？")){localStorage.removeItem(KEY);location.reload()}}
+
+let selectedLeft=null;
+function shuffle(a){return [...a].sort(()=>Math.random()-.5)}
+function renderMatch(){
+ selectedLeft=null;
+ const done=new Set(state.matchDone||[]);
+ document.getElementById("matchLeft").innerHTML=matchPairs.map(([l])=>`<button class="match-btn ${done.has(l)?"done":""}" ${done.has(l)?"disabled":""} onclick="pickLeft(this,'${l}')">${l}</button>`).join("");
+ document.getElementById("matchRight").innerHTML=shuffle(matchPairs).map(([l,r])=>`<button class="match-btn ${done.has(l)?"done":""}" ${done.has(l)?"disabled":""} data-left="${l}" onclick="pickRight(this,'${l}')">${r}</button>`).join("");
+}
+function pickLeft(btn,l){
+ document.querySelectorAll("#matchLeft .match-btn").forEach(x=>x.classList.remove("sel"));
+ btn.classList.add("sel"); selectedLeft=l;
+}
+function pickRight(btn,l){
+ const msg=document.getElementById("matchMsg");
+ if(!selectedLeft){msg.className="feedback bad";msg.textContent="請先選左邊的語詞。";return}
+ if(selectedLeft===l){
+   state.matchDone=Array.from(new Set([...(state.matchDone||[]),l]));
+   msg.className="feedback ok";msg.textContent="✅ 配對成功！";
+   save();renderMatch();
+ }else{
+   msg.className="feedback bad";msg.textContent="❌ 不是這一組，再試一次。";
+ }
+}
+function resetMatch(){state.matchDone=[];save();renderMatch();document.getElementById("matchMsg").className="feedback";}
+
+renderVocab();
+renderQuiz("vocab","vocabQuiz");
+renderQuiz("reading","readingQuiz");
+renderQuiz("exam","examQuiz");
+renderMatch();updateStats();updateExamResult();
+</script>
+</body>
+</html>

@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>員工差假管理系統</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Noto Sans TC", "Microsoft JhengHei", Arial, sans-serif;
+      background: #f5f7fb;
+      color: #1f2937;
+    }
+    header {
+      background: linear-gradient(135deg,#0f172a,#1e3a8a);
+      color: white;
+      padding: 18px 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 3px 12px rgba(0,0,0,.12);
+    }
+    header h1 { margin: 0; font-size: 22px; }
+    header small { opacity: .8; }
+    .container { max-width: 1180px; margin: 26px auto; padding: 0 18px; }
+    .tabs {
+      display: flex; gap: 10px; margin-bottom: 18px; flex-wrap: wrap;
+    }
+    .tab {
+      border: none; background: white; padding: 10px 18px;
+      border-radius: 10px; cursor: pointer; font-weight: 700;
+      box-shadow: 0 1px 5px rgba(0,0,0,.08);
+    }
+    .tab.active { background: #2563eb; color: white; }
+    .panel { display: none; }
+    .panel.active { display: block; }
+    .grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 16px; }
+    .card {
+      background: white; border-radius: 16px; padding: 22px;
+      box-shadow: 0 6px 22px rgba(15,23,42,.07);
+      margin-bottom: 18px;
+    }
+    .card h2 { margin-top: 0; font-size: 19px; }
+    label { font-weight: 700; display: block; margin-bottom: 6px; font-size: 14px; }
+    input, select, textarea {
+      width: 100%; border: 1px solid #d1d5db; border-radius: 10px;
+      padding: 10px 12px; font-size: 15px; background: white;
+    }
+    textarea { min-height: 90px; resize: vertical; }
+    input:focus, select:focus, textarea:focus {
+      outline: none; border-color: #2563eb; box-shadow: 0 0 0 3px rgba(37,99,235,.10);
+    }
+    .field { margin-bottom: 14px; }
+    .balance-wrap { display:grid; grid-template-columns: repeat(2,1fr); gap:12px; }
+    .balance {
+      background:#eff6ff; border:1px solid #bfdbfe; border-radius:12px;
+      padding:14px;
+    }
+    .balance strong { display:block; font-size:22px; color:#1d4ed8; margin-top:4px; }
+    .actions { display:flex; gap:10px; justify-content:flex-end; flex-wrap:wrap; }
+    button.primary, button.secondary, button.danger, button.success {
+      border:none; border-radius:10px; padding:10px 16px; cursor:pointer; font-weight:700;
+    }
+    button.primary { background:#2563eb; color:white; }
+    button.secondary { background:#e5e7eb; color:#111827; }
+    button.danger { background:#fee2e2; color:#991b1b; }
+    button.success { background:#dcfce7; color:#166534; }
+    table { width:100%; border-collapse:collapse; font-size:14px; }
+    th, td { padding:12px 10px; border-bottom:1px solid #e5e7eb; text-align:left; vertical-align:top; }
+    th { background:#f8fafc; }
+    .status { display:inline-block; padding:4px 9px; border-radius:999px; font-size:12px; font-weight:700; }
+    .pending { background:#fef3c7; color:#92400e; }
+    .approved { background:#dcfce7; color:#166534; }
+    .rejected { background:#fee2e2; color:#991b1b; }
+    .toolbar { display:flex; gap:10px; margin-bottom:14px; flex-wrap:wrap; }
+    .toolbar > * { flex:1; min-width:150px; }
+    .hint { color:#6b7280; font-size:13px; margin-top:6px; }
+    .empty { text-align:center; padding:26px; color:#6b7280; }
+    .summary {
+      display:grid; grid-template-columns: repeat(4,1fr); gap:12px; margin-bottom:18px;
+    }
+    .metric {
+      background:white; border-radius:14px; padding:16px; box-shadow:0 4px 15px rgba(0,0,0,.05);
+    }
+    .metric small { color:#6b7280; }
+    .metric strong { display:block; font-size:24px; margin-top:5px; }
+    .hidden { display:none !important; }
+    @media (max-width: 800px){
+      .grid,.summary,.balance-wrap { grid-template-columns:1fr; }
+      table { font-size:12px; }
+      th, td { padding:9px 6px; }
+      header { align-items:flex-start; gap:10px; flex-direction:column; }
+    }
+  </style>
+</head>
+<body>
+<header>
+  <div>
+    <h1>員工差假管理系統</h1>
+    <small>Leave & Attendance Request</small>
+  </div>
+  <div id="clock"></div>
+</header>
+
+<div class="container">
+  <div class="tabs">
+    <button class="tab active" data-panel="apply">差假申請</button>
+    <button class="tab" data-panel="history">我的紀錄</button>
+    <button class="tab" data-panel="manager">主管管理</button>
+  </div>
+
+  <section id="apply" class="panel active">
+    <div class="grid">
+      <div class="card">
+        <h2>員工資料</h2>
+        <div class="field">
+          <label>員工編號 *</label>
+          <input id="empId" placeholder="例如：A001">
+        </div>
+        <div class="field">
+          <label>姓名 *</label>
+          <input id="empName" placeholder="請輸入姓名">
+        </div>
+        <div class="field">
+          <label>部門 *</label>
+          <select id="department">
+            <option value="">請選擇</option>
+            <option>行政部</option><option>財務部</option><option>業務部</option>
+            <option>人資部</option><option>資訊部</option><option>營運部</option>
+          </select>
+        </div>
+        <div class="balance-wrap">
+          <div class="balance">剩餘特休<strong id="annualBalance">10 天</strong></div>
+          <div class="balance">剩餘補休<strong id="compBalance">16 小時</strong></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>差假內容</h2>
+        <div class="field">
+          <label>假別 *</label>
+          <select id="leaveType">
+            <option value="">請選擇</option>
+            <option>事假</option><option>病假</option><option>特休</option>
+            <option>補休</option><option>公假</option><option>婚假</option><option>喪假</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>開始日期時間 *</label>
+          <input type="datetime-local" id="startAt">
+        </div>
+        <div class="field">
+          <label>結束日期時間 *</label>
+          <input type="datetime-local" id="endAt">
+        </div>
+        <div class="field">
+          <label>自動計算請假時數</label>
+          <input id="hours" readonly placeholder="系統自動計算">
+          <div class="hint">目前原型以實際時間差計算；正式版可再加入午休、國定假日與排班規則。</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="grid">
+        <div class="field">
+          <label>代理人 *</label>
+          <input id="delegate" placeholder="請輸入代理人姓名">
+        </div>
+        <div class="field">
+          <label>附件</label>
+          <input type="file" id="attachment">
+        </div>
+      </div>
+      <div class="field">
+        <label>請假原因 *</label>
+        <textarea id="reason" placeholder="請輸入請假原因"></textarea>
+      </div>
+      <div class="actions">
+        <button class="secondary" onclick="resetForm()">清除</button>
+        <button class="primary" onclick="submitLeave()">送出申請</button>
+      </div>
+    </div>
+  </section>
+
+  <section id="history" class="panel">
+    <div class="card">
+      <h2>我的差假申請紀錄</h2>
+      <div class="toolbar">
+        <input id="historyEmpId" placeholder="輸入員工編號">
+        <select id="historyStatus">
+          <option value="">全部狀態</option>
+          <option>待審核</option><option>已核准</option><option>已退回</option>
+        </select>
+        <button class="primary" onclick="renderHistory()">查詢</button>
+      </div>
+      <div id="historyTable"></div>
+    </div>
+  </section>
+
+  <section id="manager" class="panel">
+    <div class="summary">
+      <div class="metric"><small>總申請</small><strong id="mTotal">0</strong></div>
+      <div class="metric"><small>待審核</small><strong id="mPending">0</strong></div>
+      <div class="metric"><small>已核准</small><strong id="mApproved">0</strong></div>
+      <div class="metric"><small>已退回</small><strong id="mRejected">0</strong></div>
+    </div>
+    <div class="card">
+      <h2>主管審核</h2>
+      <div class="toolbar">
+        <input id="mgrSearch" placeholder="搜尋員工編號 / 姓名">
+        <select id="mgrStatus">
+          <option value="">全部狀態</option>
+          <option>待審核</option><option>已核准</option><option>已退回</option>
+        </select>
+        <select id="mgrType">
+          <option value="">全部假別</option>
+          <option>事假</option><option>病假</option><option>特休</option>
+          <option>補休</option><option>公假</option><option>婚假</option><option>喪假</option>
+        </select>
+        <button class="primary" onclick="renderManager()">篩選</button>
+      </div>
+      <div id="managerTable"></div>
+    </div>
+  </section>
+</div>
+
+<script>
+  const KEY = 'leaveRequests_v1';
+
+  const $ = (id) => document.getElementById(id);
+  const getRequests = () => JSON.parse(localStorage.getItem(KEY) || '[]');
+  const saveRequests = (rows) => localStorage.setItem(KEY, JSON.stringify(rows));
+
+  document.querySelectorAll('.tab').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));
+      document.querySelectorAll('.panel').forEach(x=>x.classList.remove('active'));
+      btn.classList.add('active');
+      $(btn.dataset.panel).classList.add('active');
+      if(btn.dataset.panel==='history') renderHistory();
+      if(btn.dataset.panel==='manager') renderManager();
+    });
+  });
+
+  function calcHours(){
+    const s = new Date($('startAt').value);
+    const e = new Date($('endAt').value);
+    if(!$('startAt').value || !$('endAt').value || e <= s){
+      $('hours').value = '';
+      return;
+    }
+    const h = (e - s) / 36e5;
+    $('hours').value = h.toFixed(1) + ' 小時';
+  }
+
+  $('startAt').addEventListener('change', calcHours);
+  $('endAt').addEventListener('change', calcHours);
+
+  function resetForm(){
+    ['empId','empName','delegate','reason','startAt','endAt','hours'].forEach(id => $(id).value='');
+    $('department').value='';
+    $('leaveType').value='';
+    $('attachment').value='';
+  }
+
+  function submitLeave(){
+    const required = ['empId','empName','department','leaveType','startAt','endAt','delegate','reason'];
+    for(const id of required){
+      if(!$(id).value.trim()){
+        alert('請完成所有必填欄位。');
+        $(id).focus();
+        return;
+      }
+    }
+    const s = new Date($('startAt').value), e = new Date($('endAt').value);
+    if(e <= s){ alert('結束時間必須晚於開始時間。'); return; }
+
+    const attachmentName = $('attachment').files[0]?.name || '';
+    const row = {
+      id: Date.now(),
+      empId: $('empId').value.trim(),
+      empName: $('empName').value.trim(),
+      department: $('department').value,
+      leaveType: $('leaveType').value,
+      startAt: $('startAt').value,
+      endAt: $('endAt').value,
+      hours: ((e-s)/36e5).toFixed(1),
+      delegate: $('delegate').value.trim(),
+      reason: $('reason').value.trim(),
+      attachmentName,
+      status: '待審核',
+      createdAt: new Date().toISOString()
+    };
+    const rows = getRequests();
+    rows.unshift(row);
+    saveRequests(rows);
+
+    alert('差假申請已送出。');
+    $('historyEmpId').value = row.empId;
+    resetForm();
+    document.querySelector('[data-panel="history"]').click();
+  }
+
+  function statusBadge(status){
+    const cls = status==='已核准' ? 'approved' : status==='已退回' ? 'rejected' : 'pending';
+    return `<span class="status ${cls}">${status}</span>`;
+  }
+
+  function fmt(dt){ return dt ? dt.replace('T',' ') : ''; }
+
+  function renderHistory(){
+    const empId = $('historyEmpId').value.trim();
+    const status = $('historyStatus').value;
+    let rows = getRequests();
+    if(empId) rows = rows.filter(r => r.empId === empId);
+    if(status) rows = rows.filter(r => r.status === status);
+
+    if(!rows.length){
+      $('historyTable').innerHTML = '<div class="empty">目前沒有符合條件的申請紀錄</div>';
+      return;
+    }
+    $('historyTable').innerHTML = `
+      <div style="overflow:auto">
+      <table>
+        <thead><tr><th>日期</th><th>假別</th><th>時數</th><th>代理人</th><th>原因</th><th>狀態</th></tr></thead>
+        <tbody>
+          ${rows.map(r=>`<tr>
+            <td>${fmt(r.startAt)}<br>～ ${fmt(r.endAt)}</td>
+            <td>${r.leaveType}</td>
+            <td>${r.hours} 小時</td>
+            <td>${r.delegate}</td>
+            <td>${r.reason}</td>
+            <td>${statusBadge(r.status)}</td>
+          </tr>`).join('')}
+        </tbody>
+      </table></div>`;
+  }
+
+  function updateStatus(id, status){
+    const rows = getRequests();
+    const row = rows.find(x=>x.id===id);
+    if(row){ row.status = status; saveRequests(rows); }
+    renderManager();
+  }
+
+  function renderManager(){
+    const search = $('mgrSearch').value.trim().toLowerCase();
+    const status = $('mgrStatus').value;
+    const type = $('mgrType').value;
+    let rows = getRequests();
+
+    $('mTotal').textContent = rows.length;
+    $('mPending').textContent = rows.filter(r=>r.status==='待審核').length;
+    $('mApproved').textContent = rows.filter(r=>r.status==='已核准').length;
+    $('mRejected').textContent = rows.filter(r=>r.status==='已退回').length;
+
+    if(search) rows = rows.filter(r => r.empId.toLowerCase().includes(search) || r.empName.toLowerCase().includes(search));
+    if(status) rows = rows.filter(r=>r.status===status);
+    if(type) rows = rows.filter(r=>r.leaveType===type);
+
+    if(!rows.length){
+      $('managerTable').innerHTML = '<div class="empty">目前沒有符合條件的資料</div>';
+      return;
+    }
+
+    $('managerTable').innerHTML = `
+      <div style="overflow:auto">
+      <table>
+        <thead><tr><th>員工</th><th>部門</th><th>假別</th><th>時間</th><th>時數</th><th>原因</th><th>狀態</th><th>操作</th></tr></thead>
+        <tbody>
+          ${rows.map(r=>`<tr>
+            <td>${r.empName}<br><small>${r.empId}</small></td>
+            <td>${r.department}</td>
+            <td>${r.leaveType}</td>
+            <td>${fmt(r.startAt)}<br>～ ${fmt(r.endAt)}</td>
+            <td>${r.hours}</td>
+            <td>${r.reason}</td>
+            <td>${statusBadge(r.status)}</td>
+            <td>
+              <button class="success" onclick="updateStatus(${r.id},'已核准')">核准</button>
+              <button class="danger" onclick="updateStatus(${r.id},'已退回')">退回</button>
+            </td>
+          </tr>`).join('')}
+        </tbody>
+      </table></div>`;
+  }
+
+  function tick(){
+    const d = new Date();
+    $('clock').textContent = d.toLocaleString('zh-TW', {hour12:false});
+  }
+  tick(); setInterval(tick,1000);
+  renderHistory(); renderManager();
+</script>
+</body>
+</html>

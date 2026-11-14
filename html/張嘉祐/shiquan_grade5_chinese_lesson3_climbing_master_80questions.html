@@ -1,0 +1,425 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>十全國小五年級｜國語康軒五上 第3課 攀岩高手｜互動複習</title>
+<style>
+:root{
+  --bg:#f6f8ff; --card:#ffffff; --ink:#24304a; --muted:#667085;
+  --primary:#5b6cff; --primary2:#7c4dff; --ok:#198754; --bad:#d92d20;
+  --warn:#f59e0b; --line:#e5e7eb; --shadow:0 10px 28px rgba(56,68,120,.10);
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:"Noto Sans TC","Microsoft JhengHei",system-ui,sans-serif;background:
+radial-gradient(circle at 10% 10%,#e9ecff 0,transparent 28%),
+radial-gradient(circle at 90% 0%,#f3e8ff 0,transparent 24%),var(--bg);color:var(--ink)}
+button,input{font:inherit}
+.wrap{max-width:1100px;margin:auto;padding:18px}
+.hero{background:linear-gradient(135deg,#5867ff,#8a56ff);color:#fff;border-radius:24px;padding:26px;box-shadow:var(--shadow);position:relative;overflow:hidden}
+.hero:after{content:"✦";position:absolute;right:26px;top:8px;font-size:96px;opacity:.14}
+.hero h1{margin:0 0 8px;font-size:clamp(25px,4vw,38px)}
+.hero p{margin:5px 0;opacity:.96}
+.badge{display:inline-block;background:rgba(255,255,255,.18);padding:7px 11px;border-radius:999px;margin-right:8px;margin-top:8px;font-size:14px}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:14px 0}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:13px;text-align:center;box-shadow:var(--shadow)}
+.stat b{display:block;font-size:24px}
+.nav{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0}
+.nav button{border:0;background:#fff;border-radius:999px;padding:10px 14px;box-shadow:var(--shadow);cursor:pointer;color:var(--ink)}
+.nav button.active{background:var(--primary);color:#fff}
+.page{display:none}
+.page.active{display:block}
+.card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:18px;margin:12px 0;box-shadow:var(--shadow)}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+h2{margin:0 0 12px}
+h3{margin:8px 0}
+.note{background:#fff8e6;border-left:5px solid var(--warn);padding:12px 14px;border-radius:12px}
+.goodnote{background:#eefaf4;border-left:5px solid var(--ok);padding:12px 14px;border-radius:12px}
+.vocab{display:grid;grid-template-columns:repeat(auto-fit,minmax(155px,1fr));gap:10px}
+.vocab .item{border:1px solid var(--line);border-radius:16px;padding:13px;background:#fbfcff}
+.vocab .char{font-size:32px;font-weight:800;color:var(--primary2)}
+.vocab small{color:var(--muted)}
+.speak{border:0;border-radius:10px;padding:6px 9px;background:#eef0ff;cursor:pointer}
+.q{border:1px solid var(--line);border-radius:18px;padding:16px;margin:12px 0;background:#fff}
+.q-title{font-weight:800;margin-bottom:10px;line-height:1.6}
+.opt{display:block;width:100%;text-align:left;border:1px solid #d9ddeb;background:#fff;border-radius:12px;padding:10px 12px;margin:8px 0;cursor:pointer}
+.opt:hover{border-color:var(--primary);background:#f7f7ff}
+.opt.correct{background:#e9f8ef;border-color:var(--ok)}
+.opt.wrong{background:#fff0ef;border-color:var(--bad)}
+.feedback{margin-top:8px;padding:10px 12px;border-radius:12px;display:none}
+.feedback.ok{display:block;background:#e9f8ef;color:#11643b}
+.feedback.bad{display:block;background:#fff0ef;color:#8b1e16}
+.primary,.secondary{border:0;border-radius:12px;padding:10px 14px;cursor:pointer}
+.primary{background:var(--primary);color:white}
+.secondary{background:#eef0f5;color:#24304a}
+.actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:12px}
+.progress{height:12px;background:#e9ecf5;border-radius:999px;overflow:hidden}
+.progress i{display:block;height:100%;background:linear-gradient(90deg,#5b6cff,#9a5cff);width:0}
+.match-board{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.match-col{display:flex;flex-direction:column;gap:8px}
+.match-btn{padding:10px;border:1px solid var(--line);border-radius:12px;background:#fff;cursor:pointer}
+.match-btn.sel{outline:3px solid #cfd3ff}
+.match-btn.done{opacity:.45;text-decoration:line-through}
+.result-big{text-align:center;padding:20px}
+.result-big .score{font-size:54px;font-weight:900;color:var(--primary2)}
+.pill{display:inline-block;border-radius:999px;padding:6px 10px;background:#f0f1f6;margin:4px}
+footer{color:var(--muted);font-size:13px;text-align:center;padding:24px 8px}
+@media(max-width:720px){.stats{grid-template-columns:1fr 1fr}.grid2{grid-template-columns:1fr}.hero{padding:20px}.match-board{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <section class="hero">
+    <div class="badge">十全國小五年級｜第一次段考複習</div>
+    <div class="badge">康軒國語五上</div>
+    <h1>第3課｜攀岩高手 🧗🌿</h1>
+    <p>自編互動練習：生字語詞、童詩理解、擬人與譬喻、想像力、閱讀理解、模擬測驗與錯題重做。</p>
+    <p style="font-size:14px">※ 本站為段考複習用自編教材，非康軒出版社官方題庫或原題。</p>
+  </section>
+
+  <section class="stats">
+    <div class="stat"><span>⭐ 總得分</span><b id="totalScore">0</b></div>
+    <div class="stat"><span>✅ 答對</span><b id="correctCount">0</b></div>
+    <div class="stat"><span>📚 已作答</span><b id="answeredCount">0</b></div>
+    <div class="stat"><span>🎯 正確率</span><b id="accuracy">0%</b></div>
+  </section>
+
+  <div class="card">
+    <div style="display:flex;justify-content:space-between;gap:12px;align-items:center">
+      <b>本課學習進度</b><span id="progressText">0%</span>
+    </div>
+    <div class="progress"><i id="progressBar"></i></div>
+  </div>
+
+  <nav class="nav" id="nav">
+    <button class="active" data-page="learn">① 課程重點</button>
+    <button data-page="vocab">② 字詞闖關</button>
+    <button data-page="reading">③ 閱讀理解</button>
+    <button data-page="match">④ 配對遊戲</button>
+    <button data-page="exam">⑤ 模擬測驗</button>
+    <button data-page="wrong">⑥ 錯題本</button>
+  </nav>
+
+  <main>
+    <section id="learn" class="page active">
+      <div class="card">
+        <h2>🎯 本課學習重點</h2>
+        <div class="grid2">
+          <div>
+            <h3>閱讀重點</h3>
+            <p>本課是一首童詩，作者把<b>爬牆虎</b>想像成不斷向上挑戰的攀岩者。閱讀時要分辨哪些是植物真實特徵，哪些是作者加上的想像。</p>
+            <div class="goodnote">閱讀時可以抓住：<b>向上攀爬 → 裝備與目標 → 補充能量 → 面對風雨 → 堅持向上</b>。</div>
+          </div>
+          <div>
+            <h3>語文重點</h3>
+            <p>認識<b>擬人、譬喻、圖像詩</b>，並練習用想像力描寫事物，把自然景象轉化成有趣的畫面。</p>
+            <div class="note">段考容易考：形音義、形近字、童詩內容、擬人／譬喻、事實與想像、詩歌主旨。</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>🧠 詩意概念圖（自編整理）</h2>
+        <p>爬牆虎靠吸盤與藤蔓向上生長，詩人把它想像成一位攀岩高手：陽光、露水像補充體力的食物與飲料，風雨像攀登路上的阻力。即使遇到困難，它仍朝著高處生長。</p>
+        <p><span class="pill">真實特徵</span> → <span class="pill">發揮想像</span> → <span class="pill">擬人／譬喻</span> → <span class="pill">面對阻力</span> → <span class="pill">堅持目標</span></p>
+      </div>
+
+      <div class="card">
+        <h2>🔑 本課重點字詞</h2>
+        <div class="vocab" id="learnVocab"></div>
+      </div>
+    </section>
+
+    <section id="vocab" class="page">
+      <div class="card">
+        <h2>🔤 字詞闖關</h2>
+        <p>選出最合適的答案。答錯的題目會自動加入錯題本。</p><div class="goodnote">本區共有 <b>25 題</b>，建議分兩次完成。</div>
+        <div id="vocabQuiz"></div>
+      </div>
+    </section>
+
+    <section id="reading" class="page">
+      <div class="card">
+        <h2>📖 閱讀理解</h2>
+        <div class="note">以下短文為本站自編，不是課本原文。</div>
+        <div class="goodnote" style="margin-top:10px">本區共有 <b>15 題</b> 閱讀理解。</div>
+        <p style="line-height:1.9">
+          牆角的爬牆虎每天都往上長。細小的吸盤牢牢貼住牆面，像一雙雙抓緊岩壁的小手。
+          清晨的露珠停在葉面上，替它補充水分；陽光灑下來，葉子便努力製造養分。
+          有時強風吹得藤蔓左右搖擺，大雨也讓它一次次垂落，但風雨過後，它又重新貼近牆面，
+          繼續朝高處伸展。小庭看著它說：「它好像一位不肯放棄的攀岩者。」
+          她明白，真正的勇敢不是從來沒有困難，而是遇到阻力時仍願意再試一次。
+        </p>
+        <div id="readingQuiz"></div>
+      </div>
+    </section>
+
+    <section id="match" class="page">
+      <div class="card">
+        <h2>🧩 語詞配對</h2>
+        <p>先點左邊語詞，再點右邊最接近的意思。</p>
+        <div class="match-board">
+          <div class="match-col" id="matchLeft"></div>
+          <div class="match-col" id="matchRight"></div>
+        </div>
+        <div id="matchMsg" class="feedback"></div>
+        <div class="actions"><button class="secondary" onclick="resetMatch()">重新配對</button></div>
+      </div>
+    </section>
+
+    <section id="exam" class="page">
+      <div class="card">
+        <h2>🏆 第1課模擬測驗</h2>
+        <p>共 30 題，每題 10 分。可以重做，系統會保留錯題。</p>
+        <div id="examQuiz"></div>
+        <div id="examResult"></div>
+      </div>
+    </section>
+
+    <section id="wrong" class="page">
+      <div class="card">
+        <h2>❤️ 錯題本</h2>
+        <p>所有答錯題目會自動收進這裡。重新答對後可從錯題本移除。</p>
+        <div id="wrongList"></div>
+        <div class="actions">
+          <button class="secondary" onclick="clearWrong()">清空錯題本</button>
+          <button class="secondary" onclick="resetAll()">重設本課全部進度</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    題目與摘要皆為段考複習用途的自編內容。生字／語詞範圍參考教育部教育百科公開的康軒五上第1課詞彙資料。
+  </footer>
+</div>
+
+<script>
+const vocab = [
+  ["峭","陡峭、峭壁"],["勁","強勁、有力"],["聳","高聳、聳立"],["飢","飢餓、充飢"],
+  ["隱","隱形、隱藏"],["扯","拉扯、牽扯"],["銳","尖銳、銳利"],["箭","弓箭、冷箭"],
+  ["虯","虯鬚"],["鬚","鬍鬚、觸鬚"],["茂","繁茂、茂盛"],["止","停止、休止"],
+  ["蔓","藤蔓、蔓生"],["藉","藉由、藉口"],["豐","豐富、豐盛"],["挫","挫折、受挫"],
+  ["盤","吸盤、盤子"],["攀","攀爬、攀登"]
+];
+
+const questions = {
+vocab: [
+ {id:"v1",q:"「陡峭」最接近哪個意思？",o:["坡度很陡、難以攀爬","非常平坦","十分寬廣","柔軟舒適"],a:0,e:"「陡峭」常用來形容山壁或坡面很陡。"},
+ {id:"v2",q:"「強勁」中的「勁」最接近哪個意思？",o:["有力量","很安靜","很緩慢","很透明"],a:0,e:"「強勁」表示強而有力。"},
+ {id:"v3",q:"「高聳」最適合形容什麼？",o:["高高直立的山峰","平放的書本","低矮的草地","桌上的橡皮擦"],a:0,e:"「高聳」指高高地直立。"},
+ {id:"v4",q:"「充飢」是什麼意思？",o:["吃東西減輕飢餓","喝水解渴","休息睡覺","整理書包"],a:0,e:"「充飢」就是用食物減輕飢餓。"},
+ {id:"v5",q:"「隱形」中的「隱」最接近哪個意思？",o:["藏起來、不容易看見","突然出現","發出聲音","向上升高"],a:0,e:"「隱」有隱藏、不顯露的意思。"},
+ {id:"v6",q:"下列哪一句最適合使用「拉扯」？",o:["風把窗簾來回拉扯。","太陽拉扯得很明亮。","書本拉扯得很安靜。","雲朵拉扯得很甜。"],a:0,e:"「拉扯」指拉、拖或牽動。"},
+ {id:"v7",q:"「尖銳」最接近哪個意思？",o:["尖而鋒利","圓而柔軟","寬而平坦","慢而安靜"],a:0,e:"「尖銳」可形容物體尖利，也可形容聲音刺耳。"},
+ {id:"v8",q:"「弓箭」中的「箭」是什麼？",o:["搭在弓上射出的器具","一種植物","一種飲料","一種樂器"],a:0,e:"箭是搭配弓發射的器具。"},
+ {id:"v9",q:"「虯鬚」中的「鬚」與下列哪個意思最接近？",o:["細長如鬚的部分","石頭","水滴","天空"],a:0,e:"「鬚」可以指像鬍鬚般細長的部分。"},
+ {id:"v10",q:"「繁茂」最適合形容什麼？",o:["植物長得旺盛","道路非常空曠","水杯是空的","天空沒有雲"],a:0,e:"「繁茂」常形容草木生長旺盛。"},
+ {id:"v11",q:"「永不休止」中的「休止」最接近哪個意思？",o:["停止","開始","增加","提高"],a:0,e:"「休止」就是停止、停歇。"},
+ {id:"v12",q:"「藤蔓」最可能是什麼？",o:["植物細長延伸的莖","石頭的裂縫","雨水的聲音","山頂的雲"],a:0,e:"藤蔓是蔓生植物伸展的莖。"},
+ {id:"v13",q:"「藉由觀察」中的「藉由」最接近什麼？",o:["透過、憑藉","拒絕","破壞","遺忘"],a:0,e:"「藉由」表示透過某種方法或事物。"},
+ {id:"v14",q:"「豐富」的反義詞最接近哪個？",o:["貧乏","充足","多樣","充實"],a:0,e:"「豐富」和「貧乏」意思相反。"},
+ {id:"v15",q:"「挫折」最接近哪個意思？",o:["事情受阻、不順利","事情立刻成功","完全沒有困難","獲得獎品"],a:0,e:"挫折就是遭遇阻礙、失敗或不順。"},
+ {id:"v16",q:"「吸盤」的「盤」和哪個語詞同字？",o:["盤子","般若","搬家","班級"],a:0,e:"「吸盤」和「盤子」都使用「盤」。"},
+ {id:"v17",q:"「攀登」最適合搭配哪一項？",o:["高峰","課桌","鉛筆","書頁"],a:0,e:"常說攀登高峰、攀登山岳。"},
+ {id:"v18",q:"哪一組語詞最適合形容爬牆虎？",o:["蔓生／繁茂","乾燥／僵硬","平坦／方正","安靜／透明"],a:0,e:"爬牆虎會蔓生，葉片也可能相當繁茂。"},
+ {id:"v19",q:"「峭壁」中的「峭」和下列哪個語詞同義最接近？",o:["陡峻","平緩","寬闊","柔和"],a:0,e:"「峭」常表示山勢陡直、險峻。"},
+ {id:"v20",q:"哪一句的「勁」使用最恰當？",o:["迎面吹來一陣強勁的風。","這碗湯十分強勁。","這張紙非常強勁地甜。","天空強勁地安靜。"],a:0,e:"「強勁」適合形容風力、力道等。"},
+ {id:"v21",q:"「高聳入雲」最適合形容哪個景象？",o:["高山直上雲霄","小草貼著地面","水滴落下","書本放在桌上"],a:0,e:"高聳入雲表示非常高。"},
+ {id:"v22",q:"「受挫」最接近哪個意思？",o:["遭遇失敗或阻礙","受到獎勵","得到幫助","完全順利"],a:0,e:"「受挫」就是受到挫折。"},
+ {id:"v23",q:"「銳利」通常可以形容什麼？",o:["刀刃很鋒利","棉被很柔軟","湖水很平靜","糖果很甜"],a:0,e:"銳利可形容尖、鋒利。"},
+ {id:"v24",q:"哪一個語詞和「隱藏」意思最接近？",o:["躲藏","顯現","公開","展示"],a:0,e:"隱藏就是把事物藏起來，不讓人容易看見。"},
+ {id:"v25",q:"「茂盛」和「繁茂」共同適合形容什麼？",o:["植物生長旺盛","聲音非常小","道路很直","冰塊很冷"],a:0,e:"兩者都常用來形容草木生長得很好。"}
+],
+reading: [
+ {id:"r1",q:"自編短文中的主角植物是什麼？",o:["爬牆虎","仙人掌","向日葵","荷花"],a:0,e:"短文描寫的是沿著牆面生長的爬牆虎。"},
+ {id:"r2",q:"細小的吸盤在短文中被想像成什麼？",o:["抓住岩壁的小手","一雙翅膀","一把雨傘","一盞燈"],a:0,e:"這是把植物特徵轉化成具體畫面的譬喻。"},
+ {id:"r3",q:"清晨露珠對爬牆虎有什麼作用？",o:["補充水分","讓它停止生長","把它吹走","讓牆壁變矮"],a:0,e:"露珠能提供水分。"},
+ {id:"r4",q:"陽光對葉子有什麼幫助？",o:["幫助植物製造養分","讓植物立即枯萎","讓吸盤消失","讓牆面移動"],a:0,e:"植物利用陽光進行光合作用。"},
+ {id:"r5",q:"風雨在短文中扮演什麼角色？",o:["攀爬過程中的阻力","完全沒有影響","只帶來獎勵","讓植物停止存在"],a:0,e:"風雨讓藤蔓搖擺、垂落，形成阻力。"},
+ {id:"r6",q:"風雨過後，爬牆虎怎麼做？",o:["重新貼近牆面繼續向上","立刻放棄","向下生長","離開牆面"],a:0,e:"它仍繼續向上生長。"},
+ {id:"r7",q:"小庭為什麼把爬牆虎說成攀岩者？",o:["因為它貼著牆面不斷向上生長","因為它會穿登山鞋","因為它能說話","因為它真的拿著繩索"],a:0,e:"這是由植物生長特徵產生的想像。"},
+ {id:"r8",q:"短文最後想表達的『勇敢』是什麼？",o:["遇到阻力仍願意再試","從來不會遇到困難","只做簡單的事","一定要比別人快"],a:0,e:"真正的勇敢常表現在遇到困難後仍願意行動。"},
+ {id:"r9",q:"「像一雙雙抓緊岩壁的小手」運用了哪種修辭？",o:["譬喻","設問","排比","引用"],a:0,e:"把吸盤比作小手，是譬喻。"},
+ {id:"r10",q:"把爬牆虎稱為『不肯放棄的攀岩者』，最接近哪種寫法？",o:["擬人","列數字","說明定義","引用新聞"],a:0,e:"把植物賦予人的身分與意志，是擬人。"},
+ {id:"r11",q:"短文中的哪一項屬於植物的真實特徵？",o:["吸盤貼住牆面","它有夢想","它會替自己加油","它知道比賽規則"],a:0,e:"吸盤附著牆面是爬牆虎真實的生長特徵。"},
+ {id:"r12",q:"哪一項屬於作者的想像？",o:["吸盤像攀岩者的小手","爬牆虎有葉子","植物需要陽光","藤蔓會生長"],a:0,e:"把吸盤想像成小手，是文學想像。"},
+ {id:"r13",q:"這篇短文最適合的主旨是什麼？",o:["面對困難仍持續努力","植物一定比人勇敢","下雨一定是壞事","所有牆面都要種植物"],a:0,e:"短文藉爬牆虎表現遇到阻力仍持續努力。"},
+ {id:"r14",q:"如果要仿寫一句童詩，哪句最符合本課方法？",o:["月亮像夜空掛起的一盞燈。","月亮是一個天體。","月亮今天出現。","月亮離地球很遠。"],a:0,e:"把事物特徵和想像結合，可以形成有畫面的詩句。"},
+ {id:"r15",q:"閱讀這類童詩時，哪種方法最有幫助？",o:["分辨真實特徵與想像描寫","只數每行字數","只背標題","只看最後一個字"],a:0,e:"本課重點之一就是分析事實與想像之間的關聯。"}
+],
+exam: [
+ {id:"e1",q:"康軒五上第3課〈攀岩高手〉屬於哪一種文體？",o:["童詩","新聞報導","說明書","書信"],a:0,e:"本課以童詩形式呈現。"},
+ {id:"e2",q:"詩中的『攀岩高手』最後指的是哪種植物？",o:["爬牆虎","玫瑰","荷花","稻米"],a:0,e:"作者到最後才揭示主角是爬牆虎。"},
+ {id:"e3",q:"作者沒有一開始就直接說出主角身分，有什麼效果？",o:["增加猜測與閱讀趣味","讓文章沒有主題","讓生字變少","讓詩變成說明文"],a:0,e:"保持神祕感能讓讀者一邊讀一邊猜。"},
+ {id:"e4",q:"爬牆虎能沿牆向上，和哪個構造最有關？",o:["吸盤","花瓣","果實","種子"],a:0,e:"吸盤能幫助爬牆虎附著在牆面。"},
+ {id:"e5",q:"詩人把吸盤想像成攀岩者的什麼？",o:["裝備","食物","獎品","觀眾"],a:0,e:"吸盤就像攀岩者用來向上的裝備。"},
+ {id:"e6",q:"『高處』在詩的想像中最接近什麼？",o:["努力追求的目標","休息的床","放棄的理由","回家的道路"],a:0,e:"向上生長被轉化成朝目標前進的意象。"},
+ {id:"e7",q:"露珠在詩意想像中最接近什麼角色？",o:["補充水分的飲料","攀岩繩","障礙物","山峰"],a:0,e:"露珠可被想像成補充水分的飲料。"},
+ {id:"e8",q:"陽光在詩意中被轉化成『食物』，主要利用了哪種寫法？",o:["想像與譬喻","列舉數據","引用資料","下定義"],a:0,e:"把陽光轉化成可供充飢的食物，是想像與譬喻。"},
+ {id:"e9",q:"風在詩中較接近哪一種意義？",o:["阻礙前進的力量","直接給予獎品","完全沒有作用","讓目標降低"],a:0,e:"風象徵向上過程中的阻力。"},
+ {id:"e10",q:"雨被想像成尖利的東西，主要是為了表現什麼？",o:["雨打在身上的刺激與阻力","雨很甜","雨會發光","雨很溫暖"],a:0,e:"這樣的比喻能加強風雨帶來的挑戰感。"},
+ {id:"e11",q:"『把植物寫得像人一樣有目標、有意志』屬於什麼修辭？",o:["擬人","引用","對偶","設問"],a:0,e:"把非人的事物賦予人的行動與情感，就是擬人。"},
+ {id:"e12",q:"下列哪句是擬人？",o:["小草向太陽伸出手臂。","小草是綠色植物。","小草長在土地上。","小草需要水。"],a:0,e:"把小草寫得像人能伸手，是擬人。"},
+ {id:"e13",q:"下列哪句是譬喻？",o:["白雲像一艘慢慢前進的船。","白雲出現在天空。","今天有白雲。","天空很高。"],a:0,e:"以「像」把白雲比作船，是明喻。"},
+ {id:"e14",q:"童詩和一般說明文相比，哪個特色較明顯？",o:["更常運用想像與節奏營造畫面","一定有大量數字","一定要列參考資料","只能寫真實資料"],a:0,e:"童詩常利用想像、修辭、節奏與分行來表達。"},
+ {id:"e15",q:"本課中『真實』和『想像』的關係最接近哪一項？",o:["從植物特徵出發，再延伸文學想像","完全互不相關","只要想像，不需觀察","只寫資料，不可想像"],a:0,e:"好的想像常建立在觀察事物特徵之上。"},
+ {id:"e16",q:"為什麼爬牆虎適合被想像成攀岩者？",o:["它能附著牆面持續向上生長","它真的會使用安全繩","它有人的雙手","它會參加比賽"],a:0,e:"其生長方式和攀岩者向上的動作有相似處。"},
+ {id:"e17",q:"『不斷向上』在本課中除了寫植物，也可象徵什麼？",o:["朝夢想持續努力","不停睡覺","一直退步","停止行動"],a:0,e:"向上生長被賦予追求目標的象徵意義。"},
+ {id:"e18",q:"哪一項最符合本課主旨？",o:["遇到挫折仍以勇氣和毅力追求目標","只有有裝備才能成功","風雨一定要避開","夢想不需要努力"],a:0,e:"本課藉爬牆虎傳達堅持與追求目標的精神。"},
+ {id:"e19",q:"『圖像詩』最重要的特色是什麼？",o:["文字排列也能呈現畫面","每句一定一樣長","只能寫植物","不能使用標點"],a:0,e:"圖像詩會利用文字排列形成視覺效果。"},
+ {id:"e20",q:"如果把『向上生長』的文字排成向上延伸的形狀，主要產生什麼效果？",o:["讓版面呼應詩意","讓字變成數學題","讓生字消失","讓文章變成新聞"],a:0,e:"圖像排列能讓文字外觀和內容互相呼應。"},
+ {id:"e21",q:"下列哪一組最接近本課的發展順序？",o:["攀爬→裝備與目標→補充能量→風雨阻力→揭示主角","吃飯→睡覺→上課→回家","人物介紹→日期→地址→電話","原因→公式→答案→圖表"],a:0,e:"這個順序最能整理詩的內容發展。"},
+ {id:"e22",q:"如果題目問『哪些是實寫』，應找哪類內容？",o:["植物真正具有的特徵與生長現象","作者加上的人物情緒","所有譬喻句","所有想像畫面"],a:0,e:"實寫指現實中可觀察到的事物或現象。"},
+ {id:"e23",q:"如果題目問『哪些是想像』，應找哪類內容？",o:["把自然現象轉化成人的活動或物品","植物有葉子","植物需要水","藤蔓會伸長"],a:0,e:"把自然景物賦予新的形象，就是想像描寫。"},
+ {id:"e24",q:"『強風吹來，像有人在後面拉住我。』這句主要運用了什麼？",o:["想像與擬人化情境","數學運算","客觀統計","定義說明"],a:0,e:"把風想像成有人拉住前進者，形成擬人化畫面。"},
+ {id:"e25",q:"學習本課後要仿作童詩，第一步最適合做什麼？",o:["先觀察事物特色，再聯想像什麼","直接抄別人的詩","只找最難的字","先決定每行字數"],a:0,e:"由真實特徵出發，較容易產生自然的想像。"},
+ {id:"e26",q:"觀察『蒲公英種子會飄』後，哪個想像最合理？",o:["像帶著降落傘旅行的小旅人","像沉在水底的石頭","像不會移動的牆","像關著的抽屜"],a:0,e:"種子飄動和降落傘旅行有相似特徵。"},
+ {id:"e27",q:"觀察『雨滴打在窗上』後，哪個譬喻最有畫面？",o:["像小鼓手敲著玻璃","雨滴就是水","窗戶是一扇窗","今天下雨"],a:0,e:"把聲音與動作轉化為小鼓手，具有想像畫面。"},
+ {id:"e28",q:"遇到不懂的詩句時，哪種方法最好？",o:["先找上下文線索，再思考字面與想像的關係","直接跳過整首詩","只看答案","只數筆畫"],a:0,e:"上下文與修辭線索能幫助理解詩意。"},
+ {id:"e29",q:"『堅韌』最適合形容哪種特質？",o:["遇到困難仍能支撐並繼續","一下就放棄","完全沒有方向","只想休息"],a:0,e:"堅韌表示堅強而有韌性。"},
+ {id:"e30",q:"完成本課複習後，最應具備哪一項能力？",o:["能理解童詩、分辨實寫與想像，並嘗試仿寫","只背課名","只記頁碼","只會數段落"],a:0,e:"本課核心包含理解童詩、欣賞想像與修辭、嘗試仿作。"}
+]
+};
+
+const matchPairs = [
+ ["陡峭","坡度很大、近乎直立"],["強勁","強而有力"],["高聳","高高直立"],
+ ["充飢","吃東西減輕飢餓"],["隱形","不容易被看見"],["尖銳","尖而鋒利"],
+ ["繁茂","生長旺盛"],["挫折","事情受阻或不順利"],["藤蔓","蔓生植物伸展的莖"],["藉由","透過、憑藉"]
+];
+
+const KEY="shiquan_g5_chinese_l3_v1_80";
+let state = JSON.parse(localStorage.getItem(KEY)||'{"answered":{},"wrong":{},"matchDone":[],"score":0}');
+function save(){ localStorage.setItem(KEY,JSON.stringify(state)); updateStats(); }
+
+document.querySelectorAll("#nav button").forEach(b=>{
+  b.onclick=()=>{
+    document.querySelectorAll("#nav button").forEach(x=>x.classList.remove("active"));
+    document.querySelectorAll(".page").forEach(x=>x.classList.remove("active"));
+    b.classList.add("active"); document.getElementById(b.dataset.page).classList.add("active");
+    if(b.dataset.page==="wrong") renderWrong();
+    window.scrollTo({top:document.querySelector("#nav").offsetTop-10,behavior:"smooth"});
+  };
+});
+
+function speak(text){
+  if(!("speechSynthesis" in window)){alert("此瀏覽器不支援語音功能");return}
+  speechSynthesis.cancel();
+  const u=new SpeechSynthesisUtterance(text);u.lang="zh-TW";u.rate=.85;speechSynthesis.speak(u);
+}
+
+function renderVocab(){
+ const el=document.getElementById("learnVocab");
+ el.innerHTML=vocab.map(([a,b])=>`<div class="item"><div class="char">${a}</div><b>${b}</b><br><button class="speak" onclick="speak('${a}，${b}')">🔊 聽讀音</button></div>`).join("");
+}
+
+function renderQuiz(kind, target){
+ const arr=questions[kind], el=document.getElementById(target);
+ el.innerHTML=arr.map((x,i)=>`
+ <div class="q" id="q_${x.id}">
+   <div class="q-title">${i+1}. ${x.q}</div>
+   ${x.o.map((o,j)=>`<button class="opt" onclick="answer('${kind}','${x.id}',${j},this)">${String.fromCharCode(65+j)}. ${o}</button>`).join("")}
+   <div class="feedback" id="f_${x.id}"></div>
+ </div>`).join("");
+}
+
+function getQ(kind,id){return questions[kind].find(x=>x.id===id)}
+function answer(kind,id,choice,btn){
+ const q=getQ(kind,id), box=document.getElementById("q_"+id), fb=document.getElementById("f_"+id);
+ box.querySelectorAll(".opt").forEach(x=>x.disabled=true);
+ const ok=choice===q.a;
+ box.querySelectorAll(".opt")[q.a].classList.add("correct");
+ if(!ok) btn.classList.add("wrong");
+ fb.className="feedback "+(ok?"ok":"bad");
+ fb.innerHTML=(ok?"✅ 答對了！ ":"❌ 再複習一下。 ")+q.e;
+ const first=!state.answered[id];
+ state.answered[id]={kind,choice,ok};
+ if(ok){
+   delete state.wrong[id];
+   if(first) state.score+=10;
+ }else{
+   state.wrong[id]={kind,id};
+ }
+ save();
+ if(kind==="exam") updateExamResult();
+}
+
+function allQuestionCount(){return [...questions.vocab,...questions.reading,...questions.exam].length + matchPairs.length}
+function updateStats(){
+ const vals=Object.values(state.answered);
+ const correct=vals.filter(x=>x.ok).length + state.matchDone.length;
+ const answered=vals.length + state.matchDone.length;
+ document.getElementById("totalScore").textContent=state.score + state.matchDone.length*5;
+ document.getElementById("correctCount").textContent=correct;
+ document.getElementById("answeredCount").textContent=answered;
+ document.getElementById("accuracy").textContent=answered?Math.round(correct/answered*100)+"%":"0%";
+ const pct=Math.round(answered/allQuestionCount()*100);
+ document.getElementById("progressText").textContent=pct+"%";
+ document.getElementById("progressBar").style.width=pct+"%";
+}
+
+function updateExamResult(){
+ const ids=questions.exam.map(x=>x.id), ans=ids.filter(id=>state.answered[id]);
+ if(!ans.length){document.getElementById("examResult").innerHTML="";return}
+ const ok=ans.filter(id=>state.answered[id].ok).length;
+ document.getElementById("examResult").innerHTML=`<div class="result-big"><div>目前模擬測驗</div><div class="score">${ok*10}</div><div>已作答 ${ans.length}/30 題｜答對 ${ok} 題</div></div>`;
+}
+
+function renderWrong(){
+ const keys=Object.keys(state.wrong), el=document.getElementById("wrongList");
+ if(!keys.length){el.innerHTML='<div class="goodnote">🎉 目前沒有錯題！繼續保持。</div>';return}
+ el.innerHTML=keys.map(id=>{
+   const it=state.wrong[id], q=getQ(it.kind,id);
+   return `<div class="q"><div class="q-title">${q.q}</div>
+   ${q.o.map((o,j)=>`<button class="opt" onclick="redoWrong('${it.kind}','${id}',${j},this)">${String.fromCharCode(65+j)}. ${o}</button>`).join("")}
+   <div class="feedback" id="wf_${id}"></div></div>`;
+ }).join("");
+}
+function redoWrong(kind,id,choice,btn){
+ const q=getQ(kind,id), fb=document.getElementById("wf_"+id), box=btn.parentElement;
+ box.querySelectorAll(".opt").forEach(x=>x.disabled=true);
+ if(choice===q.a){
+   btn.classList.add("correct"); delete state.wrong[id]; state.answered[id]={kind,choice,ok:true};
+   fb.className="feedback ok";fb.textContent="✅ 這次答對了！已從錯題本移除。";
+ }else{
+   btn.classList.add("wrong");box.querySelectorAll(".opt")[q.a].classList.add("correct");
+   fb.className="feedback bad";fb.textContent="❌ 還差一點："+q.e;
+ }
+ save(); setTimeout(renderWrong,1100);
+}
+function clearWrong(){state.wrong={};save();renderWrong()}
+function resetAll(){if(confirm("確定要清除第3課全部學習紀錄嗎？")){localStorage.removeItem(KEY);location.reload()}}
+
+let selectedLeft=null;
+function shuffle(a){return [...a].sort(()=>Math.random()-.5)}
+function renderMatch(){
+ selectedLeft=null;
+ const done=new Set(state.matchDone||[]);
+ document.getElementById("matchLeft").innerHTML=matchPairs.map(([l])=>`<button class="match-btn ${done.has(l)?"done":""}" ${done.has(l)?"disabled":""} onclick="pickLeft(this,'${l}')">${l}</button>`).join("");
+ document.getElementById("matchRight").innerHTML=shuffle(matchPairs).map(([l,r])=>`<button class="match-btn ${done.has(l)?"done":""}" ${done.has(l)?"disabled":""} data-left="${l}" onclick="pickRight(this,'${l}')">${r}</button>`).join("");
+}
+function pickLeft(btn,l){
+ document.querySelectorAll("#matchLeft .match-btn").forEach(x=>x.classList.remove("sel"));
+ btn.classList.add("sel"); selectedLeft=l;
+}
+function pickRight(btn,l){
+ const msg=document.getElementById("matchMsg");
+ if(!selectedLeft){msg.className="feedback bad";msg.textContent="請先選左邊的語詞。";return}
+ if(selectedLeft===l){
+   state.matchDone=Array.from(new Set([...(state.matchDone||[]),l]));
+   msg.className="feedback ok";msg.textContent="✅ 配對成功！";
+   save();renderMatch();
+ }else{
+   msg.className="feedback bad";msg.textContent="❌ 不是這一組，再試一次。";
+ }
+}
+function resetMatch(){state.matchDone=[];save();renderMatch();document.getElementById("matchMsg").className="feedback";}
+
+renderVocab();
+renderQuiz("vocab","vocabQuiz");
+renderQuiz("reading","readingQuiz");
+renderQuiz("exam","examQuiz");
+renderMatch();updateStats();updateExamResult();
+</script>
+</body>
+</html>

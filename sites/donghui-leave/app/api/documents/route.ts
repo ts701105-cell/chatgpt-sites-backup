@@ -1,0 +1,25 @@
+import {env} from 'cloudflare:workers';
+import {leaveTypes} from '@/lib/history-import';
+import {validDate} from '@/lib/leave';
+async function user(req:Request){const token=req.headers.get('cookie')?.match(/(?:^|; )leave_session=([a-f0-9-]+)/)?.[1];if(!token)return null;const d=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(token));const hash=Array.from(new Uint8Array(d),x=>x.toString(16).padStart(2,'0')).join('');return env.DB.prepare('SELECT e.number,e.role,e.mustChange FROM sessions s JOIN employees e ON e.number=s.number WHERE s.token=? AND s.expires>?').bind(hash,Date.now()).first<any>();}
+const response=(v:any,status=200)=>Response.json(v,{status,headers:{'Cache-Control':'no-store'}});
+export async function GET(req:Request){const u=await user(req);if(!u)return response({error:'請先登入'},401);const id=new URL(req.url).searchParams.get('id');const doc=await env.DB.prepare('SELECT d.*,r.number FROM documents d JOIN requests r ON r.id=d.requestId WHERE d.id=?').bind(id||'').first<any>();if(!doc||(u.role!=='admin'&&u.number!==doc.number))return response({error:'找不到假單'},404);const file=await env.FILES.get(doc.objectKey);if(!file)return response({error:'找不到假單'},404);return new Response(file.body,{headers:{'Content-Type':doc.mime,'Content-Disposition':`attachment; filename="leave-slip.${doc.mime==='application/pdf'?'pdf':doc.mime==='image/png'?'png':'jpg'}"`,'Cache-Control':'no-store','X-Content-Type-Options':'nosniff','Content-Security-Policy':"default-src 'none'; sandbox"}});}
+export async function POST(req:Request){let key:string|undefined;try{
+ if(req.headers.get('origin')!==new URL(req.url).origin)return response({error:'請從系統頁面操作'},403);const u=await user(req);if(!u||u.role!=='admin')return response({error:'僅管理員可更新假單'},403);
+ if(Number(req.headers.get('content-length')||0)>8500000)return response({error:'假單不可超過 8 MB'},413);
+ const form=await req.formData(),file=form.get('file'),type=String(form.get('type')||''),id=String(form.get('id')||''),old=String(form.get('originalType')||'');
+ if(!(file instanceof File)||!file.size||file.size>8000000||!leaveTypes.includes(type))return response({error:'請選擇假單與正確假別'},400);
+ const bytes=new Uint8Array(await file.arrayBuffer());const mime=bytes[0]===0x25&&bytes[1]===0x50&&bytes[2]===0x44&&bytes[3]===0x46?'application/pdf':bytes[0]===0xff&&bytes[1]===0xd8&&bytes[2]===0xff?'image/jpeg':bytes[0]===0x89&&bytes[1]===0x50&&bytes[2]===0x4e&&bytes[3]===0x47?'image/png':null;if(!mime)return response({error:'僅支援 PDF、JPG、PNG 假單'},400);
+ if(form.get('mode')==='new'){
+  const number=String(form.get('number')||''),date=String(form.get('date')||''),hours=Number(form.get('hours'));const employee=await env.DB.prepare("SELECT hire FROM employees WHERE number=? AND role='employee'").bind(number).first<any>();
+  if(!employee||!validDate(date)||date<employee.hire||!Number.isFinite(hours)||hours<=0||hours>24||!Number.isInteger(hours*60))return response({error:'請核對員工、日期及時數（大於 0，最多 24 小時）'},400);
+  const requestId=crypto.randomUUID(),docId=crypto.randomUUID(),created=new Date().toISOString();key='leave-slips/'+docId;await env.FILES.put(key,bytes,{httpMetadata:{contentType:mime}});
+  const result=await env.DB.batch([env.DB.prepare("INSERT INTO requests(id,number,date,slot,units,type,reason,status,note,created,reviewed) SELECT ?,?,?,'imported',?,?,'紙本假單匯入','approved','由管理員確認原件與時數',?,? WHERE NOT EXISTS(SELECT 1 FROM requests WHERE number=? AND date=? AND type=? AND status IN ('pending','approved'))").bind(requestId,number,date,hours/8,type,created,created,number,date,type),env.DB.prepare("INSERT INTO documents(id,requestId,objectKey,mime,size,originalType,newType,uploadedBy,created) SELECT ?,?,?,?,?,?,?,?,? WHERE EXISTS(SELECT 1 FROM requests WHERE id=?)").bind(docId,requestId,key,mime,file.size,'新增',type,u.number,created,requestId)]);
+  if(!result[0].meta.changes){await env.FILES.delete(key);return response({error:'同一員工、日期、假別已有紀錄，請選擇修正已有紀錄'},409);}return response({ok:true,id:docId,requestId});
+ }
+ const row=await env.DB.prepare("SELECT * FROM requests WHERE id=? AND status IN ('pending','approved')").bind(id).first<any>();if(!row||row.type!==old)return response({error:'紀錄已變動，請重新整理後核對'},409);
+ const docId=crypto.randomUUID();key='leave-slips/'+docId;await env.FILES.put(key,bytes,{httpMetadata:{contentType:mime}});
+ // An audit insert and update share one transaction; the document ID gates the update.
+ const results=await env.DB.batch([env.DB.prepare("INSERT INTO documents(id,requestId,objectKey,mime,size,originalType,newType,uploadedBy,created) SELECT ?,?,?,?,?,?,?,?,? WHERE EXISTS(SELECT 1 FROM requests WHERE id=? AND type=? AND status IN ('pending','approved'))").bind(docId,id,key,mime,file.size,old,type,u.number,new Date().toISOString(),id,old),env.DB.prepare('UPDATE requests SET type=? WHERE id=? AND EXISTS(SELECT 1 FROM documents WHERE id=?)').bind(type,id,docId)]);
+ if(!results[0].meta.changes){await env.FILES.delete(key);return response({error:'紀錄已變動，請重新核對'},409);}return response({ok:true,id:docId});
+ }catch{if(key)await env.FILES.delete(key).catch(()=>{});return response({error:'假單儲存失敗，請稍後再試'},500);}}

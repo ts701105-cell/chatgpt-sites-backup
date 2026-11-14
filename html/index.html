@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <base target="_top">
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
+                   "Noto Sans TC", Arial, sans-serif;
+      background: #f4f6f8;
+      color: #202124;
+    }
+    .wrap {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 20px 14px 48px;
+    }
+    .card {
+      background: #fff;
+      border-radius: 14px;
+      padding: 22px;
+      box-shadow: 0 2px 12px rgba(0,0,0,.08);
+    }
+    h1 {
+      margin: 0 0 8px;
+      font-size: 25px;
+    }
+    .sub {
+      color: #5f6368;
+      line-height: 1.6;
+      margin-bottom: 22px;
+    }
+    .field { margin-bottom: 18px; }
+    label.title {
+      display: block;
+      font-weight: 700;
+      margin-bottom: 7px;
+    }
+    input[type="text"],
+    input[type="tel"],
+    input[type="date"],
+    textarea {
+      width: 100%;
+      padding: 12px 13px;
+      border: 1px solid #c7cbd1;
+      border-radius: 9px;
+      font-size: 16px;
+      background: #fff;
+    }
+    textarea { min-height: 90px; resize: vertical; }
+    .upload {
+      border: 1px dashed #9aa0a6;
+      border-radius: 10px;
+      padding: 13px;
+      background: #fafafa;
+    }
+    .hint {
+      margin-top: 6px;
+      color: #6b7280;
+      font-size: 13px;
+      line-height: 1.5;
+    }
+    .optional {
+      color: #6b7280;
+      font-weight: 400;
+      font-size: 13px;
+    }
+    .privacy {
+      background: #f8f9fa;
+      border-radius: 10px;
+      padding: 14px;
+      font-size: 14px;
+      line-height: 1.65;
+      margin-top: 18px;
+    }
+    .consent {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      margin-top: 12px;
+    }
+    .consent input { margin-top: 4px; }
+    button {
+      width: 100%;
+      border: 0;
+      border-radius: 10px;
+      padding: 14px 18px;
+      margin-top: 18px;
+      font-size: 17px;
+      font-weight: 700;
+      cursor: pointer;
+      background: #1a73e8;
+      color: white;
+    }
+    button:disabled {
+      opacity: .6;
+      cursor: not-allowed;
+    }
+    #status {
+      margin-top: 14px;
+      line-height: 1.6;
+      white-space: pre-wrap;
+    }
+    .success {
+      background: #e8f5e9;
+      padding: 12px;
+      border-radius: 8px;
+    }
+    .error {
+      background: #fce8e6;
+      padding: 12px;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body>
+<div class="wrap">
+  <div class="card">
+    <h1>臨時工應徵資料</h1>
+    <div class="sub">
+      請填寫基本資料。證件影像請拍攝清楚、避免反光。<br>
+      本表要求上傳身分證正反面、健保卡及駕照／駕駛證件，請確認照片清楚、完整且避免反光。
+    </div>
+
+    <form id="appForm">
+      <div class="field">
+        <label class="title">姓名 *</label>
+        <input id="name" type="text" autocomplete="name" maxlength="40" required>
+      </div>
+
+      <div class="field">
+        <label class="title">手機 *</label>
+        <input id="phone" type="tel" autocomplete="tel" maxlength="20" required>
+      </div>
+
+      <div class="field">
+        <label class="title">應徵職務 *</label>
+        <input id="position" type="text" maxlength="60"
+               placeholder="例如：理貨臨時工、司機臨時工" required>
+      </div>
+
+      <div class="field">
+        <label class="title">可上班日期 <span class="optional">（選填）</span></label>
+        <input id="availableDate" type="date">
+      </div>
+
+      <div class="field">
+        <label class="title">身分證正面 *</label>
+        <div class="upload">
+          <input id="idFront" type="file" accept="image/*" capture="environment" required>
+          <div class="hint">手機可直接拍照。系統會先縮圖再上傳。</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="title">身分證反面 *</label>
+        <div class="upload">
+          <input id="idBack" type="file" accept="image/*" capture="environment" required>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="title">健保卡 *</label>
+        <div class="upload">
+          <input id="healthCard" type="file" accept="image/*" capture="environment" required>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="title">駕照／駕駛證件 *</label>
+        <div class="upload">
+          <input id="driverLicense" type="file" accept="image/*" capture="environment" required>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="title">備註 <span class="optional">（選填）</span></label>
+        <textarea id="note" maxlength="500"></textarea>
+      </div>
+
+      <div class="privacy">
+        <strong>個人資料蒐集告知</strong><br>
+        本表所蒐集之姓名、聯絡方式及您主動提供之證件資料與影像，
+        僅供應徵聯絡、資格確認、錄取報到、人事管理及依法辦理相關作業使用。
+        實際蒐集目的、利用期間、地區、對象、方式、當事人權利及不提供資料之影響，
+        請由公司依實際制度及法令要求補充完整後再正式上線。
+        <div class="consent">
+          <input id="consent" type="checkbox" required>
+          <label for="consent">我已閱讀並同意上述個人資料蒐集及利用說明。*</label>
+        </div>
+      </div>
+
+      <button id="submitBtn" type="submit">送出應徵資料</button>
+      <div id="status"></div>
+    </form>
+  </div>
+</div>
+
+<script>
+  const form = document.getElementById('appForm');
+  const submitBtn = document.getElementById('submitBtn');
+  const statusEl = document.getElementById('status');
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    if (!document.getElementById('consent').checked) {
+      showError('請先勾選個人資料蒐集及利用同意。');
+      return;
+    }
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = '圖片處理中…';
+    statusEl.className = '';
+    statusEl.textContent = '正在壓縮照片，請不要關閉頁面。';
+
+    try {
+      const payload = {
+        name: document.getElementById('name').value.trim(),
+        phone: document.getElementById('phone').value.trim(),
+        position: document.getElementById('position').value.trim(),
+        availableDate: document.getElementById('availableDate').value,
+        note: document.getElementById('note').value.trim(),
+        consent: true,
+        idFront: await prepareFile('idFront'),
+        idBack: await prepareFile('idBack'),
+        healthCard: await prepareFile('healthCard'),
+        driverLicense: await prepareFile('driverLicense')
+      };
+
+      submitBtn.textContent = '上傳與文字辨識中…';
+      statusEl.textContent = '正在上傳證件並執行 OCR，請不要重複送出。';
+
+      google.script.run
+        .withSuccessHandler((res) => {
+          submitBtn.disabled = false;
+          submitBtn.textContent = '送出應徵資料';
+
+          if (res && res.ok) {
+            statusEl.className = 'success';
+            statusEl.textContent =
+              '資料已送出。\n案件編號：' + res.applicationNo +
+              '\n請記下案件編號。';
+            form.reset();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          } else {
+            showError('送出失敗，請稍後再試。');
+          }
+        })
+        .withFailureHandler((err) => {
+          submitBtn.disabled = false;
+          submitBtn.textContent = '送出應徵資料';
+          showError(err && err.message ? err.message : String(err));
+        })
+        .submitApplication(payload);
+
+    } catch (err) {
+      submitBtn.disabled = false;
+      submitBtn.textContent = '送出應徵資料';
+      showError(err.message || String(err));
+    }
+  });
+
+  async function prepareFile(inputId) {
+    const input = document.getElementById(inputId);
+    const file = input.files && input.files[0];
+    if (!file) return null;
+
+    if (!file.type.startsWith('image/')) {
+      throw new Error('請上傳圖片格式的證件照片。');
+    }
+
+    if (file.size > 20 * 1024 * 1024) {
+      throw new Error('原始圖片太大，請重新拍攝。');
+    }
+
+    const dataUrl = await resizeImage(file, 1800, 0.84);
+    return {
+      name: file.name,
+      dataUrl: dataUrl
+    };
+  }
+
+  function resizeImage(file, maxSide, quality) {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+
+      reader.onerror = () => reject(new Error('無法讀取圖片。'));
+      reader.onload = () => {
+        const img = new Image();
+
+        img.onerror = () => reject(
+          new Error('此圖片格式無法讀取，請改用手機相機重新拍照（JPG）。')
+        );
+
+        img.onload = () => {
+          let width = img.naturalWidth;
+          let height = img.naturalHeight;
+
+          const scale = Math.min(1, maxSide / Math.max(width, height));
+          width = Math.round(width * scale);
+          height = Math.round(height * scale);
+
+          const canvas = document.createElement('canvas');
+          canvas.width = width;
+          canvas.height = height;
+
+          const ctx = canvas.getContext('2d');
+          ctx.drawImage(img, 0, 0, width, height);
+
+          resolve(canvas.toDataURL('image/jpeg', quality));
+        };
+
+        img.src = reader.result;
+      };
+
+      reader.readAsDataURL(file);
+    });
+  }
+
+  function showError(message) {
+    statusEl.className = 'error';
+    statusEl.textContent = '發生錯誤：' + message;
+  }
+</script>
+</body>
+</html>
